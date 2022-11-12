@@ -29,7 +29,7 @@ a {color: #333; text-decoration:none;}
 #header h1 {padding-top: 40px; padding-left: 30px; font-size: 63px; font-weight: 100; font-family: 'Epilogue', sans-serif;}
 
 /* contents1 */
-#contents1 > div.banner h2 {text-align: center; font-weight: 100; font-family: 'Noto Sans Display', sans-serif; font-size: 33px; }
+#contents1 > div.banner h2 {text-align: center; font-weight: 100; font-family: 'Nunito Sans', sans-serif; font-size: 33px; }
 
 
 #contents1 > div.imgli0 ul {padding-top: 0px;}
@@ -38,7 +38,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli0 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli0 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 
 #contents1 > div.imgli1 ul {float: right; padding-top: 0px;}
@@ -47,7 +47,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli1 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli1 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 
 #contents1 > div.imgli2 ul {padding-top: 0px;}
@@ -56,7 +56,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli2 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli2 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 #contents1 > div.imgli3 ul {float: right; padding-top: 0px;}
 #contents1 > div.imgli3 li {margin-right: 90px; padding-top: 0px;}
@@ -64,7 +64,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli3 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli3 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 #contents1 > div.imgli4 ul {padding-top: 0px;}
 #contents1 > div.imgli4 li {margin-left: 90px; padding-top: 0px;}
@@ -72,7 +72,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli4 li span {display: block; margin-top: 9px;
                     font-size: 28px; font-family: "본고딕 KR"; font-weight: 200;}
 #contents1 > div.imgli4 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 #contents1 > div.imgli5 ul {padding-top: 0px;}
 #contents1 > div.imgli5 li {margin-left: 10px; padding-top: 0px;}
@@ -80,7 +80,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli5 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli5 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 #contents1 > div.imgli6 ul {padding-top: 0px;}
 #contents1 > div.imgli6 li {margin-left: 90px; padding-top: 0px;}
@@ -88,10 +88,10 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli6 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli6 li p {display: block; margin-top: 10px;
-                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Noto Sans Display', sans-serif;}
+                font-size: 18px; color: #808080; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
 
 /* contents2 */
-#contents2 h2 {text-align: center; font-family: "Rota"; font-weight: 600; font-family: 'Noto Sans Display', sans-serif;}
+#contents2 h2 {text-align: center; font-family: "Rota"; font-weight: 600; font-family: 'Nunito Sans', sans-serif;}
 
 /* footer */
-#footer p {font-family: 'Noto Sans Display', sans-serif; font-weight: 100; font-size: 11px; font-style: ; text-align: center; padding-top: 35px;}
+#footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 11px; font-style: ; text-align: center; padding-top: 35px;}
