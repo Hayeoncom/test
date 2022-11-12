@@ -15,8 +15,8 @@ a {color: #333; text-decoration:none;}
 /* header */
 #number > div.header h2 {padding-left: 450px; padding-top: 60px;font-size: 60px; font-weight: 150; font-family: 'Jost', sans-serif; font-style: italic;}
 #number > div.header2 h1 {padding-right: 450px; padding-top: 60px; font-size: 60px; font-weight: 400; font-family: 'Jost', sans-serif;}
-#number2 > div.header h2 {padding-left: 450px; padding-top: px;font-size: 50px; font-weight: 150; font-family: 'Jost', sans-serif; font-style: italic;}
-#number2 > div.header2 h1 {padding-right: 450px; padding-top: px; font-size: 50px; font-weight: 400; font-family: 'Jost', sans-serif;}
+#number2 > div.header h2 {padding-left: 450px; padding-top: px;font-size: 60px; font-weight: 150; font-family: 'Jost', sans-serif; font-style: italic;}
+#number2 > div.header2 h1 {padding-right: 450px; padding-top: px; font-size: 60px; font-weight: 400; font-family: 'Jost', sans-serif;}
 
 /* contents */
 #contents > div.img li img {width: 700px; margin-top: 90px; margin-left: 150px;}
