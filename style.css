@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 900px; height: 3200px; background: #fff; margin: 0 auto;}
+#wrap {width: 900px; height: 3100px; background: #fff; margin: 0 auto;}
 #header {margin-top: 50px;  text-align: center; height: 200px; background: #fff;}
 
 #banner {width: 900px; text-align: center; height: 600px; overflow: hidden;}
@@ -29,7 +29,7 @@ a {color: #333; text-decoration:none;}
 #header h1 {padding-top: 30px; padding-left: 30px; font-size: 65px; font-weight: 100; font-family: 'Epilogue', sans-serif;}
 
 /* contents1 */
-#contents1 > div.banner h2 {text-align: center; font-weight: 600; font-family: 'Noto Sans Display', sans-serif; font-size: 33px; }
+#contents1 > div.banner h2 {text-align: center; font-weight: 300; font-family: 'Noto Sans Display', sans-serif; font-size: 33px; }
 
 
 #contents1 > div.imgli0 ul {padding-top: 0px;}
@@ -94,4 +94,4 @@ a {color: #333; text-decoration:none;}
 #contents2 h2 {text-align: center; font-family: "Rota"; font-weight: 600; font-family: 'Noto Sans Display', sans-serif;}
 
 /* footer */
-#footer p {font-family: 'Noto Sans Display', sans-serif; font-size: 11px; font-style: ; text-align: center; padding-top: 35px;}
+#footer p {font-family: 'Noto Sans Display', sans-serif; font-weight: 100; font-size: 11px; font-style: ; text-align: center; padding-top: 35px;}
