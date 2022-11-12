@@ -26,10 +26,10 @@ a {color: #333; text-decoration:none;}
 #footer {height: 80px; background: #FBFBFB;}
 
 /* header */
-#header h1 {padding-top: 30px; padding-left: 30px; font-size: 63px; font-weight: 100; font-family: 'Epilogue', sans-serif;}
+#header h1 {padding-top: 30px; padding-left: 30px; font-size: 63px; font-family: 'Epilogue', sans-serif;}
 
 /* contents1 */
-#contents1 > div.banner h2 {text-align: center; font-family: 'Noto Sans Display', sans-serif; font-weight: 600; font-size: 33px; }
+#contents1 > div.banner h2 {text-align: center; font-family: 'Noto Sans Display', sans-serif; font-size: 33px; }
 
 
 #contents1 > div.imgli0 ul {padding-top: 0px;}
