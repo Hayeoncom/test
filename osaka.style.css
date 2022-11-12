@@ -19,10 +19,10 @@ a {color: #333; text-decoration:none;}
 #number2 > div.header2 h1 {padding-right: 450px; padding-top: px; font-size: 50px; font-weight: 400; font-family: "Jost";}
 
 /* contents */
-#contents > div.img li img {width: 800px; margin-top: 90px; margin-left: 250px;}
+#contents > div.img li img {width: 600px; margin-top: 90px; margin-left: 150px;}
 #contents > div.img li span {display: block; margin-top: 15px; margin-left: 250px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
 
-#contents > div.img1 li img {width: 800px; margin-top: 40px; margin-left: 250px;}
+#contents > div.img1 li img {width: 600px; margin-top: 40px; margin-left: 150px;}
 #contents > div.img1 li span {display: block; margin-top: 9px; margin-left: 250px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
 
 #contents > div.img2 li img {width: 500px; margin-top: 40px; margin-left: 250px;}
