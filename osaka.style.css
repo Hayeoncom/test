@@ -20,10 +20,10 @@ a {color: #333; text-decoration:none;}
 
 /* contents */
 #contents > div.img li img {width: 700px; margin-top: 90px; margin-left: 150px;}
-#contents > div.img li span {display: block; margin-top: 15px; margin-left: 250px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
+#contents > div.img li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
 
 #contents > div.img1 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img1 li span {display: block; margin-top: 9px; margin-left: 250px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
+#contents > div.img1 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
 
 #contents > div.img2 li img {width: 500px; margin-top: 40px; margin-left: 250px;}
 #contents > div.img2 li span {display: block; margin-top: 15px; margin-left: 250px; font-size: 14px; font-family: "Rota"; font-weight: 100;}
