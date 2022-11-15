@@ -29,7 +29,7 @@ a {color: #333; text-decoration:none;}
 #contents > div.img li img {width: 700px; margin-top: 90px; margin-left: 150px;}
 #contents > div.img li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
-#contents > div.img1 li img {width: 700px; margin-top: 90px; margin-left: 250px;}
+#contents > div.img1 li img {width: 700px; margin-top: 90px; margin-left: 150px;}
 #contents > div.img1 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img2 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
