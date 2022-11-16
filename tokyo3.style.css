@@ -27,17 +27,17 @@ a {color: #333; text-decoration:none;}
 
 /* contents */
 #contents > div.img li img {width: 700px; margin-top: 90px; margin-left: 150px;}
-#contents > div.img li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
+#contents > div.img li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img1 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img1 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img1 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img2 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
 #contents > div.img2 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img3 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img3 li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
-#contents > div.img3 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img3 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img4 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
 #contents > div.img4 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
@@ -61,7 +61,8 @@ a {color: #333; text-decoration:none;}
 #contents > div.img10 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img11 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img11 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img11 li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
+#contents > div.img11 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img12 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
 #contents > div.img12 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
@@ -70,14 +71,14 @@ a {color: #333; text-decoration:none;}
 #contents > div.img13 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img14 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img14 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img14 li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
+#contents > div.img14 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img15 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img15 li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
 #contents > div.img15 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img16 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img16 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img16 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img17 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
 #contents > div.img17 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
@@ -89,7 +90,8 @@ a {color: #333; text-decoration:none;}
 #contents > div.img19 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img20 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img20 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+#contents > div.img20 li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
+#contents > div.img20 li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img21 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
 #contents > div.img21 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
@@ -143,7 +145,6 @@ a {color: #333; text-decoration:none;}
 #contents > div.img36 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img37 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
-#contents > div.img37 li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
 #contents > div.img37 li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
 
 #contents > div.img38 li img {width: 700px; margin-top: 40px; margin-left: 150px;}
