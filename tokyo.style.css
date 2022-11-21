@@ -8,7 +8,7 @@ a {color: #333; text-decoration:none;}
 #wrap {width: 1000px; height: background: #fff; margin: 0 auto;}
 #contents {width: 1000px; background: #fafafa; margin: 0 auto;}
 
-#audio > div.header {padding-left: 350px;}
+#audio > div.header {padding-left: 400px;}
 #audio > div.header h1 {font-size: 15px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500;}
 
 #number > div.header {float: left; width: 465px; height: 100px; background: #fafafa;}
