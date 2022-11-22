@@ -11,7 +11,7 @@ a {color: #333; text-decoration:none;}
 div.audio {position: absolute; float: left;}
 /* 움직이는 텍스트 */
 .animated-title {float:right; font-size: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; width: 100%;max-width:100%; height: auto; padding:100px 0 0; overflow-x: hidden; overflow-y: hidden; position: relative;}
-.animated-title .track { white-space: nowrap;will-change: transform;animation: marquee 20s linear infinite; }
+.animated-title .track { white-space: nowrap;will-change: transform;animation: marquee 10s linear infinite; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
