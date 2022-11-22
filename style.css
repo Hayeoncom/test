@@ -23,7 +23,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli5 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents1 > div.imgli6 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents2 {margin-top: 2000px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
-#footer {height: 80px; background: #FCFCFC;}
+#footer {margin-top: px; height: 80px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
 
 /* header */
 #header h1 {padding-top: 40px; padding-left: 0px; font-size: 65px; font-weight: 100; font-family: 'Epilogue', sans-serif;}
@@ -94,4 +94,4 @@ a {color: #333; text-decoration:none;}
 #contents2 h2 {text-align: center; font-family: "Rota"; font-weight: 600; font-family: 'Nunito Sans', sans-serif;}
 
 /* footer */
-#footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 11px; font-style: ; text-align: center; padding-top: 35px; color: ##313131;}
+#footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 11px; font-style: ; text-align: center; padding-top: 0px; color: ##313131;}
