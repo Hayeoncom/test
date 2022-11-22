@@ -8,8 +8,16 @@ a {color: #333; text-decoration:none;}
 #wrap {width: 1000px; height: background: #fff; margin: 0 auto;}
 #contents {width: 1000px; background: #fafafa; margin: 0 auto;}
 
-#audio > div.header {padding-left: 500px;}
-#audio > div.header h1 {font-size: 15px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500;}
+/* 움직이는 텍스트 */
+.animated-title {font-size: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; width: 100%;max-width:100%; height: auto; padding:100px 0 0; overflow-x: hidden; overflow-y: hidden; }
+.animated-title .track {position: absolute; white-space: nowrap;will-change: transform;animation: marquee 60s linear infinite; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (hover: hover) and (min-width: 700px){
+.animated-title .content {-webkit-transform: translateY(calc(100% - 8rem)); transform: translateY(calc(100% - 8rem));}
+    }
 
 #number > div.header {float: left; width: 465px; height: 100px; background: #fafafa;}
 #number > div.header2 {float: right; width: 465px; height: 100px; background: #fafafa;}
