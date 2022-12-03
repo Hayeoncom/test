@@ -32,11 +32,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 35px; }
 
 
-#contents1 > div.imgli0 ul {padding-top: 0px;}
+#contents1 > div.imgli0 ul {float: left; padding-top: 0px;}
 #contents1 > div.imgli0 li {margin-left: 90px; padding-top: 0px;}
 #contents1 > div.imgli0 li img {width: 350px;}
+#contents1 > div.imgli0:hover li img {border-radius: 50%;}
 #contents1 > div.imgli0 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 200;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 200; }
 #contents1 > div.imgli0 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -44,6 +45,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli1 ul {float: right; padding-top: 0px;}
 #contents1 > div.imgli1 li {margin-right: 90px; padding-top: 0px;}
 #contents1 > div.imgli1 li img {width: 350px;}
+#contents1 > div.imgli1:hover li img {border-radius: 50%;}
 #contents1 > div.imgli1 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli1 li p {display: block; margin-top: 10px;
@@ -53,6 +55,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli2 ul {padding-top: 0px;}
 #contents1 > div.imgli2 li {margin-left: 90px; padding-top: 0px;}
 #contents1 > div.imgli2 li img {width: 350px;}
+#contents1 > div.imgli2:hover li img {border-radius: 50%;}
 #contents1 > div.imgli2 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli2 li p {display: block; margin-top: 10px;
@@ -61,6 +64,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli3 ul {float: right; padding-top: 0px;}
 #contents1 > div.imgli3 li {margin-right: 90px; padding-top: 0px;}
 #contents1 > div.imgli3 li img {width: 350px;}
+#contents1 > div.imgli3:hover li img {border-radius: 50%;}
 #contents1 > div.imgli3 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli3 li p {display: block; margin-top: 10px;
@@ -69,22 +73,25 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli4 ul {padding-top: 0px;}
 #contents1 > div.imgli4 li {margin-left: 90px; padding-top: 0px;}
 #contents1 > div.imgli4 li img {width: 350px;}
+#contents1 > div.imgli4:hover li img {border-radius: 50%;}
 #contents1 > div.imgli4 li span {display: block; margin-top: 9px;
                     font-size: 28px; font-family: "본고딕 KR"; font-weight: 200;}
 #contents1 > div.imgli4 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
-#contents1 > div.imgli5 ul {padding-top: 0px;}
-#contents1 > div.imgli5 li {margin-left: 10px; padding-top: 0px;}
+#contents1 > div.imgli5 ul {float: right; padding-top: 0px;}
+#contents1 > div.imgli5 li {margin-right: 90px; padding-top: 0px;}
 #contents1 > div.imgli5 li img {width: 350px;}
+#contents1 > div.imgli5:hover li img {border-radius: 50%;}
 #contents1 > div.imgli5 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli5 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
-#contents1 > div.imgli6 ul {padding-top: 0px;}
+#contents1 > div.imgli6 ul {float: left; padding-top: 0px;}
 #contents1 > div.imgli6 li {margin-left: 90px; padding-top: 0px;}
 #contents1 > div.imgli6 li img {width: 350px;}
+#contents1 > div.imgli6:hover li img {border-radius: 50%;}
 #contents1 > div.imgli6 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli6 li p {display: block; margin-top: 10px;
