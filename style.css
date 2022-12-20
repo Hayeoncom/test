@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 900px; height: 3190px; background: #fff; margin: 0 auto;}
+#wrap {width: 900px; height: 3650px; background: #fff; margin: 0 auto;}
 #header {margin-top: 50px;  text-align: center; height: 200px; background: #fff;}
 
 #banner {width: 900px; text-align: center; height: 600px; overflow: hidden;}
@@ -98,7 +98,19 @@ a {color: #333; text-decoration:none;}
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
 /* contents2 */
-#contents2 h2 {text-align: center; font-family: "Rota"; font-weight: 600; font-family: 'Nunito Sans', sans-serif;}
+#contents2 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 35px; }
+
+#contents2 > div.thum1 {float: left;}
+#contents2 > div.thum1 li img { width: 240px; height: auto; margin-top: 80px; margin-left: 70px;}
+#contents2 > div.thum1:hover li img { transform: scale(1.4)}
+
+#contents2 > div.thum2 {float: left;}
+#contents2 > div.thum2 li img { width: 240px; height: auto; margin-top: 80px; margin-left: 20px;}
+#contents2 > div.thum2:hover li img { transform: scale(1.4)}
+
+#contents2 > div.thum3 {float: left;}
+#contents2 > div.thum3 li img { width: 240px; height: auto; margin-top: 80px; margin-left: 20px;}
+#contents2 > div.thum3:hover li img { transform: scale(1.4)}
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 14px; font-style: ; text-align: center; padding-bottom: 10px; color: ##313131;}
