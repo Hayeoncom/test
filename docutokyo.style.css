@@ -1,0 +1,17 @@
+/* reset */
+* {margin: 0; padding: 0;}
+li {list-style: none;}
+a {color: #333; text-decoration:none;}
+.clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
+
+/* layout */
+#wrap {width: 1000px; height: background: #fff; margin: 0 auto;}
+#contents {width: px; background: #fff; margin: 0 auto;}
+
+/* contents */
+#contents > div.img0 li img {width: 1000px; margin-top: 90px; margin-left: 150px;}
+
+#contents > div.img1 li img {width: 1000px; margin-top: 90px; margin-left: 150px;}
+
+#contents > div.img2 li img {width: 1000px; margin-top: 90px; margin-left: 150px; margin-bottom: 90px;}
+
