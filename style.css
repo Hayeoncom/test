@@ -102,7 +102,7 @@ a {color: #333; text-decoration:none;}
 
 #contents2 > div.thum1 {float: left;}
 #contents2 > div.thum1 li img { width: 240px; height: auto; margin-top: 80px; margin-left: 70px;}
-#contents2 > div.thum1:hover li img { transform: scale(1.4)}
+#contents2 > div.thum1:hover li img { transform: scale(-0.5)}
 
 #contents2 > div.thum2 {float: left;}
 #contents2 > div.thum2 li img { width: 240px; height: auto; margin-top: 80px; margin-left: 20px;}
