@@ -9,9 +9,9 @@ a {color: #333; text-decoration:none;}
 #contents {width: px; background: #fff; margin: 0 auto;}
 
 /* contents */
-#contents > div.img0 li img {width: 1000px; margin-top: 90px; margin-left: 20px; margin-right: 20px;}
+#contents > div.img0 li img {width: 1000px; margin-top: 90px; margin-left: 0px;}
 
-#contents > div.img1 li img {width: 1000px; margin-top: 90px; margin-left: 20px; margin-right: 20px;}
+#contents > div.img1 li img {width: 1000px; margin-top: 90px; margin-left: 0px;}
 
-#contents > div.img2 li img {width: 1000px; margin-top: 90px; margin-left: 20px; margin-right: 20px; margin-bottom: 90px;}
+#contents > div.img2 li img {width: 1000px; margin-top: 90px; margin-left: 0px; margin-bottom: 90px;}
 
