@@ -101,38 +101,39 @@ a {color: #333; text-decoration:none;}
 #contents2 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 35px; margin-bottom: 80px;}
 
 #contents2 > div.thum1 {position: relative;}
-#contents2 > div.thum1 li img {width: 500px; height: auto; margin-left: 200px;}
-#contents2 > div.thum1 li img:hover {filter: blur(0) grayscale(100%);}
+#contents2 > div.thum1 li img {width: 500px; height: auto; margin-left: 200px; filter:grayscale(100%)}
+#contents2 > div.thum1 li img:hover {filter: grayscale(0%);}
 #contents2 > div.thum1 li h3 {position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate( -50%, -50% );
     text-align: center;
     padding: 5px 10px;
-    font-size: 30px; color: #ffff; font-weight: 100; font-family: 'Nunito Sans', sans-serif; font-style: italic;}
+    font-size: 35px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; font-style: italic;}
 #contents2 > div.thum1 li span p {position: absolute;
 	top: 90%;
 	left: 50%;
 	transform: translate( -50%, -50% );
     padding: 5px 10px;
-    font-size: 13px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
+    font-size: 13px; color: #ffff; font-weight: 100; font-family: 'Nunito Sans', sans-serif;}
 
 #contents2 > div.thum2 {position: relative; margin-top: 30px;}
-#contents2 > div.thum2 li img {width: 500px; height: auto; margin-left: 200px;}
-#contents2 > div.thum2 li img:hover {filter: blur(0) grayscale(100%);}
+#contents2 > div.thum2 li img {width: 500px; height: auto; margin-left: 200px; filter:grayscale(100%)}
+#contents2 > div.thum2 li img:hover {filter: grayscale(0%);}
 #contents2 > div.thum2 li h3 {position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate( -50%, -50% );
     text-align: center;
     padding: 5px 10px;
-    font-size: 30px; color: #ffff; font-weight: 100; font-family: 'Nunito Sans', sans-serif; font-style: italic;}
+    font-size: 35px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; font-style: italic;}
 #contents2 > div.thum2 li span p {position: absolute;
-	top: 60%;
+	top: 90%;
 	left: 50%;
 	transform: translate( -50%, -50% );
     padding: 5px 10px;
-    font-size: 15px; color: #ffff; font-weight: 600; font-family: 'Nunito Sans', sans-serif;}
+    font-size: 13px; color: #ffff; font-weight: 100; font-family: 'Nunito Sans', sans-serif;}
+
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 14px; font-style: ; text-align: center; padding-bottom: 10px; color: #313131;}
