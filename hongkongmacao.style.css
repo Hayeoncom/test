@@ -1,0 +1,50 @@
+/* reset */
+* {margin: 0; padding: 0;}
+li {list-style: none;}
+a {color: #333; text-decoration:none;}
+.clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
+
+/* layout */
+#wrap {width: 1000px; height: background: #fff; margin: 0 auto;}
+#contents {width: 1000px; background: #fafafa; margin: 0 auto;}
+
+div.audio {position: absolute; float: left;}
+/* 움직이는 텍스트 */
+.animated-title {float:right; font-size: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; width: 100%;max-width:100%; height: auto; padding:100px 0 0; overflow-x: hidden; overflow-y: hidden; position: relative;}
+.animated-title .track { white-space: nowrap;will-change: transform;animation: marquee 10s linear infinite; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (hover: hover) and (min-width: 700px){
+.animated-title .content {-webkit-transform: translateY(calc(100% - 8rem)); transform: translateY(calc(100% - 8rem));}
+    }
+
+#number > div.header {float: left; width: 500px; height: 100px; background: #fafafa;}
+#number > div.header2 {float: right; width: 500px; height: 100px; background: #fafafa;}
+#number2 > div.header {float: left; width: 500px; height: 120px; background: #fafafa;}
+#number2 > div.header2 {float: right; width: 500px; height: 120px; background: #fafafa;}
+
+
+/* header */
+#number > div.header h2 {padding-left: 450px; padding-top: 60px;font-size: 60px; font-weight: 150; font-family: 'Jost', sans-serif; font-style: italic;}
+#number > div.header2 h1 {padding-right: 450px; padding-top: 60px; font-size: 60px; font-weight: 400; font-family: 'Jost', sans-serif;}
+#number2 > div.header h2 {padding-left: 450px; padding-top: px;font-size: 60px; font-weight: 150; font-family: 'Jost', sans-serif; font-style: italic;}
+#number2 > div.header2 h1 {padding-right: 450px; padding-top: px; font-size: 60px; font-weight: 400; font-family: 'Jost', sans-serif;}
+
+/* contents */
+#contents > div.img_first li img {width: 700px; margin-top: 90px; margin-left: 150px;}
+#contents > div.img_first li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+
+#contents > div.img_spot li img {width: 700px; margin-top: 40px; margin-left: 150px;}
+#contents > div.img_spot li p {display: block; margin-top: 15px; margin-left: 150px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 300;}
+#contents > div.img_spot li span {display: block; margin-top: 9px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+
+#contents > div.img li img {width: 700px; margin-top: 40px; margin-left: 150px;}
+#contents > div.img li span {display: block; margin-top: 15px; margin-left: 150px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+
+#contents > div.img_last li img {width: 700px; margin-top: 40px; margin-left: 150px;}
+#contents > div.img_last li span {display: block; margin-top: 15px; margin-left: 150px; padding-bottom: 100px; font-size: 12px; font-family: 'Noto Sans KR', sans-serif; font-weight: 100;}
+
+
+
