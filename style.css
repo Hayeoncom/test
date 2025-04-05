@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 900px; height: 6700px; background: #fff; margin: 0 auto;}
+#wrap {width: 900px; height: 6850px; background: #fff; margin: 0 auto;}
 #header {margin-top: 50px;  text-align: center; height: 200px; background: #fff;}
 
 #banner {width: 900px; text-align: center; height: 600px; overflow: hidden;}
@@ -22,7 +22,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli4 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents1 > div.imgli5 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents1 > div.imgli6 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
-#contents2 > div.banner {margin-top: 2625px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
+#contents2 > div.banner {margin-top: 2480px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
 #footer {height: 70px; background: #ffF; border-top: 0.8px solid #000; padding-top: 50px; }
 
 /* header */
@@ -37,7 +37,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli0 li img {width: 350px;}
 #contents1 > div.imgli0:hover li img {border-radius: 50%;}
 #contents1 > div.imgli0 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 200; }
+                    font-size: 30px; font-family: "Georgia"; font-weight: 200; text-decoration: underline 2px;}
 #contents1 > div.imgli0 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -47,7 +47,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli1 li img {width: 350px;}
 #contents1 > div.imgli1:hover li img {border-radius: 50%;}
 #contents1 > div.imgli1 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 100; text-decoration: underline 2px;}
 #contents1 > div.imgli1 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -57,7 +57,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli2 li img {width: 350px;}
 #contents1 > div.imgli2:hover li img {border-radius: 50%;}
 #contents1 > div.imgli2 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 100; text-decoration: underline 2px;}
 #contents1 > div.imgli2 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -104,25 +104,33 @@ a {color: #333; text-decoration:none;}
 #contents2 > div.thum1 li img {width: 900px; height: auto; margin-left: 0px; filter:grayscale(100%);}
 #contents2 > div.thum1 li img:hover {filter: grayscale(0%);}
 #contents2 > div.thum1 li h3 {position: absolute;
-	top: 45%;
+	top: 38%;
 	left: 50%;
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 25px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif;}
-#contents2 > div.thum1 li span p {position: absolute;
-	top: 50%;
+    font-size: 60px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;}
+#contents2 > div.thum1 li h3.h3l {position: absolute;
+	top: 38%;
 	left: 50%;
-	transform: translate( -50%, -50% );
+    transform: translate( -50%, -50% );
+    text-align: center;
     padding: 0px 0px;
-    font-size: 18px; color: #ffff; font-weight: 10; font-family: 'Nunito Sans', sans-serif; font-style: italic;}
+    font-size: 60px; color: #000000; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;}
+#contents2 > div.thum1 li span p {position: absolute;
+	top: 63%;
+	left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    padding: 0px 0px;
+    font-size: 60px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;}
 #contents2 > div.thum1 li h2 {position: absolute;
-	top: 55%;
+	top: 50%;
 	left: 50%;
 	transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 18px; color: #fff; font-weight: 10; font-family: 'Nunito Sans', sans-serif; font-style: italic;}
+    font-size: 60px; color: #fff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;}
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 20px; font-style: ; text-align: center; padding-bottom: 10px; color: #313131;}
