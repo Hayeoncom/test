@@ -38,8 +38,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli0 li img {width: 350px;}
 #contents1 > div.imgli0:hover li img {border-radius: 50%;}
 #contents1 > div.imgli0 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 200; text-decoration: underline 2px; text-decoration-skip-ink: none; /* Safari 관련 */
-  -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli0 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
