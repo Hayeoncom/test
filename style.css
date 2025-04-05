@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 900px; height: 6850px; background: #fff; margin: 0 auto;}
+#wrap {width: 900px; height: 6820px; background: #fff; margin: 0 auto;}
 #header {margin-top: 50px;  text-align: center; height: 200px; background: #fff;}
 
 #banner {width: 900px; text-align: center; height: 600px; overflow: hidden;}
@@ -21,7 +21,8 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli3 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents1 > div.imgli4 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents1 > div.imgli5 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
-#contents1 > div.imgli6 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
+#contents1 > div.imgli6 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
+#contents1 > div.imgli7 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
 #contents2 > div.banner {margin-top: 2480px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
 #footer {height: 70px; background: #ffF; border-top: 0.8px solid #000; padding-top: 50px; }
 
@@ -98,6 +99,15 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli6 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 100;}
 #contents1 > div.imgli6 li p {display: block; margin-top: 10px;
+                font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
+
+#contents1 > div.imgli7 ul {float: right; padding-top: 0px;}
+#contents1 > div.imgli7 li {margin-right: 90px; padding-top: 0px;}
+#contents1 > div.imgli7 li img {width: 350px;}
+#contents1 > div.imgli7:hover li img {border-radius: 50%;}
+#contents1 > div.imgli7 li span {display: block; margin-top: 10px;
+                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+#contents1 > div.imgli7 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
 /* contents2 */
