@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 900px; height: 6820px; background: #fff; margin: 0 auto;}
+#wrap {width: 900px; height: 6850px; background: #fff; margin: 0 auto;}
 #header {margin-top: 50px;  text-align: center; height: 200px; background: #fff;}
 
 #banner {width: 900px; text-align: center; height: 600px; overflow: hidden;}
@@ -23,7 +23,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli5 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 60px;}
 #contents1 > div.imgli6 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
 #contents1 > div.imgli7 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
-#contents2 > div.banner {margin-top: 2480px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
+#contents2 > div.banner {margin-top: 2490px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 70px; }
 #footer {height: 70px; background: #ffF; border-top: 0.8px solid #000; padding-top: 50px; }
 
 /* header */
@@ -53,8 +53,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli1 li img {width: 350px;}
 #contents1 > div.imgli1:hover li img {border-radius: 50%;}
 #contents1 > div.imgli1 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100; text-decoration: underline 2px; text-decoration-skip-ink: none; /* Safari 관련 */
-  -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli1 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -64,8 +68,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli2 li img {width: 350px;}
 #contents1 > div.imgli2:hover li img {border-radius: 50%;}
 #contents1 > div.imgli2 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100; text-decoration: underline 2px; text-decoration-skip-ink: none; /* Safari 관련 */
-  -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli2 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -74,7 +82,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli3 li img {width: 350px;}
 #contents1 > div.imgli3:hover li img {border-radius: 50%;}
 #contents1 > div.imgli3 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli3 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -82,8 +95,13 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli4 li {margin-left: 90px; padding-top: 0px;}
 #contents1 > div.imgli4 li img {width: 350px;}
 #contents1 > div.imgli4:hover li img {border-radius: 50%;}
-#contents1 > div.imgli4 li span {display: block; margin-top: 9px;
-                    font-size: 28px; font-family: "본고딕 KR"; font-weight: 200;}
+#contents1 > div.imgli4 li span {display: block; margin-top: 10px;
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli4 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -92,7 +110,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli5 li img {width: 350px;}
 #contents1 > div.imgli5:hover li img {border-radius: 50%;}
 #contents1 > div.imgli5 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli5 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -101,7 +124,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli6 li img {width: 350px;}
 #contents1 > div.imgli6:hover li img {border-radius: 50%;}
 #contents1 > div.imgli6 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli6 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -110,7 +138,12 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli7 li img {width: 350px;}
 #contents1 > div.imgli7:hover li img {border-radius: 50%;}
 #contents1 > div.imgli7 li span {display: block; margin-top: 10px;
-                    font-size: 30px; font-family: "Georgia"; font-weight: 100;}
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents1 > div.imgli7 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
@@ -126,7 +159,7 @@ a {color: #333; text-decoration:none;}
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif;
+    font-size: 60px; color: #ffff; font-weight: 100; font-family: 'Epilogue', sans-serif;
 		text-decoration-line: underline;
                     text-decoration-thikness: 3px;
                     text-underlin-offset: 3px;
@@ -138,7 +171,7 @@ a {color: #333; text-decoration:none;}
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #000000; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;
+    font-size: 60px; color: #000000; font-weight: 100; font-family: 'Epilogue', sans-serif; text-decoration: underline 3px;
 	text-decoration-skip-ink: none; /* Safari 관련 */
         -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents2 > div.thum1 li span p {position: absolute;
@@ -147,7 +180,7 @@ a {color: #333; text-decoration:none;}
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;
+    font-size: 60px; color: #ffff; font-weight: 100; font-family: 'Epilogue', sans-serif; text-decoration: underline 3px;
 	text-decoration-skip-ink: none; /* Safari 관련 */
         -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents2 > div.thum1 li h2 {position: absolute;
@@ -156,7 +189,7 @@ a {color: #333; text-decoration:none;}
 	transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #fff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;
+    font-size: 60px; color: #fff; font-weight: 100; font-family: 'Epilogue', sans-serif; text-decoration: underline 3px;
 	text-decoration-skip-ink: none; /* Safari 관련 */
         -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 
