@@ -83,7 +83,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli3:hover li img {border-radius: 50%;}
 #contents1 > div.imgli3 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 400;
-                    text-decoration-line: underline;
+                    /* text-decoration-line: underline;
                     text-decoration-thikness: 2px;
                     text-underlin-offset: 3px;
                     text-decoration-skip-ink: none; /* Safari 관련 */
@@ -97,7 +97,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli4:hover li img {border-radius: 50%;}
 #contents1 > div.imgli4 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 400;
-                    text-decoration-line: underline;
+                    /* text-decoration-line: underline;
                     text-decoration-thikness: 2px;
                     text-underlin-offset: 3px;
                     text-decoration-skip-ink: none; /* Safari 관련 */
@@ -111,7 +111,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli5:hover li img {border-radius: 50%;}
 #contents1 > div.imgli5 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 400;
-                    text-decoration-line: underline;
+                    /* text-decoration-line: underline;
                     text-decoration-thikness: 2px;
                     text-underlin-offset: 3px;
                     text-decoration-skip-ink: none; /* Safari 관련 */
@@ -125,7 +125,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli6:hover li img {border-radius: 50%;}
 #contents1 > div.imgli6 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 400;
-                    text-decoration-line: underline;
+                    /* text-decoration-line: underline;
                     text-decoration-thikness: 2px;
                     text-underlin-offset: 3px;
                     text-decoration-skip-ink: none; /* Safari 관련 */
@@ -139,7 +139,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli7:hover li img {border-radius: 50%;}
 #contents1 > div.imgli7 li span {display: block; margin-top: 10px;
                     font-size: 30px; font-family: "Georgia"; font-weight: 400;
-                    text-decoration-line: underline;
+                    /* text-decoration-line: underline;
                     text-decoration-thikness: 2px;
                     text-underlin-offset: 3px;
                     text-decoration-skip-ink: none; /* Safari 관련 */
@@ -161,7 +161,7 @@ a {color: #333; text-decoration:none;}
     padding: 0px 0px;
     font-size: 60px; color: #ffff; font-weight: 100; font-family: 'Epilogue', sans-serif;
 		text-decoration-line: underline;
-                    text-decoration-thikness: 3px;
+                    text-decoration-thikness: 1px;
                     text-underlin-offset: 3px;
                     text-decoration-skip-ink: none; /* Safari 관련 */
                     -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
@@ -171,27 +171,36 @@ a {color: #333; text-decoration:none;}
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #000000; font-weight: 100; font-family: 'Epilogue', sans-serif; text-decoration: underline 3px;
-	text-decoration-skip-ink: none; /* Safari 관련 */
-        -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+    font-size: 60px; color: #000000; font-weight: 100; font-family: 'Epilogue', sans-serif;
+		text-decoration-line: underline;
+                    text-decoration-thikness: 1px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+                    -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents2 > div.thum1 li span p {position: absolute;
 	top: 63%;
 	left: 50%;
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #ffff; font-weight: 100; font-family: 'Epilogue', sans-serif; text-decoration: underline 3px;
-	text-decoration-skip-ink: none; /* Safari 관련 */
-        -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+    font-size: 60px; color: #ffff; font-weight: 100; font-family: 'Epilogue', sans-serif;
+		text-decoration-line: underline;
+                    text-decoration-thikness: 1px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+                    -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents2 > div.thum1 li h2 {position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #fff; font-weight: 100; font-family: 'Epilogue', sans-serif; text-decoration: underline 3px;
-	text-decoration-skip-ink: none; /* Safari 관련 */
-        -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+    font-size: 60px; color: #fff; font-weight: 100; font-family: 'Epilogue', sans-serif;
+		text-decoration-line: underline;
+                    text-decoration-thikness: 1px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+                    -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 20px; font-style: ; text-align: center; padding-bottom: 10px; color: #313131;}
