@@ -30,7 +30,7 @@ a {color: #333; text-decoration:none;}
 #header h1 {padding-top: 40px; padding-left: 0px; font-size: 65px; font-weight: 100; font-family: 'Epilogue', sans-serif;}
 
 /* contents1 */
-#contents1 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 45px; }
+#contents1 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 55px; }
 
 
 #contents1 > div.imgli0 ul {float: left; padding-top: 0px;}
@@ -148,7 +148,7 @@ a {color: #333; text-decoration:none;}
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
 /* contents2 */
-#contents2 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 40px; margin-bottom: 80px;}
+#contents2 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 50px; margin-bottom: 80px;}
 
 #contents2 > div.thum1 {position: relative; margin-bottom: 0px; }
 #contents2 > div.thum1 li img {width: 900px; height: auto; margin-left: 0px; filter:grayscale(100%);}
