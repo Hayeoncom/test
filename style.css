@@ -126,9 +126,12 @@ a {color: #333; text-decoration:none;}
     transform: translate( -50%, -50% );
     text-align: center;
     padding: 0px 0px;
-    font-size: 60px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif; text-decoration: underline 3px;
-	text-decoration-skip-ink: none; /* Safari 관련 */
-        -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+    font-size: 60px; color: #ffff; font-weight: 500; font-family: 'Nunito Sans', sans-serif;
+		text-decoration-line: underline;
+                    text-decoration-thikness: 3px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+                    -webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
 #contents2 > div.thum1 li h3.h3l {position: absolute;
 	top: 38%;
 	left: 50%;
