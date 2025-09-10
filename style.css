@@ -25,7 +25,7 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli7 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
 #contents1 > div.imgli8 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
 #contents1 > div.imgli9 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
-#contents2 > div.banner {margin-top: 2490px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 80px; padding-bottom: 10px;}
+#contents2 > div.banner {margin-top: 2920px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 80px; padding-bottom: 10px;}
 #footer {height: 100px; background: #ffF; border-top: 0.8px solid #000; padding-top: 50px; }
 
 /* header */
@@ -214,5 +214,6 @@ a {color: #333; text-decoration:none;}
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 23px; font-style: ; text-align: center; padding-top: 10px; color: #313131;}
+
 
 
