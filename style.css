@@ -149,6 +149,34 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli7 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
+#contents1 > div.imgli8 ul {float: left; padding-top: 0px;}
+#contents1 > div.imgli8 li {margin-left: 90px; padding-top: 0px;}
+#contents1 > div.imgli8 li img {width: 350px;}
+#contents1 > div.imgli8:hover li img {border-radius: 50%;}
+#contents1 > div.imgli8 li span {display: block; margin-top: 10px;
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    /* text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+#contents1 > div.imgli8 li p {display: block; margin-top: 10px;
+                font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
+
+#contents1 > div.imgli9 ul {float: right; padding-top: 0px;}
+#contents1 > div.imgli9 li {margin-right: 90px; padding-top: 0px;}
+#contents1 > div.imgli9 li img {width: 350px;}
+#contents1 > div.imgli9:hover li img {border-radius: 50%;}
+#contents1 > div.imgli9 li span {display: block; margin-top: 10px;
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    /* text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+#contents1 > div.imgli9 li p {display: block; margin-top: 10px;
+                font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
+
 /* contents2 */
 #contents2 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 50px; margin-bottom: 80px;}
 
@@ -186,4 +214,5 @@ a {color: #333; text-decoration:none;}
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 23px; font-style: ; text-align: center; padding-top: 10px; color: #313131;}
+
 
