@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 900px; height: 7330px; background: #fff; margin: 0 auto;}
+#wrap {width: 900px; height: 7840px; background: #fff; margin: 0 auto;}
 #header {margin-top: 50px;  text-align: center; height: 200px; background: #fff;}
 
 #banner {width: 900px; text-align: center; height: 600px; overflow: hidden;}
@@ -25,7 +25,9 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli7 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
 #contents1 > div.imgli8 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
 #contents1 > div.imgli9 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
-#contents2 > div.banner {margin-top: 2970px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 80px; padding-bottom: 10px;}
+#contents1 > div.imgli10 {float: left; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
+#contents1 > div.imgli11 {float: right; width: 450px; height: 430px; background: #fff; margin-top: 70px;}
+#contents2 > div.banner {margin-top: 3480px; height: 130px; background: #ffF; border-top: 0.8px solid #000; padding-top: 80px; padding-bottom: 10px;}
 #footer {height: 100px; background: #ffF; border-top: 0.8px solid #000; padding-top: 50px; }
 
 /* header */
@@ -177,6 +179,34 @@ a {color: #333; text-decoration:none;}
 #contents1 > div.imgli9 li p {display: block; margin-top: 10px;
                 font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
 
+#contents1 > div.imgli10 ul {float: left; padding-top: 0px;}
+#contents1 > div.imgli10 li {margin-left: 90px; padding-top: 0px;}
+#contents1 > div.imgli10 li img {width: 350px;}
+#contents1 > div.imgli10:hover li img {border-radius: 50%;}
+#contents1 > div.imgli10 li span {display: block; margin-top: 10px;
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    /* text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+#contents1 > div.imgli10 li p {display: block; margin-top: 10px;
+                font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
+
+#contents1 > div.imgli11 ul {float: right; padding-top: 0px;}
+#contents1 > div.imgli11 li {margin-right: 90px; padding-top: 0px;}
+#contents1 > div.imgli11 li img {width: 350px;}
+#contents1 > div.imgli11:hover li img {border-radius: 50%;}
+#contents1 > div.imgli11 li span {display: block; margin-top: 10px;
+                    font-size: 30px; font-family: "Georgia"; font-weight: 400;
+                    /* text-decoration-line: underline;
+                    text-decoration-thikness: 2px;
+                    text-underlin-offset: 3px;
+                    text-decoration-skip-ink: none; /* Safari 관련 */
+  		-webkit-text-decoration-skip: none; /* iOS Safari 대응 */}
+#contents1 > div.imgli11 li p {display: block; margin-top: 10px;
+                font-size: 18px; color: #808080; font-weight: 300; font-family: 'Nunito Sans', sans-serif;}
+
 /* contents2 */
 #contents2 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 50px; margin-bottom: 80px;}
 
@@ -214,6 +244,7 @@ a {color: #333; text-decoration:none;}
 
 /* footer */
 #footer p {font-family: 'Nunito Sans', sans-serif; font-weight: 100; font-size: 23px; font-style: ; text-align: center; padding-top: 10px; color: #313131;}
+
 
 
 
