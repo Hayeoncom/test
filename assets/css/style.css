@@ -6,7 +6,7 @@
 .slidelist {position: relative; width: 14400px; height: 600px;}
 .slidelist .slideimg {position: relative; float: left; width: 900px; height: 600px;}
 .slidelist .slideimg h2 {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: }
-.slidelist .slideimg img {display: block;}
+.slidelist .slideimg img {display: block; width: 900px; height: 600px;}
 
 #contents1 > div.banner {height: 135px; background: #fff; border-top: 0.8px solid #000; padding-top: 70px; margin-top: 65px;}
 #contents1 > div.imgli0 {float: left; width: 450px; height: 430px; background: #fff;}
@@ -29,6 +29,8 @@
 
 /* contents1 */
 #contents1 > div.banner h2 {text-align: center; font-weight: 400; font-family: 'Nunito Sans', sans-serif; font-size: 55px; }
+
+#contents1 li img {display: block; width: 350px; height: 350px; object-fit: cover;}
 
 
 #contents1 > div.imgli0 ul {float: left; padding-top: 0px;}
