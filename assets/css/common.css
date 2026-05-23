@@ -1,0 +1,108 @@
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+.clearfix::before,
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+/* Shared gallery layout */
+.gallery-page #wrap {
+  width: 1000px;
+  background: #fff;
+  margin: 0 auto;
+}
+
+.travel-page #contents {
+  width: 1000px;
+  background: #fafafa;
+  margin: 0 auto;
+}
+
+.document-page #contents {
+  background: #fff;
+  margin: 0 auto;
+}
+
+.travel-page div.audio {
+  position: absolute;
+  float: left;
+}
+
+/* Moving text */
+.travel-page .animated-title {
+  float: right;
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  padding: 100px 0 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.travel-page .animated-title .track {
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (hover: hover) and (min-width: 700px) {
+  .travel-page .animated-title .content {
+    -webkit-transform: translateY(calc(100% - 8rem));
+    transform: translateY(calc(100% - 8rem));
+  }
+}
+
+/* Shared travel image defaults */
+.travel-page #contents li img {
+  width: 700px;
+  margin-left: 150px;
+}
+
+.travel-page #contents li span {
+  display: block;
+  margin-left: 150px;
+  font-size: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+}
+
+.travel-page #contents li p {
+  display: block;
+  margin-left: 150px;
+  font-size: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+}

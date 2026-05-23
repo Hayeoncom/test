@@ -1,9 +1,3 @@
-/* reset */
-* {margin: 0; padding: 0;}
-li {list-style: none;}
-a {color: #333; text-decoration:none;}
-.clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
-
 /* layout */
 #wrap {width: 1000px; background: #fff; margin: 0 auto;}
 #contents {width: 1000px; background: #fafafa; margin: 0 auto;}
