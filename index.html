@@ -403,14 +403,13 @@
             } else {
                 currentIndex = 0;
             }
-            slidePosition = currentIndex * (-900)+"px";
+            slidePosition = currentIndex * (-$("#banner").width())+"px";
             $(".slidelist").animate({ left: slidePosition},400);
         },2000);
 
     </script>
 
 </body>
-
 
 
 

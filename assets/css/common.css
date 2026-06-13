@@ -106,3 +106,84 @@ a img {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
 }
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .gallery-page #wrap,
+  .travel-page #contents,
+  .document-page #contents {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .travel-page .animated-title {
+    float: none;
+    font-size: 14px;
+    padding-top: 48px;
+  }
+
+  .travel-page div.audio {
+    position: static;
+    float: none;
+    width: 100%;
+    padding: 12px 16px 0;
+    box-sizing: border-box;
+  }
+
+  .travel-page div.audio audio {
+    width: 100%;
+  }
+
+  .travel-page #number,
+  .travel-page #number2 {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .travel-page #number > div.header,
+  .travel-page #number > div.header2,
+  .travel-page #number2 > div.header,
+  .travel-page #number2 > div.header2 {
+    width: 50% !important;
+    height: 82px !important;
+    box-sizing: border-box;
+  }
+
+  .travel-page #number h1,
+  .travel-page #number h2,
+  .travel-page #number2 h1,
+  .travel-page #number2 h2 {
+    padding: 28px 0 0 !important;
+    text-align: center;
+    font-size: 42px !important;
+  }
+
+  .travel-page #contents li img,
+  .document-page #contents li img {
+    display: block;
+    width: calc(100vw - 32px) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    box-sizing: border-box;
+  }
+
+  .travel-page #contents li span,
+  .travel-page #contents li p {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    line-height: 1.6;
+  }
+
+  .document-page #contents li img {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+}
