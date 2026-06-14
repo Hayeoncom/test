@@ -12,7 +12,7 @@ const { src, title } = Astro.props;
       </div>
     </div>
   )}
-  <audio controls loop controlslist="nodownload">
+  <audio controls loop preload="none" controlslist="nodownload">
     <source src={src} type="audio/mp3" />
   </audio>
 </section>
