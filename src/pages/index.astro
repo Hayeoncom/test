@@ -1,7 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import TravelCard from '../components/TravelCard.astro';
+import PhotographyCard from '../components/PhotographyCard.astro';
+import { getCollection } from 'astro:content';
 import '../styles/home.css';
+
+const travelEntries = (await getCollection('travel'))
+  .filter((entry) => entry.data.status === 'published')
+  .sort((a, b) => a.data.date.localeCompare(b.data.date));
+
+const photographyEntries = (await getCollection('photography'))
+  .filter((entry) => entry.data.status === 'published')
+  .sort((a, b) => a.data.date.localeCompare(b.data.date));
 ---
 
 <BaseLayout title="Hayeon">
@@ -9,11 +20,11 @@ import '../styles/home.css';
     <h1 class="home-title">Hayeon.jpg</h1>
     <section class="home-section-marker" aria-label="Travel">🛸</section>
     <section class="travel-grid" aria-label="Travel entries">
-      <p>Travel content will be loaded from Markdown collections.</p>
+      {travelEntries.map((entry) => <TravelCard entry={entry} />)}
     </section>
     <section class="home-section-marker" aria-label="Photography">📸</section>
     <section class="photography-list" aria-label="Photography entries">
-      <p>Photography content will be loaded from Markdown collections.</p>
+      {photographyEntries.map((entry) => <PhotographyCard entry={entry} />)}
     </section>
     <SiteFooter />
   </main>

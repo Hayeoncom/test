@@ -1,5 +1,22 @@
 ---
+import { getCollection, render } from 'astro:content';
+import PhotographyLayout from '../../layouts/PhotographyLayout.astro';
+
 export async function getStaticPaths() {
-  return [];
+  const entries = await getCollection('photography');
+
+  return entries
+    .filter((entry) => entry.data.status === 'published')
+    .map((entry) => ({
+      params: { id: entry.data.id },
+      props: { entry }
+    }));
 }
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 ---
+
+<PhotographyLayout entry={entry}>
+  <Content />
+</PhotographyLayout>

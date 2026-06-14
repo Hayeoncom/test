@@ -1,5 +1,22 @@
 ---
+import { getCollection, render } from 'astro:content';
+import TravelLayout from '../../layouts/TravelLayout.astro';
+
 export async function getStaticPaths() {
-  return [];
+  const entries = await getCollection('travel');
+
+  return entries
+    .filter((entry) => entry.data.status === 'published')
+    .map((entry) => ({
+      params: { id: entry.data.id },
+      props: { entry }
+    }));
 }
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
 ---
+
+<TravelLayout entry={entry}>
+  <Content />
+</TravelLayout>
