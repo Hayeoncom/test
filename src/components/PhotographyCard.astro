@@ -1,0 +1,67 @@
+---
+const { entry } = Astro.props;
+const { id, title, date, thumbnail, camera, darkText = false } = entry.data;
+---
+
+<a class:list={['photography-card', { 'photography-card--dark': darkText }]} href={`/photography/${id}/`}>
+  <img src={thumbnail} alt={title} loading="lazy" />
+  <span class="title">{title}</span>
+  <span class="date">{date}</span>
+  {camera && <span class="camera">{camera}</span>}
+</a>
+
+<style>
+  .photography-card {
+    position: relative;
+    display: block;
+    color: #fff;
+  }
+
+  .photography-card--dark {
+    color: #000;
+  }
+
+  .photography-card img {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: filter 160ms ease;
+  }
+
+  .photography-card:hover img {
+    filter: grayscale(0%);
+  }
+
+  .photography-card span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: "Epilogue", sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .photography-card .title {
+    top: 31%;
+  }
+
+  .photography-card .date {
+    top: 46%;
+  }
+
+  .photography-card .camera {
+    top: 61%;
+    font-size: 55px;
+  }
+
+  @media (max-width: 720px) {
+    .photography-card span {
+      font-size: 34px;
+    }
+
+    .photography-card .camera {
+      font-size: 26px;
+    }
+  }
+</style>

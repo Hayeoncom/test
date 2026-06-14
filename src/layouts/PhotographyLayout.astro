@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/photography.css';
+
+const { entry } = Astro.props;
+const { title } = entry.data;
+---
+
+<BaseLayout title={title}>
+  <main class="photography-shell">
+    <SiteHeader compact />
+    <article class="photography-content">
+      <slot />
+    </article>
+  </main>
+</BaseLayout>

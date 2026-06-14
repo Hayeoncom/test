@@ -1,0 +1,19 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import AudioPlayer from '../components/AudioPlayer.astro';
+import '../styles/travel.css';
+
+const { entry } = Astro.props;
+const { title, music, musicTitle } = entry.data;
+---
+
+<BaseLayout title={title}>
+  <main class="travel-shell">
+    <SiteHeader compact />
+    {music && <AudioPlayer src={music} title={musicTitle} />}
+    <article class="travel-content">
+      <slot />
+    </article>
+  </main>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/home.css';
+---
+
+<BaseLayout title="Hayeon">
+  <main class="home-wrap">
+    <h1 class="home-title">Hayeon.jpg</h1>
+    <section class="home-section-marker" aria-label="Travel">🛸</section>
+    <section class="travel-grid" aria-label="Travel entries">
+      <p>Travel content will be loaded from Markdown collections.</p>
+    </section>
+    <section class="home-section-marker" aria-label="Photography">📸</section>
+    <section class="photography-list" aria-label="Photography entries">
+      <p>Photography content will be loaded from Markdown collections.</p>
+    </section>
+    <SiteFooter />
+  </main>
+</BaseLayout>

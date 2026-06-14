@@ -1,0 +1,42 @@
+.travel-shell {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  background: #fafafa;
+}
+
+.travel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 60px 0 30px;
+  font-family: "Jost", sans-serif;
+  font-size: 56px;
+}
+
+.travel-nav a[aria-current="page"] {
+  font-style: italic;
+}
+
+.travel-content {
+  padding: 0 0 100px;
+}
+
+.travel-content figure {
+  width: min(70%, 700px);
+  margin: 40px auto 0;
+}
+
+.travel-content figcaption {
+  margin-top: 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.7;
+}
+
+.travel-content figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 15px;
+  font-weight: 300;
+}

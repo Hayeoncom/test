@@ -1,0 +1,47 @@
+---
+const { entry } = Astro.props;
+const { id, title, date, thumbnail } = entry.data;
+---
+
+<a class="travel-card" href={`/travel/${id}/`}>
+  <img src={thumbnail} alt={title} loading="lazy" />
+  <span>{title}</span>
+  <p>{date}</p>
+</a>
+
+<style>
+  .travel-card {
+    display: block;
+    width: 350px;
+    max-width: calc(100% - 36px);
+    margin: 0 auto;
+  }
+
+  .travel-card img {
+    width: 350px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: border-radius 160ms ease;
+  }
+
+  .travel-card:hover img {
+    border-radius: 50%;
+  }
+
+  .travel-card span {
+    display: block;
+    margin-top: 10px;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .travel-card p {
+    margin-top: 10px;
+    color: #808080;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+  }
+</style>

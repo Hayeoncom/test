@@ -1,0 +1,14 @@
+.photography-shell {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  background: #fff;
+}
+
+.photography-content {
+  padding: 1px 0 90px;
+}
+
+.photography-content img {
+  width: 100%;
+  margin-top: 90px;
+}

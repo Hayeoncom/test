@@ -1,0 +1,31 @@
+@media (max-width: 720px) {
+  .home-title {
+    padding: 56px 0 64px;
+    font-size: 42px;
+  }
+
+  .home-section-marker {
+    padding: 48px 0;
+    font-size: 40px;
+  }
+
+  .travel-grid {
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+  }
+
+  .travel-nav {
+    gap: 44px;
+    padding-top: 42px;
+    font-size: 44px;
+  }
+
+  .travel-content figure {
+    width: calc(100% - 36px);
+    margin-top: 34px;
+  }
+
+  .photography-content img {
+    margin-top: 48px;
+  }
+}

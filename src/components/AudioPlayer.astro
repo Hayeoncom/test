@@ -1,0 +1,59 @@
+---
+const { src, title } = Astro.props;
+---
+
+<section class="audio-band" aria-label={title || 'Theme song'}>
+  {title && (
+    <div class="animated-title" aria-hidden="true">
+      <div class="track">
+        <div class="content">
+          &nbsp; ▶︎ CLICK! Theme song : {title} *Please open in browser &nbsp; ▶︎ CLICK! Theme song : {title} *Please open in browser &nbsp; ▶︎ CLICK! Theme song : {title} *Please open in browser
+        </div>
+      </div>
+    </div>
+  )}
+  <audio controls loop controlslist="nodownload">
+    <source src={src} type="audio/mp3" />
+  </audio>
+</section>
+
+<style>
+  .audio-band {
+    position: relative;
+    min-height: 92px;
+    overflow: hidden;
+  }
+
+  .audio-band audio {
+    position: relative;
+    z-index: 1;
+    margin: 18px 0 0 18px;
+    max-width: calc(100% - 36px);
+  }
+
+  .animated-title {
+    position: absolute;
+    inset: 0 0 auto;
+    padding-top: 34px;
+    overflow: hidden;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .track {
+    width: max-content;
+    white-space: nowrap;
+    animation: marquee 13s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
