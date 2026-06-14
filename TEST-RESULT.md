@@ -399,3 +399,72 @@ Notes:
 - Existing wrappers were not deleted.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `0d7b9b4`
+
+## 2026-06-14 - 2019 Tokyo Travel Migration
+
+Created/modified files:
+
+- `src/content/travel/2019-tokyo.md`
+- `src/pages/2019 tokyo.html.ts`
+- `2019 tokyo.html`
+- `src/pages/index.astro`
+
+Image count comparison:
+
+- Legacy HTML images: 0
+- Astro Markdown figures: 0
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+- Generated routes:
+  - `/travel/2019-tokyo/`
+  - `/2019 tokyo.html`
+
+Desktop verification:
+
+- URL: `http://127.0.0.1:4321/travel/2019-tokyo/`
+- Viewport: `1280x900`
+- Title: `久しぶりの、東京`
+- Image count: 0
+- Figure count: 0
+- Broken images: 0
+- Audio controls: absent
+- Horizontal overflow: false
+- Console errors: none; dev server console contained only Vite debug connection messages
+
+Mobile verification:
+
+- URL: `http://127.0.0.1:4321/travel/2019-tokyo/`
+- Viewport: `390x844`, mobile/touch
+- Reported `innerWidth`: 390
+- Image count: 0
+- Figure count: 0
+- Broken images: 0
+- Audio controls: absent
+- Horizontal overflow: false
+- Console errors: none; dev server console contained only Vite debug connection messages
+
+Legacy URL verification:
+
+- `/2019 tokyo.html` redirects to `/travel/2019-tokyo/`
+- Desktop and mobile legacy checks ended on the intended new page.
+- Legacy wrapper checks had broken image count 0 and console errors none.
+
+Index verification:
+
+- Home card link updated from `/2019 tokyo.html` to `/travel/2019-tokyo/`
+- Home desktop check: image count 35, link count 24, broken images 0, horizontal overflow false
+- Home mobile `/index.html` check: reported `innerWidth` 390, broken images 0, horizontal overflow false
+- Other non-migrated travel links remained unchanged: `/new york.html`, `/london.html`, `/tokyoagain.html`
+- 2019 Tokyo home card click reached `/travel/2019-tokyo/`; final title `久しぶりの、東京`, heading `Soon...`, image count 0, broken images 0
+
+Notes:
+
+- The legacy `2019 tokyo.html` page was a placeholder with `Soon...` and no images, so the Astro Markdown entry preserves that state.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- Existing wrappers were not deleted.
+- The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
+- Migration commit hash: `27b6995`
