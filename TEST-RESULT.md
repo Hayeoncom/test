@@ -168,4 +168,4 @@ Notes:
 - Tokyo and Fukuoka retain their legacy Google Drive music URLs. `AudioPlayer` now uses `preload="none"` so browser validation does not trigger external media policy errors before playback.
 - Added a data URL favicon link in `BaseLayout.astro` to avoid browser-generated `/favicon.ico` 404 console noise.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
-- Migration commit hash: recorded in the follow-up verification documentation commit after the migration commit is created.
+- Migration commit hash: `2715802`
