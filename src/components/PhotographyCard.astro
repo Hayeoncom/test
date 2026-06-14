@@ -1,19 +1,23 @@
 ---
 const { entry } = Astro.props;
 const { id, title, date, thumbnail, camera, darkText = false } = entry.data;
+const href = `/photography/${id}/`;
 ---
 
-<a class:list={['photography-card', { 'photography-card--dark': darkText }]} href={`/photography/${id}/`}>
-  <img src={thumbnail} alt={title} loading="lazy" />
-  <span class="title">{title}</span>
-  <span class="date">{date}</span>
-  {camera && <span class="camera">{camera}</span>}
-</a>
+<article class:list={['photography-card', { 'photography-card--dark': darkText }]}>
+  <a class="photography-card__image" href={href} aria-label={title}>
+    <img src={thumbnail} alt={title} loading="lazy" />
+  </a>
+  <a class="photography-card__overlay" href={href}>
+    <span class="title">{title}</span>
+    <span class="date">{date}</span>
+    {camera && <span class="camera">{camera}</span>}
+  </a>
+</article>
 
 <style>
   .photography-card {
     position: relative;
-    display: block;
     color: #fff;
   }
 
@@ -21,7 +25,19 @@ const { id, title, date, thumbnail, camera, darkText = false } = entry.data;
     color: #000;
   }
 
+  .photography-card__image,
+  .photography-card__overlay {
+    display: block;
+    color: inherit;
+  }
+
+  .photography-card__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
   .photography-card img {
+    display: block;
     width: 100%;
     filter: grayscale(100%);
     transition: filter 160ms ease;
@@ -57,7 +73,9 @@ const { id, title, date, thumbnail, camera, darkText = false } = entry.data;
 
   @media (max-width: 720px) {
     .photography-card span {
+      max-width: calc(100% - 32px);
       font-size: 34px;
+      white-space: normal;
     }
 
     .photography-card .camera {

@@ -2,6 +2,7 @@
   width: min(100%, 900px);
   margin: 0 auto;
   background: #fff;
+  overflow: hidden;
 }
 
 .home-title {
@@ -12,8 +13,35 @@
   font-weight: 100;
 }
 
+.home-slider {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  text-align: center;
+}
+
+.home-slider__track {
+  display: flex;
+  width: 1600%;
+  height: 100%;
+  animation: home-slide 32s infinite;
+}
+
+.home-slider__slide {
+  width: 6.25%;
+  height: 100%;
+  flex: 0 0 6.25%;
+}
+
+.home-slider__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .home-section-marker {
   border-top: 1px solid #111;
+  margin-top: 65px;
   padding: 70px 0;
   text-align: center;
   font-size: 52px;
@@ -30,4 +58,108 @@
 .photography-list {
   display: grid;
   gap: 0;
+}
+
+@keyframes home-slide {
+  0%,
+  5% {
+    transform: translateX(0);
+  }
+
+  6.25%,
+  11.25% {
+    transform: translateX(-6.25%);
+  }
+
+  12.5%,
+  17.5% {
+    transform: translateX(-12.5%);
+  }
+
+  18.75%,
+  23.75% {
+    transform: translateX(-18.75%);
+  }
+
+  25%,
+  30% {
+    transform: translateX(-25%);
+  }
+
+  31.25%,
+  36.25% {
+    transform: translateX(-31.25%);
+  }
+
+  37.5%,
+  42.5% {
+    transform: translateX(-37.5%);
+  }
+
+  43.75%,
+  48.75% {
+    transform: translateX(-43.75%);
+  }
+
+  50%,
+  55% {
+    transform: translateX(-50%);
+  }
+
+  56.25%,
+  61.25% {
+    transform: translateX(-56.25%);
+  }
+
+  62.5%,
+  67.5% {
+    transform: translateX(-62.5%);
+  }
+
+  68.75%,
+  73.75% {
+    transform: translateX(-68.75%);
+  }
+
+  75%,
+  80% {
+    transform: translateX(-75%);
+  }
+
+  81.25%,
+  86.25% {
+    transform: translateX(-81.25%);
+  }
+
+  87.5%,
+  92.5% {
+    transform: translateX(-87.5%);
+  }
+
+  93.75%,
+  98.75% {
+    transform: translateX(-93.75%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .home-title {
+    padding: 58px 0 66px;
+    font-size: 46px;
+  }
+
+  .home-section-marker {
+    margin-top: 42px;
+    padding: 48px 0;
+    font-size: 42px;
+  }
+
+  .travel-grid {
+    grid-template-columns: 1fr;
+    row-gap: 58px;
+  }
 }

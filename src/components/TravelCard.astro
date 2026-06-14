@@ -1,12 +1,15 @@
 ---
-const { entry } = Astro.props;
-const { id, title, date, thumbnail } = entry.data;
+const { entry, item } = Astro.props;
+const source = item ?? entry.data;
+const { id, title, date, thumbnail } = source;
+const href = source.href ?? `/travel/${id}/`;
+const displayDate = source.displayDate ?? date;
 ---
 
-<a class="travel-card" href={`/travel/${id}/`}>
+<a class="travel-card" href={href}>
   <img src={thumbnail} alt={title} loading="lazy" />
   <span>{title}</span>
-  <p>{date}</p>
+  <p>{displayDate}</p>
 </a>
 
 <style>
@@ -19,6 +22,7 @@ const { id, title, date, thumbnail } = entry.data;
 
   .travel-card img {
     width: 350px;
+    max-width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     transition: border-radius 160ms ease;
@@ -35,6 +39,7 @@ const { id, title, date, thumbnail } = entry.data;
     font-size: 30px;
     font-weight: 400;
     line-height: 1.1;
+    overflow-wrap: anywhere;
   }
 
   .travel-card p {
