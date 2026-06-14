@@ -546,3 +546,74 @@ Notes:
 - Existing wrappers were not deleted.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `73353df`
+
+## 2026-06-14 - Placeholder Content Workflow
+
+Created/modified files:
+
+- `src/utils/travelContent.ts`
+- `src/content.config.ts`
+- `src/pages/travel/[id].astro`
+- `src/layouts/TravelLayout.astro`
+- `src/components/TravelCard.astro`
+- `src/pages/index.astro`
+- `src/styles/travel.css`
+- `src/content/travel/2019-hongkong-macau.md`
+- `src/content/travel/2019-tokyo.md`
+- `src/content/travel/2020-newyork.md`
+- `src/content/travel/2022-london.md`
+- `src/content/travel/2023-tokyo-again.md`
+- `README.md`
+- `GUIDE.md`
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+- Travel routes generated for all `published` and `placeholder` entries.
+
+Workflow verification:
+
+- Travel schema now accepts `draft`, `published`, and `placeholder`.
+- Travel route generation includes `published` and `placeholder`, excluding `draft`.
+- Placeholder detection uses `status: placeholder` or a `travel-placeholder` class in the Markdown body.
+- Actual content detection uses `<figure>` in the Markdown body.
+- Placeholder pages receive `travel-content--placeholder` layout state.
+- Home cards show a `Soon` badge for placeholder entries.
+- Home check found 14 travel cards, 5 photography cards, and 11 `Soon` badges.
+
+Placeholder desktop verification:
+
+- `/travel/2019-hongkong-macau/`: viewport `1280x900`, title `Hong kong - Macau`, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2019-tokyo/`: viewport `1280x900`, title `久しぶりの、東京`, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2020-newyork/`: viewport `1280x900`, title `New Yorrrk`, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2022-london/`: viewport `1280x900`, title `Christmas in London`, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2023-tokyo-again/`: viewport `1280x900`, title `Tokyo again🌸`, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+
+Placeholder mobile verification:
+
+- `/travel/2019-hongkong-macau/`: viewport `390x844`, reported `innerWidth` 390, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2019-tokyo/`: viewport `390x844`, reported `innerWidth` 390, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2020-newyork/`: viewport `390x844`, reported `innerWidth` 390, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2022-london/`: viewport `390x844`, reported `innerWidth` 390, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2023-tokyo-again/`: viewport `390x844`, reported `innerWidth` 390, image count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+
+Actual content desktop/mobile verification:
+
+- `/travel/2018-osaka/`: desktop and mobile passed; title `Summer x2 Osaka`, images 130, figures 130, broken images 0, audio controls present, horizontal overflow false, console errors none
+- `/travel/2018-tokyo/`: desktop and mobile passed; title `TOKYO`, images 158, figures 158, broken images 0, audio controls present, horizontal overflow false, console errors none
+- `/travel/2019-fukuoka/`: desktop and mobile passed; title `Umai Fukuoka`, images 147, figures 147, broken images 0, audio controls present, horizontal overflow false, console errors none
+
+Index verification:
+
+- `/`: desktop `1280x900`, images 35, links 24, travel cards 14, photography cards 5, `Soon` badges 11, broken images 0, horizontal overflow false
+- `/index.html`: mobile `390x844`, reported `innerWidth` 390, images 35, links 24, travel cards 14, photography cards 5, `Soon` badges 11, broken images 0, horizontal overflow false
+
+Notes:
+
+- Dev server console contained only Vite debug connection messages during Chrome MCP checks.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- Existing wrapper files and legacy URLs were not deleted.
+- The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
+- Migration commit hash: `1971002`
