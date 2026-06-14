@@ -169,3 +169,96 @@ Notes:
 - Added a data URL favicon link in `BaseLayout.astro` to avoid browser-generated `/favicon.ico` 404 console noise.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `2715802`
+
+## 2026-06-14 - Photography Migration
+
+Created/modified files:
+
+- `src/content/photography/2019-tokyo.md`
+- `src/content/photography/2019-hongkong.md`
+- `src/content/photography/2020-newyork.md`
+- `src/content/photography/2022-london.md`
+- `src/content/photography/2023-tokyo.md`
+- `src/pages/document.tokyo.html.ts`
+- `src/pages/document.hk.html.ts`
+- `src/pages/document.ny.html.ts`
+- `src/pages/document.london.html.ts`
+- `src/pages/document.tokyo2.html.ts`
+- `document.tokyo.html`
+- `document.hk.html`
+- `document.ny.html`
+- `document.london.html`
+- `document.tokyo2.html`
+- `src/content.config.ts`
+- `src/layouts/PhotographyLayout.astro`
+- `src/styles/photography.css`
+
+Image count comparison:
+
+- 2019 Tokyo legacy HTML images: 131
+- 2019 Tokyo Astro Markdown figures: 131
+- 2019 Hong Kong legacy HTML images: 44
+- 2019 Hong Kong Astro Markdown figures: 44
+- 2020 New York legacy HTML images: 110
+- 2020 New York Astro Markdown figures: 110
+- 2022 London legacy HTML images: 129
+- 2022 London Astro Markdown figures: 129
+- 2023 Tokyo legacy HTML images: 59
+- 2023 Tokyo Astro Markdown figures: 59
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+- Generated routes:
+  - `/photography/2019-tokyo/`
+  - `/photography/2019-hongkong/`
+  - `/photography/2020-newyork/`
+  - `/photography/2022-london/`
+  - `/photography/2023-tokyo/`
+  - `/document.tokyo.html`
+  - `/document.hk.html`
+  - `/document.ny.html`
+  - `/document.london.html`
+  - `/document.tokyo2.html`
+
+Chrome MCP setup:
+
+- Used `chrome-devtools-mcp` through MCP stdio, connected to a temporary Chrome profile launched with `--remote-debugging-port=9222`.
+- Verified desktop with `1280x900`.
+- Verified mobile with `390x844`, mobile/touch emulation.
+- Mobile and wrapper image validation used an explicit image source load check to avoid counting offscreen lazy images as broken.
+
+Desktop verification:
+
+- `/photography/2019-tokyo/`: title `TOKYO`, images 131, figures 131, broken images 0, horizontal overflow false, console errors none
+- `/photography/2019-hongkong/`: title `HONG KONG`, images 44, figures 44, broken images 0, horizontal overflow false, console errors none
+- `/photography/2020-newyork/`: title `NEW YORK`, images 110, figures 110, broken images 0, horizontal overflow false, console errors none
+- `/photography/2022-london/`: title `LONDON`, images 129, figures 129, broken images 0, horizontal overflow false, console errors none
+- `/photography/2023-tokyo/`: title `TOKYO`, images 59, figures 59, broken images 0, horizontal overflow false, console errors none
+
+Mobile verification:
+
+- `/photography/2019-tokyo/`: reported `innerWidth` 390, images 131, figures 131, broken images 0, horizontal overflow false, console errors none
+- `/photography/2019-hongkong/`: reported `innerWidth` 390, images 44, figures 44, broken images 0, horizontal overflow false, console errors none
+- `/photography/2020-newyork/`: reported `innerWidth` 390, images 110, figures 110, broken images 0, horizontal overflow false, console errors none
+- `/photography/2022-london/`: reported `innerWidth` 390, images 129, figures 129, broken images 0, horizontal overflow false, console errors none
+- `/photography/2023-tokyo/`: reported `innerWidth` 390, images 59, figures 59, broken images 0, horizontal overflow false, console errors none
+
+Legacy URL verification:
+
+- `/document.tokyo.html` redirects to `/photography/2019-tokyo/`
+- `/document.hk.html` redirects to `/photography/2019-hongkong/`
+- `/document.ny.html` redirects to `/photography/2020-newyork/`
+- `/document.london.html` redirects to `/photography/2022-london/`
+- `/document.tokyo2.html` redirects to `/photography/2023-tokyo/`
+- All legacy wrapper checks ended on the intended new page.
+- All legacy wrapper checks had broken image count 0 and console errors none.
+
+Notes:
+
+- `index.html` was not modified in this task.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
+- Migration commit hash: `477f099`
