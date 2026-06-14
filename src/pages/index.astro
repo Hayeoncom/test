@@ -15,7 +15,16 @@ const photographyEntries = (await getCollection('photography'))
   .sort((a, b) => a.data.date.localeCompare(b.data.date));
 
 const travelEntryById = new Map(travelEntries.map((entry) => [entry.data.id, entry]));
-const migratedTravelIds = ['2018-osaka', '2018-tokyo', '2019-fukuoka', '2019-hongkong-macau', '2019-tokyo'];
+const migratedTravelIds = [
+  '2018-osaka',
+  '2018-tokyo',
+  '2019-fukuoka',
+  '2019-hongkong-macau',
+  '2019-tokyo',
+  '2020-newyork',
+  '2022-london',
+  '2023-tokyo-again'
+];
 const migratedTravelCards = migratedTravelIds
   .map((id) => travelEntryById.get(id))
   .filter(Boolean)
@@ -23,58 +32,40 @@ const migratedTravelCards = migratedTravelIds
 
 const legacyTravelCards = [
   {
-    title: 'New yorrrk',
-    displayDate: '#02, 2020',
-    thumbnail: '/nyc.jpg',
-    href: '/new york.html'
-  },
-  {
-    title: 'Christmas in London',
-    displayDate: '#12, 2022',
-    thumbnail: '/IMG_0868.jpeg',
-    href: '/london.html'
-  },
-  {
-    title: 'Tokyo again🌸',
-    displayDate: '#03, 2023',
-    thumbnail: '/t_a_11.jpeg',
-    href: '/tokyoagain.html'
-  },
-  {
     title: 'NA-GO-YA🎡',
     displayDate: '#10, 2023',
     thumbnail: '/23nagoya.jpeg',
-    href: '/tokyoagain.html'
+    href: '/travel/2023-tokyo-again/'
   },
   {
     title: 'Haru no KOBE',
     displayDate: '#03, 2025',
     thumbnail: '/25kobe.jpeg',
-    href: '/tokyoagain.html'
+    href: '/travel/2023-tokyo-again/'
   },
   {
     title: 'KYOTO',
     displayDate: '#06, 2025',
     thumbnail: '/kyoto.jpeg',
-    href: '/tokyoagain.html'
+    href: '/travel/2023-tokyo-again/'
   },
   {
     title: 'TOKYO(ˆ◝ ·̫ ◜ˆ)˶ෆ',
     displayDate: '#10, 2025',
     thumbnail: '/25tokyo.jpeg',
-    href: '/tokyoagain.html'
+    href: '/travel/2023-tokyo-again/'
   },
   {
     title: '🌴bali🐟',
     displayDate: '#02, 2026',
     thumbnail: '/what.png',
-    href: '/tokyoagain.html'
+    href: '/travel/2023-tokyo-again/'
   },
   {
     title: 'NAGOYA-ㅅ-letsGinny~',
     displayDate: '#06, 2026',
     thumbnail: '/what.png',
-    href: '/tokyoagain.html'
+    href: '/travel/2023-tokyo-again/'
   }
 ].map((item) => ({ type: 'legacy', item }));
 
