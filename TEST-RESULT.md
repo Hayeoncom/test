@@ -617,3 +617,72 @@ Notes:
 - Existing wrapper files and legacy URLs were not deleted.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `1971002`
+
+## 2026-06-14 - Final Documentation And Verification
+
+Created/modified files:
+
+- `.gitignore`
+- `README.md`
+- `GUIDE.md`
+- `TEST-RESULT.md`
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+
+Home verification:
+
+- `/`: desktop `1280x900`, title `Hayeon`, images 35, unique images 34, links 24, travel cards 14, photography cards 5, `Soon` badges 11, broken images 0, horizontal overflow false
+- `/index.html`: mobile `390x844`, reported `innerWidth` 390, images 35, unique images 34, links 24, travel cards 14, photography cards 5, `Soon` badges 11, broken images 0, horizontal overflow false
+- Direct legacy travel links were not present on the home page; migrated cards use `/travel/{id}/` and `/photography/{id}/`.
+
+Actual travel verification:
+
+- `/travel/2018-osaka/`: desktop/mobile passed; title `Summer x2 Osaka`, images 130, figures 130, broken images 0, audio controls present, horizontal overflow false
+- `/travel/2018-tokyo/`: desktop/mobile passed; title `TOKYO`, images 158, figures 158, broken images 0, audio controls present, horizontal overflow false
+- `/travel/2019-fukuoka/`: desktop/mobile passed; title `Umai Fukuoka`, images 147, figures 147, broken images 0, audio controls present, horizontal overflow false
+
+Placeholder travel verification:
+
+- `/travel/2019-hongkong-macau/`: desktop/mobile passed; title `Hong kong - Macau`, `Soon` content present, images 0, broken images 0, audio controls absent, horizontal overflow false
+- `/travel/2019-tokyo/`: desktop/mobile passed; title `久しぶりの、東京`, `Soon` content present, images 0, broken images 0, audio controls absent, horizontal overflow false
+- `/travel/2020-newyork/`: desktop/mobile passed; title `New Yorrrk`, `Soon` content present, images 0, broken images 0, audio controls absent, horizontal overflow false
+- `/travel/2022-london/`: desktop/mobile passed; title `Christmas in London`, `Soon` content present, images 0, broken images 0, audio controls absent, horizontal overflow false
+- `/travel/2023-tokyo-again/`: desktop/mobile passed; title `Tokyo again🌸`, `Soon` content present, images 0, broken images 0, audio controls absent, horizontal overflow false
+
+Photography verification:
+
+- `/photography/2019-tokyo/`: desktop/mobile passed; title `TOKYO`, images 131, figures 131, broken images 0, horizontal overflow false
+- `/photography/2019-hongkong/`: desktop/mobile passed; title `HONG KONG`, images 44, figures 44, broken images 0, horizontal overflow false
+- `/photography/2020-newyork/`: desktop/mobile passed; title `NEW YORK`, images 110, figures 110, broken images 0, horizontal overflow false
+- `/photography/2022-london/`: desktop/mobile passed; title `LONDON`, images 129, figures 129, broken images 0, horizontal overflow false
+- `/photography/2023-tokyo/`: desktop/mobile passed; title `TOKYO`, images 59, figures 59, broken images 0, horizontal overflow false
+
+Legacy wrapper verification:
+
+- `/osaka.html` and `/osaka2.html` redirect to `/travel/2018-osaka/`; desktop/mobile passed with 130 images, broken images 0, audio controls present, horizontal overflow false
+- `/tokyo.html`, `/tokyo2.html`, and `/tokyo3.html` redirect to `/travel/2018-tokyo/`; desktop/mobile passed with 158 images, broken images 0, audio controls present, horizontal overflow false
+- `/fukuoka.html`, `/fukuoka2.html`, and `/fukuoka3.html` redirect to `/travel/2019-fukuoka/`; desktop/mobile passed with 147 images, broken images 0, audio controls present, horizontal overflow false
+- `/hongkongmacau.html` redirects to `/travel/2019-hongkong-macau/`; desktop/mobile passed with broken images 0 and horizontal overflow false
+- `/2019 tokyo.html` redirects to `/travel/2019-tokyo/`; desktop/mobile passed with broken images 0 and horizontal overflow false
+- `/new york.html` redirects to `/travel/2020-newyork/`; desktop/mobile passed with broken images 0 and horizontal overflow false
+- `/london.html` redirects to `/travel/2022-london/`; desktop/mobile passed with broken images 0 and horizontal overflow false
+- `/tokyoagain.html` redirects to `/travel/2023-tokyo-again/`; desktop/mobile passed with broken images 0 and horizontal overflow false
+- `/document.tokyo.html` redirects to `/photography/2019-tokyo/`; desktop/mobile passed with 131 images, broken images 0, horizontal overflow false
+- `/document.hk.html` redirects to `/photography/2019-hongkong/`; desktop/mobile passed with 44 images, broken images 0, horizontal overflow false
+- `/document.ny.html` redirects to `/photography/2020-newyork/`; desktop/mobile passed with 110 images, broken images 0, horizontal overflow false
+- `/document.london.html` redirects to `/photography/2022-london/`; desktop/mobile passed with 129 images, broken images 0, horizontal overflow false
+- `/document.tokyo2.html` redirects to `/photography/2023-tokyo/`; desktop/mobile passed with 59 images, broken images 0, horizontal overflow false
+
+Notes:
+
+- Mobile checks used viewport `390x844` and reported `innerWidth` 390.
+- Chrome MCP console output contained only Vite debug connection messages; no page console errors were found.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- Existing wrapper files and legacy URLs were not deleted.
+- Excluded files: `.DS_Store`
+- Excluded files: Osaka MP3 Unicode normalization artifact (`travel/18osaka/パンとスープとネコ日和.mp3` / `travel/18osaka/パンとスープとネコ日和.mp3`)
+- Documentation commit hash: `35a6f13`
