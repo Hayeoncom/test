@@ -21,6 +21,7 @@ const photography = defineCollection({
   type: 'content',
   schema: z.object({
     id: z.string(),
+    type: z.literal('photography').default('photography'),
     title: z.string(),
     date: z.string(),
     location: z.string(),

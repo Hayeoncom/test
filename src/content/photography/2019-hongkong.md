@@ -1,0 +1,189 @@
+---
+id: 2019-hongkong
+type: photography
+title: HONG KONG
+date: 2019-07
+location: Hong Kong
+thumbnail: /h2.JPG
+camera: Canon EOS M50
+status: published
+legacyUrls:
+  - /document.hk.html
+---
+
+<figure>
+  <img src="/docu_hk45.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk44.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk43.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk42.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk41.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk40.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk39.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk38.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk37.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk36.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk35.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk34.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk33.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk32.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk31.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk30.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk29.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk28.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk27.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk26.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk25.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk24.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk23.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk22.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk21.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk20.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk19.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk18.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk17.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk16.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk15.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk14.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk13.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk12.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk11.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk10.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk9.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk8.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk7.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk6.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk5.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk4.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk3.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+
+<figure>
+  <img src="/docu_hk2.JPG" alt="Document.hk" loading="lazy" />
+</figure>
+

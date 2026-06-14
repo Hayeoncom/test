@@ -4,12 +4,16 @@ import SiteHeader from '../components/SiteHeader.astro';
 import '../styles/photography.css';
 
 const { entry } = Astro.props;
-const { title } = entry.data;
+const { title, date, location } = entry.data;
 ---
 
 <BaseLayout title={title}>
   <main class="photography-shell">
     <SiteHeader compact />
+    <header class="photography-heading">
+      <h1>{title}</h1>
+      <p>{date} · {location}</p>
+    </header>
     <article class="photography-content">
       <slot />
     </article>
