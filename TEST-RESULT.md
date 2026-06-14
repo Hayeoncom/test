@@ -262,3 +262,69 @@ Notes:
 - Existing music files were not moved, renamed, deleted, staged, or committed.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `477f099`
+
+## 2026-06-14 - Astro Index Page Migration
+
+Created/modified files:
+
+- `src/pages/index.astro`
+- `src/styles/home.css`
+- `src/components/TravelCard.astro`
+- `src/components/PhotographyCard.astro`
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+- Generated route:
+  - `/index.html`
+
+Desktop verification:
+
+- URLs: `http://127.0.0.1:4321/`, `http://127.0.0.1:4321/index.html`
+- Viewport: `1280x900`
+- Title: `Hayeon`
+- Home title: `Hayeon.jpg`
+- Image count: 35
+- Unique image count: 34 (`what.png` is intentionally reused twice, matching the legacy index)
+- Link count: 24
+- Travel card count: 14
+- Photography card count: 5
+- Migrated travel links: `/travel/2018-osaka/`, `/travel/2018-tokyo/`, `/travel/2019-fukuoka/`
+- Migrated photography links: `/photography/2019-tokyo/`, `/photography/2019-hongkong/`, `/photography/2020-newyork/`, `/photography/2022-london/`, `/photography/2023-tokyo/`
+- Existing non-migrated travel links preserved: `/hongkongmacau.html`, `/2019 tokyo.html`, `/new york.html`, `/london.html`, `/tokyoagain.html`
+- Broken images: 0
+- Horizontal overflow: false
+- Console errors: none; dev server console contained only Vite debug connection messages
+
+Mobile verification:
+
+- URLs: `http://127.0.0.1:4321/`, `http://127.0.0.1:4321/index.html`
+- Viewport: `390x844`, mobile/touch
+- Reported `innerWidth`: 390
+- Image count: 35
+- Link count: 24
+- Travel card count: 14
+- Photography card count: 5
+- Broken images: 0
+- Horizontal overflow: false
+- Console errors: none; dev server console contained only Vite debug connection messages
+
+Card link verification:
+
+- Osaka card clicked to `/travel/2018-osaka/`; final title `Summer x2 Osaka`, images 130, broken images 0, console errors none
+- Tokyo travel card clicked to `/travel/2018-tokyo/`; final title `TOKYO`, images 158, broken images 0, console errors none
+- Fukuoka card clicked to `/travel/2019-fukuoka/`; final title `Umai Fukuoka`, images 147, broken images 0, console errors none
+- London photography card clicked to `/photography/2022-london/`; final title `LONDON`, images 129, broken images 0, console errors none
+- Tokyo photography card clicked to `/photography/2019-tokyo/`; final title `TOKYO`, images 131, broken images 0, console errors none
+
+Notes:
+
+- The Astro index keeps the legacy 900px photo-centered layout, banner slideshow, two-column desktop travel grid, and grayscale photography cards.
+- Travel and photography entries already migrated to Astro are loaded from content collections.
+- Existing non-migrated travel cards remain linked to their existing HTML URLs.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- Existing legacy wrappers were not deleted.
+- The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
+- Migration commit hash: `67afa75`
