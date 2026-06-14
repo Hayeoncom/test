@@ -5,7 +5,7 @@ title: 久しぶりの、東京
 date: 2019-07
 location: "Tokyo, Japan"
 thumbnail: /tokyo2.JPG
-status: published
+status: placeholder
 legacyUrls:
   - /2019 tokyo.html
 ---

@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 
-const status = z.enum(['draft', 'published']).default('draft');
+const status = z.enum(['draft', 'published', 'placeholder']).default('draft');
 
 const travel = defineCollection({
   type: 'content',

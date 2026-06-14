@@ -5,7 +5,7 @@ title: Hong kong - Macau
 date: 2019-07
 location: "Hong Kong, Macau"
 thumbnail: /hk.jpg
-status: published
+status: placeholder
 legacyUrls:
   - /hongkongmacau.html
 ---

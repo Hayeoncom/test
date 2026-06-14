@@ -21,6 +21,10 @@
   padding: 0 0 100px;
 }
 
+.travel-content--placeholder {
+  padding-bottom: 0;
+}
+
 .travel-content figure {
   width: min(70%, 700px);
   margin: 40px auto 0;
@@ -50,6 +54,8 @@
 }
 
 .travel-placeholder h1 {
+  border-bottom: 1px solid #111;
+  padding-bottom: 10px;
   font-family: "Epilogue", sans-serif;
   font-size: 64px;
   font-weight: 100;

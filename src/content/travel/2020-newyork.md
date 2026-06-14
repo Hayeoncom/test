@@ -5,7 +5,7 @@ title: New Yorrrk
 date: 2020-02
 location: "New York, United States"
 thumbnail: /nyc.jpg
-status: published
+status: placeholder
 legacyUrls:
   - /new york.html
 ---

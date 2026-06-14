@@ -5,7 +5,7 @@ title: Christmas in London
 date: 2022-12
 location: "London, United Kingdom"
 thumbnail: /IMG_0868.jpeg
-status: published
+status: placeholder
 legacyUrls:
   - /london.html
 ---

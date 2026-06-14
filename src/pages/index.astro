@@ -4,10 +4,11 @@ import SiteFooter from '../components/SiteFooter.astro';
 import TravelCard from '../components/TravelCard.astro';
 import PhotographyCard from '../components/PhotographyCard.astro';
 import { getCollection } from 'astro:content';
+import { isTravelPlaceholder, isVisibleTravelEntry } from '../utils/travelContent';
 import '../styles/home.css';
 
 const travelEntries = (await getCollection('travel'))
-  .filter((entry) => entry.data.status === 'published')
+  .filter(isVisibleTravelEntry)
   .sort((a, b) => a.data.date.localeCompare(b.data.date));
 
 const photographyEntries = (await getCollection('photography'))
@@ -35,37 +36,43 @@ const legacyTravelCards = [
     title: 'NA-GO-YA🎡',
     displayDate: '#10, 2023',
     thumbnail: '/23nagoya.jpeg',
-    href: '/travel/2023-tokyo-again/'
+    href: '/travel/2023-tokyo-again/',
+    isPlaceholder: true
   },
   {
     title: 'Haru no KOBE',
     displayDate: '#03, 2025',
     thumbnail: '/25kobe.jpeg',
-    href: '/travel/2023-tokyo-again/'
+    href: '/travel/2023-tokyo-again/',
+    isPlaceholder: true
   },
   {
     title: 'KYOTO',
     displayDate: '#06, 2025',
     thumbnail: '/kyoto.jpeg',
-    href: '/travel/2023-tokyo-again/'
+    href: '/travel/2023-tokyo-again/',
+    isPlaceholder: true
   },
   {
     title: 'TOKYO(ˆ◝ ·̫ ◜ˆ)˶ෆ',
     displayDate: '#10, 2025',
     thumbnail: '/25tokyo.jpeg',
-    href: '/travel/2023-tokyo-again/'
+    href: '/travel/2023-tokyo-again/',
+    isPlaceholder: true
   },
   {
     title: '🌴bali🐟',
     displayDate: '#02, 2026',
     thumbnail: '/what.png',
-    href: '/travel/2023-tokyo-again/'
+    href: '/travel/2023-tokyo-again/',
+    isPlaceholder: true
   },
   {
     title: 'NAGOYA-ㅅ-letsGinny~',
     displayDate: '#06, 2026',
     thumbnail: '/what.png',
-    href: '/travel/2023-tokyo-again/'
+    href: '/travel/2023-tokyo-again/',
+    isPlaceholder: true
   }
 ].map((item) => ({ type: 'legacy', item }));
 
@@ -118,7 +125,7 @@ const formatHomeDate = (date) => {
     <section class="travel-grid" aria-label="Travel entries">
       {travelCards.map((card) => (
         card.type === 'entry'
-          ? <TravelCard entry={card.entry} item={{ ...card.entry.data, displayDate: formatHomeDate(card.entry.data.date) }} />
+          ? <TravelCard entry={card.entry} item={{ ...card.entry.data, displayDate: formatHomeDate(card.entry.data.date), isPlaceholder: isTravelPlaceholder(card.entry) }} />
           : <TravelCard item={card.item} />
       ))}
     </section>

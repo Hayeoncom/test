@@ -6,13 +6,14 @@ import '../styles/travel.css';
 
 const { entry } = Astro.props;
 const { title, music, musicTitle } = entry.data;
+const { contentState = 'content' } = Astro.props;
 ---
 
 <BaseLayout title={title}>
-  <main class="travel-shell">
+  <main class:list={['travel-shell', `travel-shell--${contentState}`]}>
     <SiteHeader compact />
     {music && <AudioPlayer src={music} title={musicTitle} />}
-    <article class="travel-content">
+    <article class:list={['travel-content', `travel-content--${contentState}`]}>
       <slot />
     </article>
   </main>

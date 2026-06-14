@@ -5,7 +5,7 @@ title: Tokyo again🌸
 date: 2023-03
 location: "Tokyo, Japan"
 thumbnail: /t_a_11.jpeg
-status: published
+status: placeholder
 legacyUrls:
   - /tokyoagain.html
 ---
