@@ -15,19 +15,13 @@ const photographyEntries = (await getCollection('photography'))
   .sort((a, b) => a.data.date.localeCompare(b.data.date));
 
 const travelEntryById = new Map(travelEntries.map((entry) => [entry.data.id, entry]));
-const migratedTravelIds = ['2018-osaka', '2018-tokyo', '2019-fukuoka'];
+const migratedTravelIds = ['2018-osaka', '2018-tokyo', '2019-fukuoka', '2019-hongkong-macau'];
 const migratedTravelCards = migratedTravelIds
   .map((id) => travelEntryById.get(id))
   .filter(Boolean)
   .map((entry) => ({ type: 'entry', entry }));
 
 const legacyTravelCards = [
-  {
-    title: 'Hong kong - Macau',
-    displayDate: '#07, 2019',
-    thumbnail: '/hk.jpg',
-    href: '/hongkongmacau.html'
-  },
   {
     title: '久しぶりの、東京 。',
     displayDate: '#07, 2019',

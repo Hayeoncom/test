@@ -40,3 +40,28 @@
   font-size: 15px;
   font-weight: 300;
 }
+
+.travel-placeholder {
+  min-height: 52vh;
+  display: grid;
+  place-items: center;
+  padding: 80px 24px 120px;
+  text-align: center;
+}
+
+.travel-placeholder h1 {
+  font-family: "Epilogue", sans-serif;
+  font-size: 64px;
+  font-weight: 100;
+}
+
+@media (max-width: 720px) {
+  .travel-placeholder {
+    min-height: 46vh;
+    padding: 64px 20px 96px;
+  }
+
+  .travel-placeholder h1 {
+    font-size: 46px;
+  }
+}

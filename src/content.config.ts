@@ -6,6 +6,7 @@ const travel = defineCollection({
   type: 'content',
   schema: z.object({
     id: z.string(),
+    type: z.literal('travel').default('travel'),
     title: z.string(),
     date: z.string(),
     location: z.string(),
