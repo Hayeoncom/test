@@ -328,3 +328,74 @@ Notes:
 - Existing legacy wrappers were not deleted.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `67afa75`
+
+## 2026-06-14 - Hong Kong Macau Travel Migration
+
+Created/modified files:
+
+- `src/content/travel/2019-hongkong-macau.md`
+- `src/pages/hongkongmacau.html.ts`
+- `hongkongmacau.html`
+- `src/pages/index.astro`
+- `src/content.config.ts`
+- `src/styles/travel.css`
+
+Image count comparison:
+
+- Legacy HTML images: 0
+- Astro Markdown figures: 0
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+- Generated routes:
+  - `/travel/2019-hongkong-macau/`
+  - `/hongkongmacau.html`
+
+Desktop verification:
+
+- URL: `http://127.0.0.1:4321/travel/2019-hongkong-macau/`
+- Viewport: `1280x900`
+- Title: `Hong kong - Macau`
+- Image count: 0
+- Figure count: 0
+- Broken images: 0
+- Audio controls: absent
+- Horizontal overflow: false
+- Console errors: none; dev server console contained only Vite debug connection messages
+
+Mobile verification:
+
+- URL: `http://127.0.0.1:4321/travel/2019-hongkong-macau/`
+- Viewport: `390x844`, mobile/touch
+- Reported `innerWidth`: 390
+- Image count: 0
+- Figure count: 0
+- Broken images: 0
+- Audio controls: absent
+- Horizontal overflow: false
+- Console errors: none; dev server console contained only Vite debug connection messages
+
+Legacy URL verification:
+
+- `/hongkongmacau.html` redirects to `/travel/2019-hongkong-macau/`
+- Desktop and mobile legacy checks ended on the intended new page.
+- Legacy wrapper checks had broken image count 0 and console errors none.
+
+Index verification:
+
+- Home card link updated from `/hongkongmacau.html` to `/travel/2019-hongkong-macau/`
+- Home desktop check: image count 35, link count 24, broken images 0, horizontal overflow false
+- Home mobile check: reported `innerWidth` 390, broken images 0, horizontal overflow false
+- Other non-migrated travel links remained unchanged: `/2019 tokyo.html`, `/new york.html`, `/london.html`, `/tokyoagain.html`
+- Hong Kong Macau home card click reached `/travel/2019-hongkong-macau/`; final title `Hong kong - Macau`, heading `Soon...`, image count 0, broken images 0
+
+Notes:
+
+- The legacy `hongkongmacau.html` page was a placeholder with `Soon...` and no images, so the Astro Markdown entry preserves that state.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- Existing wrappers were not deleted.
+- The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
+- Migration commit hash: `0d7b9b4`
