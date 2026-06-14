@@ -468,3 +468,81 @@ Notes:
 - Existing wrappers were not deleted.
 - The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
 - Migration commit hash: `27b6995`
+
+## 2026-06-14 - Remaining Travel Placeholder Migration
+
+Created/modified files:
+
+- `src/content/travel/2020-newyork.md`
+- `src/content/travel/2022-london.md`
+- `src/content/travel/2023-tokyo-again.md`
+- `src/pages/new york.html.ts`
+- `src/pages/london.html.ts`
+- `src/pages/tokyoagain.html.ts`
+- `new york.html`
+- `london.html`
+- `tokyoagain.html`
+- `src/pages/index.astro`
+
+Classification:
+
+- `new york.html`: placeholder page with `Soon...`, legacy images 0
+- `london.html`: placeholder page with `Soon...`, legacy images 0
+- `tokyoagain.html`: placeholder page with `Soon...`, legacy images 0
+
+Image count comparison:
+
+- `new york.html` legacy images: 0; `src/content/travel/2020-newyork.md` figures: 0
+- `london.html` legacy images: 0; `src/content/travel/2022-london.md` figures: 0
+- `tokyoagain.html` legacy images: 0; `src/content/travel/2023-tokyo-again.md` figures: 0
+
+Build:
+
+- Command: `ASTRO_TELEMETRY_DISABLED=1 npm run build`
+- Result: pass
+- Generated routes:
+  - `/travel/2020-newyork/`
+  - `/travel/2022-london/`
+  - `/travel/2023-tokyo-again/`
+  - `/new york.html`
+  - `/london.html`
+  - `/tokyoagain.html`
+
+Desktop verification:
+
+- `/travel/2020-newyork/`: viewport `1280x900`, title `New Yorrrk`, image count 0, figure count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2022-london/`: viewport `1280x900`, title `Christmas in London`, image count 0, figure count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2023-tokyo-again/`: viewport `1280x900`, title `Tokyo again🌸`, image count 0, figure count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+
+Mobile verification:
+
+- `/travel/2020-newyork/`: viewport `390x844`, reported `innerWidth` 390, image count 0, figure count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2022-london/`: viewport `390x844`, reported `innerWidth` 390, image count 0, figure count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+- `/travel/2023-tokyo-again/`: viewport `390x844`, reported `innerWidth` 390, image count 0, figure count 0, broken images 0, audio controls absent, horizontal overflow false, console errors none
+
+Legacy URL verification:
+
+- `/new york.html` redirects to `/travel/2020-newyork/`
+- `/london.html` redirects to `/travel/2022-london/`
+- `/tokyoagain.html` redirects to `/travel/2023-tokyo-again/`
+- Legacy wrapper checks had broken image count 0, horizontal overflow false, and console errors none.
+
+Index verification:
+
+- Home and `/index.html` still render 35 images, 24 links, 14 travel cards, and 5 photography cards.
+- Home desktop check: broken images 0, horizontal overflow false.
+- Home mobile `/index.html` check: reported `innerWidth` 390, broken images 0, horizontal overflow false.
+- Travel links now point to Astro routes; no legacy travel links remain on the home page.
+- New York card click reached `/travel/2020-newyork/`; final title `New Yorrrk`, heading `Soon...`, image count 0, broken images 0.
+- London card click reached `/travel/2022-london/`; final title `Christmas in London`, heading `Soon...`, image count 0, broken images 0.
+- Tokyo Again card click reached `/travel/2023-tokyo-again/`; final title `Tokyo again🌸`, heading `Soon...`, image count 0, broken images 0.
+
+Notes:
+
+- The three migrated pages were placeholders, so the Astro Markdown entries preserve `Soon...`.
+- Existing image files were not moved, renamed, deleted, staged, or committed.
+- Existing music files were not moved, renamed, deleted, staged, or committed.
+- Existing HTML files were not deleted; they were updated as wrapper pages.
+- Existing wrappers were not deleted.
+- The Osaka MP3 Unicode normalization artifact remains excluded from staging and commits.
+- Migration commit hash: `73353df`
