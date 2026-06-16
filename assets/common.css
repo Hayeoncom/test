@@ -52,6 +52,7 @@ a img {
   #number2 {
     display: flex;
     width: 100%;
+    align-items: flex-start;
   }
 
   #number > div,
@@ -80,8 +81,12 @@ a img {
 
   #contents > div[class^="img"] li p,
   #contents > div[class^="img"] li span {
+    display: block;
+    max-width: calc(100vw - 32px);
     margin-left: 16px !important;
     margin-right: 16px !important;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -106,11 +111,58 @@ a img {
 
   #contents1 > div[class^="imgli"] li img,
   #contents2 > div[class^="thum"] li img {
+    display: block;
     max-width: calc(100vw - 40px);
     height: auto;
   }
 
+  #contents1 > div[class^="imgli"] li span,
+  #contents1 > div[class^="imgli"] li p {
+    max-width: calc(100vw - 40px);
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
   #contents2 > div.banner {
     margin-top: 80px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #number,
+  #number2 {
+    min-height: 84px;
+  }
+
+  #number h1,
+  #number h2,
+  #number2 h1,
+  #number2 h2 {
+    font-size: 38px !important;
+    line-height: 1.15;
+  }
+
+  #header {
+    height: auto !important;
+    min-height: 150px;
+  }
+
+  #header h1 {
+    font-size: 44px !important;
+  }
+
+  #contents1 > div.banner h2,
+  #contents2 > div.banner h2 {
+    font-size: 38px !important;
+    line-height: 1.2;
+  }
+
+  #contents2 > div[class^="thum"] li h2,
+  #contents2 > div[class^="thum"] li h3,
+  #contents2 > div[class^="thum"] li span p {
+    max-width: calc(100vw - 40px);
+    font-size: 34px !important;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
   }
 }
