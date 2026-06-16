@@ -1,0 +1,377 @@
+{
+  "id": "osaka",
+  "sourceHtml": "osaka.html",
+  "pageType": "gallery",
+  "title": "Summer x2 Osaka",
+  "subtitle": "",
+  "description": "▶︎ CLICK! Theme song : パンとスープとネコ日和 OST *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : パンとスープとネコ日和 OST *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : パンとスープとネコ日和 OST *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : パンとスープとネコ日和 OST *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : パンとスープとネコ日和 OST *Please open in browser(੭ˊ꒳ˋ)੭",
+  "displayOrder": 14,
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "osaka2.html",
+    "group": "2:osaka2.html"
+  },
+  "audio": {
+    "src": "https://Hayeoncom.github.io/music-project/travel/18osaka/パンとスープとネコ日和.mp3",
+    "type": "audio/mp3"
+  },
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "Summer x2 Osaka",
+      "items": [
+        {
+          "image": "assets/images/osaka/img-1.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "오사카 입성 후 첫 사진",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-2.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-3.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-4.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "📍Kansai International Airport",
+          "caption": "공항 열차타고 라피트 타러 가는 길.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-6.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-7.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-8.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "공항 편의점에서 갑자기 모찌를 사먹고는",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-9.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "오사카 스퀴즈를 지나",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-10.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "난바역으로 가는 라피트 정류장에 도착했다.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-11.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "열차를 기다리며 편의점 3대장 간식으로 스탠딩런치(?)를 즐겼다.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-12.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-13.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-14.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "드디어 탄 라피트, 줄줄이 나있는 동그란 창문 자리는 놓칠 수 없다.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-15.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "눈이 행복해지는 오사카 풍경",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-16.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "미니 레시또-와 동전들",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-17.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "📍Nanba Station",
+          "caption": "난바역 도착",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-18.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-19.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "역사에 야채가게가 있는건 처음 본다",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-20.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-21.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-22.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "먹고싶은게 넘쳐나는 콘비니",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-23.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "증말 눈 돌아간다 ㅇ0ㅇ",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-24.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "이맘 때 오사카는 무려 폭염이였지만",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-25.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-26.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "거리마다 끝없이 높은 하늘과",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-27.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-28.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-29.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-30.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-31.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-32.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-33.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-34.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "쨍한 햇볕 풍경은 폭염을 잊게하지. . (기억조작일지도 모른다)",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-35.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-36.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-37.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-38.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "낡은 건물과 신식 건물의 공존. 그래도 왠지 낡은 간판들에 더 눈이 간다.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-39.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "📍Sobayosi",
+          "caption": "첫 끼는 로컬, 관광객에 모두에게 맛집인 100년 전통의~ 소바전문점.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-40.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "장어덮밥이 유명하지만, 우리한테 젤 맛있던건 저 새우덴뿌라다.",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-41.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-42.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "사자 머리의 야사카 신사",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-43.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-44.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-45.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "거리에 서너개씩 있는 자판기는 오아시스가 따로 없다",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-46.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-47.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-48.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-49.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "여름햇빛, 네모네모쿠루마, 정갈한 계단들",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-50.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        },
+        {
+          "image": "assets/images/osaka/img-51.jpeg",
+          "alt": "Summer x2 Osaka",
+          "location": "",
+          "caption": "",
+          "visible": true
+        }
+      ]
+    }
+  ]
+}

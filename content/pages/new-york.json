@@ -1,0 +1,23 @@
+{
+  "id": "new-york",
+  "sourceHtml": "new york.html",
+  "pageType": "placeholder",
+  "title": "New Yorrrk",
+  "subtitle": "",
+  "description": "",
+  "displayOrder": 13,
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "",
+    "group": ":"
+  },
+  "audio": null,
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "New Yorrrk",
+      "items": []
+    }
+  ]
+}

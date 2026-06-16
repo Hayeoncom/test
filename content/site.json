@@ -1,0 +1,122 @@
+{
+  "title": "Hayeon",
+  "description": "Static travel photo site content data",
+  "cms": "Decap CMS",
+  "pages": [
+    {
+      "id": "2019-tokyo",
+      "sourceHtml": "2019 tokyo.html",
+      "json": "content/pages/2019-tokyo.json",
+      "pageType": "placeholder"
+    },
+    {
+      "id": "document-hk",
+      "sourceHtml": "document.hk.html",
+      "json": "content/pages/document-hk.json",
+      "pageType": "document-gallery"
+    },
+    {
+      "id": "document-london",
+      "sourceHtml": "document.london.html",
+      "json": "content/pages/document-london.json",
+      "pageType": "document-gallery"
+    },
+    {
+      "id": "document-ny",
+      "sourceHtml": "document.ny.html",
+      "json": "content/pages/document-ny.json",
+      "pageType": "document-gallery"
+    },
+    {
+      "id": "document-tokyo",
+      "sourceHtml": "document.tokyo.html",
+      "json": "content/pages/document-tokyo.json",
+      "pageType": "document-gallery"
+    },
+    {
+      "id": "document-tokyo2",
+      "sourceHtml": "document.tokyo2.html",
+      "json": "content/pages/document-tokyo2.json",
+      "pageType": "document-gallery"
+    },
+    {
+      "id": "fukuoka",
+      "sourceHtml": "fukuoka.html",
+      "json": "content/pages/fukuoka.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "fukuoka2",
+      "sourceHtml": "fukuoka2.html",
+      "json": "content/pages/fukuoka2.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "fukuoka3",
+      "sourceHtml": "fukuoka3.html",
+      "json": "content/pages/fukuoka3.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "home",
+      "sourceHtml": "index.html",
+      "json": "content/pages/home.json",
+      "pageType": "home"
+    },
+    {
+      "id": "hongkongmacau",
+      "sourceHtml": "hongkongmacau.html",
+      "json": "content/pages/hongkongmacau.json",
+      "pageType": "placeholder"
+    },
+    {
+      "id": "london",
+      "sourceHtml": "london.html",
+      "json": "content/pages/london.json",
+      "pageType": "placeholder"
+    },
+    {
+      "id": "new-york",
+      "sourceHtml": "new york.html",
+      "json": "content/pages/new-york.json",
+      "pageType": "placeholder"
+    },
+    {
+      "id": "osaka",
+      "sourceHtml": "osaka.html",
+      "json": "content/pages/osaka.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "osaka2",
+      "sourceHtml": "osaka2.html",
+      "json": "content/pages/osaka2.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "tokyo",
+      "sourceHtml": "tokyo.html",
+      "json": "content/pages/tokyo.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "tokyo2",
+      "sourceHtml": "tokyo2.html",
+      "json": "content/pages/tokyo2.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "tokyo3",
+      "sourceHtml": "tokyo3.html",
+      "json": "content/pages/tokyo3.json",
+      "pageType": "gallery"
+    },
+    {
+      "id": "tokyoagain",
+      "sourceHtml": "tokyoagain.html",
+      "json": "content/pages/tokyoagain.json",
+      "pageType": "placeholder"
+    }
+  ],
+  "imageUploadPath": "assets/images/uploads"
+}

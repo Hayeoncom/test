@@ -1,0 +1,273 @@
+{
+  "id": "home",
+  "sourceHtml": "index.html",
+  "pageType": "home",
+  "title": "Hayeon",
+  "subtitle": "Hayeon.jpg",
+  "description": "",
+  "displayOrder": 0,
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "",
+    "group": "home"
+  },
+  "sections": [
+    {
+      "type": "slider",
+      "title": "Home slider",
+      "items": [
+        {
+          "image": "assets/images/home/j3.JPG",
+          "alt": "1",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j5.JPG",
+          "alt": "2",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j6.JPG",
+          "alt": "3",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j8.JPG",
+          "alt": "4",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j9.JPG",
+          "alt": "5",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j10.JPG",
+          "alt": "6",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j11.JPG",
+          "alt": "7",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/j13.JPG",
+          "alt": "8",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n1.JPG",
+          "alt": "9",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n2.JPG",
+          "alt": "10",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n6.JPG",
+          "alt": "11",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n7.JPG",
+          "alt": "12",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n8.JPG",
+          "alt": "13",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n3.JPG",
+          "alt": "14",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n10.JPG",
+          "alt": "15",
+          "visible": true
+        },
+        {
+          "image": "assets/images/home/n11.JPG",
+          "alt": "16",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "type": "travelCards",
+      "title": "Travel pages",
+      "items": [
+        {
+          "href": "osaka.html",
+          "image": "assets/images/home/osaka.jpg",
+          "alt": "Summer x2 Osaka",
+          "title": "Summer x2 Osaka",
+          "meta": "#08, 2018",
+          "visible": true
+        },
+        {
+          "href": "tokyo.html",
+          "image": "assets/images/home/tokyo1.JPG",
+          "alt": "Hong kong",
+          "title": "TOKYO",
+          "meta": "#11, 2018",
+          "visible": true
+        },
+        {
+          "href": "fukuoka.html",
+          "image": "assets/images/home/fukuoka.jpg",
+          "alt": "Umai Fukuoka",
+          "title": "Umai Fukuoka",
+          "meta": "#03, 2019",
+          "visible": true
+        },
+        {
+          "href": "hongkongmacau.html",
+          "image": "assets/images/home/hk.jpg",
+          "alt": "Hong kong - Macau",
+          "title": "Hong kong - Macau",
+          "meta": "#07, 2019",
+          "visible": true
+        },
+        {
+          "href": "2019 tokyo.html",
+          "image": "assets/images/home/tokyo2.JPG",
+          "alt": "久しぶりの、東京",
+          "title": "久しぶりの、東京 。",
+          "meta": "#07, 2019",
+          "visible": true
+        },
+        {
+          "href": "new york.html",
+          "image": "assets/images/home/nyc.jpg",
+          "alt": "New York",
+          "title": "New yorrrk",
+          "meta": "#02, 2020",
+          "visible": true
+        },
+        {
+          "href": "london.html",
+          "image": "assets/images/home/IMG_0868.jpeg",
+          "alt": "london",
+          "title": "Christmas in London",
+          "meta": "#12, 2022",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/t_a_11.jpeg",
+          "alt": "23tokyo",
+          "title": "Tokyo again🌸",
+          "meta": "#03, 2023",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/23nagoya.jpeg",
+          "alt": "23nagoya",
+          "title": "NA-GO-YA🎡",
+          "meta": "#10, 2023",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/25kobe.jpeg",
+          "alt": "25kobe",
+          "title": "Haru no KOBE",
+          "meta": "#03, 2025",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/kyoto.jpeg",
+          "alt": "25kyoto",
+          "title": "KYOTO",
+          "meta": "#06, 2025",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/25tokyo.jpeg",
+          "alt": "25tokyo",
+          "title": "TOKYO(ˆ◝ ·̫ ◜ˆ)˶ෆ",
+          "meta": "#10, 2025",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/what.png",
+          "alt": "26bali",
+          "title": "🌴bali🐟",
+          "meta": "#02, 2026",
+          "visible": true
+        },
+        {
+          "href": "tokyoagain.html",
+          "image": "assets/images/home/what.png",
+          "alt": "26none",
+          "title": "NAGOYA-ㅅ-letsGinny~",
+          "meta": "#06, 2026",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "type": "documentCards",
+      "title": "Document pages",
+      "items": [
+        {
+          "href": "document.tokyo.html",
+          "image": "assets/images/home/jp1.JPG",
+          "alt": "???",
+          "title": "TOKYO",
+          "camera": "Canon EOS M50",
+          "date": "07,2019",
+          "visible": true
+        },
+        {
+          "href": "document.hk.html",
+          "image": "assets/images/home/h2.JPG",
+          "alt": "???",
+          "title": "HONG KONG",
+          "camera": "Canon EOS M50",
+          "date": "07,2019",
+          "visible": true
+        },
+        {
+          "href": "document.ny.html",
+          "image": "assets/images/home/n15.JPG",
+          "alt": "???",
+          "title": "NEW YORK",
+          "camera": "Canon EOS M50",
+          "date": "02,2020",
+          "visible": true
+        },
+        {
+          "href": "document.london.html",
+          "image": "assets/images/home/l2.JPG",
+          "alt": "???",
+          "title": "LONDON",
+          "camera": "Canon EOS M50",
+          "date": "12,2022",
+          "visible": true
+        },
+        {
+          "href": "document.tokyo2.html",
+          "image": "assets/images/home/t1.JPG",
+          "alt": "???",
+          "title": "TOKYO",
+          "camera": "Canon EOS M50",
+          "date": "03,2023",
+          "visible": true
+        }
+      ]
+    }
+  ],
+  "footer": "&copy; Hayeon 2018-2026"
+}

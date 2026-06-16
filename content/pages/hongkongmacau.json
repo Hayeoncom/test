@@ -1,0 +1,23 @@
+{
+  "id": "hongkongmacau",
+  "sourceHtml": "hongkongmacau.html",
+  "pageType": "placeholder",
+  "title": "hongkong-macau",
+  "subtitle": "",
+  "description": "",
+  "displayOrder": 11,
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "",
+    "group": ":"
+  },
+  "audio": null,
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "hongkong-macau",
+      "items": []
+    }
+  ]
+}

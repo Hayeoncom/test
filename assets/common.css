@@ -1,0 +1,116 @@
+/* Shared site defaults */
+:root {
+  --site-bg: #fff;
+  --page-bg: #fafafa;
+  --site-link: #333;
+  --font-sans: 'Noto Sans KR', sans-serif;
+  --font-display: 'Jost', sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+a img {
+  border: 0;
+}
+
+.slidelist {
+  left: 0;
+}
+
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  #wrap,
+  #contents,
+  #banner {
+    width: 100% !important;
+  }
+
+  #banner,
+  .slidelist .slideimg {
+    height: auto !important;
+  }
+
+  .slidelist {
+    width: max-content !important;
+  }
+
+  .slidelist .slideimg {
+    width: 100vw !important;
+  }
+
+  .slidelist .slideimg img {
+    width: 100%;
+    height: auto;
+  }
+
+  #number,
+  #number2 {
+    display: flex;
+    width: 100%;
+  }
+
+  #number > div,
+  #number2 > div {
+    float: none !important;
+    flex: 1 1 0;
+    width: auto !important;
+  }
+
+  #number h1,
+  #number h2,
+  #number2 h1,
+  #number2 h2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+
+  #contents > div[class^="img"] li img {
+    display: block;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  #contents > div[class^="img"] li p,
+  #contents > div[class^="img"] li span {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #contents1 > div[class^="imgli"],
+  #contents2 > div[class^="thum"] {
+    float: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  #contents1 > div[class^="imgli"] ul,
+  #contents2 > div[class^="thum"] ul {
+    float: none !important;
+  }
+
+  #contents1 > div[class^="imgli"] li,
+  #contents2 > div[class^="thum"] li {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+  #contents1 > div[class^="imgli"] li img,
+  #contents2 > div[class^="thum"] li img {
+    max-width: calc(100vw - 40px);
+    height: auto;
+  }
+
+  #contents2 > div.banner {
+    margin-top: 80px !important;
+  }
+}
