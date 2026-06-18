@@ -162,32 +162,54 @@ a img {
   }
 
   #contents2 > div[class^="thum"] {
+    position: relative;
     margin-bottom: 40px;
   }
 
   #contents2 > div[class^="thum"] ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
   }
 
   #contents2 > div[class^="thum"] li + li {
-    margin-top: 14px;
+    margin-top: 0;
   }
 
   #contents2 > div[class^="thum"] li h2,
   #contents2 > div[class^="thum"] li h3,
   #contents2 > div[class^="thum"] li span p {
-    position: static !important;
-    transform: none !important;
-    width: 100%;
-    max-width: 100%;
-    margin: 8px auto 0 !important;
-    color: #333 !important;
+    position: absolute !important;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: calc(100% - 48px);
+    max-width: calc(100vw - 48px);
+    margin: 0 !important;
     font-size: 42px !important;
-    line-height: 1.15;
+    line-height: 1.05;
     text-align: center;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+
+  #contents2 > div[class^="thum"] li h3 {
+    top: 34%;
+    color: #fff !important;
+  }
+
+  #contents2 > div[class^="thum"] li h3.h3l {
+    top: 34%;
+    color: #000 !important;
+  }
+
+  #contents2 > div[class^="thum"] li h2 {
+    top: 50%;
+    color: #fff !important;
+  }
+
+  #contents2 > div[class^="thum"] li span p {
+    top: 66%;
+    color: #fff !important;
+    font-size: 34px !important;
   }
 }
 
@@ -221,11 +243,15 @@ a img {
   }
 
   #contents2 > div[class^="thum"] li h2,
-  #contents2 > div[class^="thum"] li h3,
+  #contents2 > div[class^="thum"] li h3 {
+    max-width: calc(100vw - 40px);
+    font-size: 28px !important;
+    line-height: 1.08;
+  }
+
   #contents2 > div[class^="thum"] li span p {
     max-width: calc(100vw - 40px);
-    font-size: 30px !important;
-    line-height: 1.2;
-    overflow-wrap: anywhere;
+    font-size: 20px !important;
+    line-height: 1.1;
   }
 }
