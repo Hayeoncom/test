@@ -47,6 +47,13 @@ jobs:
       - name: Check whitespace
         run: git diff --check
 
+      - name: Install image optimizer
+        run: |
+          if ! command -v magick >/dev/null 2>&1 && ! command -v convert >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y imagemagick
+          fi
+
       - name: Prepare Pages artifact
         run: node scripts/prepare-pages-artifact.js
 
