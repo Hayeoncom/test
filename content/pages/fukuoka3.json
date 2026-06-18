@@ -8,9 +8,9 @@
   "displayOrder": 9,
   "status": "published",
   "navigation": {
-    "prev": "",
-    "next": "fukuoka.html",
-    "group": "3:fukuoka.html"
+    "prev": "fukuoka2.html",
+    "next": "",
+    "group": "1:fukuoka.html, 2:fukuoka2.html"
   },
   "audio": null,
   "sections": [

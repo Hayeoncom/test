@@ -8,9 +8,9 @@
   "displayOrder": 17,
   "status": "published",
   "navigation": {
-    "prev": "",
-    "next": "tokyo.html",
-    "group": "3:tokyo.html"
+    "prev": "tokyo.html",
+    "next": "tokyo3.html",
+    "group": "1:tokyo.html, 3:tokyo3.html"
   },
   "audio": null,
   "sections": [
