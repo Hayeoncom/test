@@ -20,10 +20,6 @@ a img {
 }
 
 @media (max-width: 1000px) {
-  body {
-    overflow-x: hidden;
-  }
-
   #wrap,
   #contents,
   #banner {
@@ -91,6 +87,15 @@ a img {
 }
 
 @media (max-width: 900px) {
+  #wrap {
+    height: auto !important;
+  }
+
+  #contents1,
+  #contents2 {
+    width: 100%;
+  }
+
   #contents1 > div[class^="imgli"],
   #contents2 > div[class^="thum"] {
     float: none !important;
@@ -105,22 +110,51 @@ a img {
 
   #contents1 > div[class^="imgli"] li,
   #contents2 > div[class^="thum"] li {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
-  #contents1 > div[class^="imgli"] li img,
-  #contents2 > div[class^="thum"] li img {
+  #contents1 > div[class^="imgli"] li {
+    width: calc(100% - 40px);
+    max-width: 350px;
+  }
+
+  #contents1 > div[class^="imgli"] li a,
+  #contents2 > div[class^="thum"] li a {
     display: block;
-    max-width: calc(100vw - 40px);
+  }
+
+  #contents1 > div[class^="imgli"] li img {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
     height: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   #contents1 > div[class^="imgli"] li span,
   #contents1 > div[class^="imgli"] li p {
-    max-width: calc(100vw - 40px);
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     line-height: 1.45;
     overflow-wrap: anywhere;
+  }
+
+  #contents2 > div[class^="thum"] li {
+    width: calc(100% - 40px);
+    max-width: 900px;
+  }
+
+  #contents2 > div[class^="thum"] li img {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   #contents2 > div.banner {
