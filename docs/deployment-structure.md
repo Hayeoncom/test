@@ -79,6 +79,20 @@
 
 이번 작업에서는 위 파일을 삭제하지 않는다. 공개 제외가 필요하면 별도 배포 파이프라인 또는 후속 정리 작업으로 분리한다.
 
+## GitHub Pages Actions 배포
+
+GitHub Pages는 `refactor/ver1` branch source 루트 배포 대신 GitHub Actions Pages 배포를 사용한다.
+
+배포 workflow는 `.github/workflows/pages-deploy.yml`이다.
+
+- trigger: `refactor/ver1` push, `workflow_dispatch`
+- source 검증: `node scripts/validate-content.js`, `node scripts/validate-static-site.js`
+- artifact 구성: `node scripts/prepare-pages-artifact.js`
+- artifact 검증: `node scripts/validate-static-site.js --root .pages-dist`
+- deploy action: `actions/deploy-pages`
+
+`.pages-dist`는 운영에 필요한 파일만 포함하는 임시 산출물이며 Git에는 포함하지 않는다.
+
 ## GitHub Pages 배포 시 주의사항
 
 - 현재 HTML은 `assets/...`, `content/...` 같은 상대 경로를 사용하므로 프로젝트 하위 경로 배포에서도 동작할 수 있다.
@@ -90,12 +104,30 @@
 
 ## 일반 정적 호스팅 배포 시 주의사항
 
-- 저장소 루트를 그대로 정적 루트로 배포하는 구성이 가장 단순하다.
+- GitHub Actions Pages 배포에서는 저장소 루트를 그대로 배포하지 않고 `.pages-dist`를 정적 루트로 배포한다.
 - 루트 HTML 19개가 배포 루트에 있어야 기존 URL이 유지된다.
 - `content/**/*.json`이 정적 파일로 서빙되어야 CMS 렌더러가 동작한다.
 - `admin/config.yml`이 `text/yaml` 또는 일반 정적 파일로 접근 가능해야 한다.
 - 캐시 정책이 강하면 CMS 저장 후 운영 화면 반영이 지연될 수 있다.
 - 이미지 경로 대소문자를 보존해야 한다. 현재 `.JPG`, `.jpeg`, `.png`가 혼재한다.
+
+## Artifact 공개 제외 정책
+
+아래 파일과 디렉터리는 repository에는 유지하지만 Pages artifact에는 포함하지 않는다.
+
+- `.github/`
+- `docs/`
+- `scripts/`
+- `reports/`
+- `prompt/`
+- `assets/images/unused/`
+- `Epilogue.zip`
+- `Rota - FREE.zip`
+- `Photography/`
+- `travel/`
+- `.DS_Store`
+
+artifact에서 제외된 파일은 운영 URL로 접근할 수 없다. 운영 참조가 새로 생기면 `scripts/prepare-pages-artifact.js` 포함 정책과 `scripts/validate-static-site.js` 검증 결과를 함께 확인한다.
 
 ## CMS 운영 시 필요한 파일
 
@@ -170,8 +202,8 @@ B안 공통 viewer는 중간 단계로 검토 가능하지만, 기존 페이지�
 
 ### MEDIUM
 
-- 배포 파이프라인에서 `node scripts/validate-content.js` 실행
-- 공개 제외 대상 파일을 배포 산출물에서 분리
+- GitHub Actions Pages workflow duration 2~3회 추가 관측
+- 공개 제외 대상 파일의 장기 보관 정책 결정
 - JSON 기준 정적 HTML 생성 설계
 
 ### LOW

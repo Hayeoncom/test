@@ -6,9 +6,11 @@
 - CMS 접근 허용 계정 목록 확정 필요
 - 접근 계정에 GitHub 저장소 `Hayeoncom/test` 쓰기 권한 부여 필요
 - 운영 브랜치가 `refactor/ver1`인지 확인 필요
-- GitHub Pages 또는 배포 대상이 해당 브랜치의 변경사항을 반영하는지 확인 필요
+- GitHub Pages source가 GitHub Actions인지 확인 필요
+- GitHub Actions Pages workflow가 `refactor/ver1` 변경사항을 반영하는지 확인 필요
 - 배포 루트에 루트 HTML 19개, `assets/`, `content/`, `admin/`, `favicon.ico`가 포함되는지 확인 필요
 - 배포 전 `node scripts/validate-content.js` 실행 필요
+- 배포 workflow에서 `node scripts/validate-content.js`가 자동 실행되는지 확인 필요
 - 배포 전 로컬 정적 서버에서 `/admin/`, `/admin/config.yml`, 대표 HTML 페이지 접근 확인 필요
 
 ## 운영 배포 전 체크리스트
@@ -98,7 +100,7 @@
 
 1. GitHub 저장소에 CMS 저장 commit이 생성되었는지 확인
 2. 변경된 JSON 파일 경로 확인
-3. 배포 프로세스 실행 또는 GitHub Pages 재배포 상태 확인
+3. GitHub Actions Pages workflow 실행 상태 확인
 4. 운영 URL 접속
 5. 브라우저 콘솔 오류 확인
 6. 이미지 깨짐 여부 확인
@@ -140,9 +142,21 @@ node scripts/validate-content.js
 ## 운영 브랜치와 배포 브랜치 확인 방법
 
 1. `admin/config.yml`의 `backend.branch` 확인
-2. GitHub Pages 또는 정적 호스팅 설정의 배포 브랜치 확인
-3. 두 브랜치가 다르면 CMS 저장 후 운영 반영이 지연되거나 누락될 수 있음
-4. 운영 정책상 분리된 브랜치를 사용할 경우 병합 절차를 별도 문서로 관리
+2. GitHub Pages source가 GitHub Actions인지 확인
+3. `.github/workflows/pages-deploy.yml` trigger branch가 `refactor/ver1`인지 확인
+4. CMS 저장 commit이 `refactor/ver1`에 생성되면 workflow가 실행되는지 확인
+5. 두 브랜치가 다르면 CMS 저장 후 운영 반영이 지연되거나 누락될 수 있음
+6. 운영 정책상 분리된 브랜치를 사용할 경우 병합 절차를 별도 문서로 관리
+
+## GitHub Actions Pages 확인 절차
+
+1. GitHub 저장소의 Actions 탭 접속
+2. `Deploy Pages` workflow 선택
+3. 최신 run의 branch가 `refactor/ver1`인지 확인
+4. `Validate CMS content` step 성공 여부 확인
+5. `Prepare Pages artifact` step에서 `.pages-dist` 크기 확인
+6. `Deploy to GitHub Pages` step 성공 여부 확인
+7. 운영 URL에서 `/admin/`, `/content/site.json`, `/assets/common.css` 상태 확인
 
 ## 장애 시 확인 항목
 

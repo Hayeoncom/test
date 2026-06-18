@@ -1,0 +1,71 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches:
+      - refactor/ver1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Validate and deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Validate CMS content
+        run: node scripts/validate-content.js
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check scripts/validate-content.js
+          node --check scripts/validate-static-site.js
+          node --check scripts/prepare-pages-artifact.js
+          node --check assets/cms-renderer.js
+          node --check assets/site.js
+
+      - name: Validate source references
+        run: node scripts/validate-static-site.js
+
+      - name: Check whitespace
+        run: git diff --check
+
+      - name: Prepare Pages artifact
+        run: node scripts/prepare-pages-artifact.js
+
+      - name: Validate Pages artifact
+        run: node scripts/validate-static-site.js --root .pages-dist
+
+      - name: Print artifact summary
+        run: |
+          du -sh .pages-dist
+          du -sh .pages-dist/assets
+          du -sh .pages-dist/assets/images
+          find .pages-dist -type f | wc -l
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .pages-dist
+          include-hidden-files: true
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
