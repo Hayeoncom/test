@@ -66,6 +66,7 @@ collections:
             summary: "{{fields.caption}}{{fields.title}}{{fields.image}}"
             fields:
               - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Original Image URL", name: "originalUrl", widget: "string", required: false, hint: "Optional full-size original image URL. Display image remains the optimized site image; original opens only when the image is clicked." }
               - { label: "Alt Text", name: "alt", widget: "string", required: false }
               - { label: "Caption", name: "caption", widget: "text", required: false }
               - { label: "Location", name: "location", widget: "string", required: false }

@@ -79,6 +79,19 @@ function isExternalUrl(value) {
   return /^https?:\/\//i.test(value);
 }
 
+function validateOptionalUrl(filePath, value, field) {
+  if (typeof value !== 'string' || value.trim() === '') return;
+
+  try {
+    const url = new URL(value);
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      addError(filePath, `${field} must use http or https: ${value}`);
+    }
+  } catch {
+    addError(filePath, `${field} must be a valid URL: ${value}`);
+  }
+}
+
 function validateLocalPath(filePath, value, field) {
   if (typeof value !== 'string' || value.trim() === '') {
     addError(filePath, `${field} must be a non-empty path`);
@@ -145,6 +158,10 @@ function validateItem(filePath, item, pathLabel) {
 
   if (Object.prototype.hasOwnProperty.call(item, 'image') && item.image !== '') {
     validateLocalPath(filePath, item.image, `${pathLabel}.image`);
+  }
+
+  if (Object.prototype.hasOwnProperty.call(item, 'originalUrl')) {
+    validateOptionalUrl(filePath, item.originalUrl, `${pathLabel}.originalUrl`);
   }
 
   if (Object.prototype.hasOwnProperty.call(item, 'href')) {

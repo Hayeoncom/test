@@ -35,6 +35,10 @@
 
       section.querySelectorAll('a').forEach(function (link) {
         var label = link.textContent.trim();
+        if (link.getAttribute('target') === '_blank') {
+          link.removeAttribute('target');
+        }
+        link.removeAttribute('rel');
         if (label && !link.getAttribute('aria-label')) {
           link.setAttribute('aria-label', 'Go to page ' + label);
         }
