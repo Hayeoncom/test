@@ -3,6 +3,8 @@
 ## 운영 전 필수 설정
 
 - GitHub OAuth 또는 Decap CMS 인증 프록시 설정 필요
+- Netlify OAuth provider 인증용 site domain은 `hayeon-cms-auth.netlify.app` 사용
+- `admin/config.yml`의 `backend.site_domain`이 `hayeon-cms-auth.netlify.app`인지 확인 필요
 - CMS 접근 허용 계정 목록 확정 필요
 - 접근 계정에 GitHub 저장소 `Hayeoncom/test` 쓰기 권한 부여 필요
 - 운영 브랜치가 `refactor/ver1`인지 확인 필요
@@ -46,10 +48,23 @@
 
 1. 운영 URL의 `/admin/` 접속
 2. GitHub 로그인 버튼 표시 확인
-3. 허용 계정으로 로그인
-4. 저장소 권한 요청 화면이 표시되면 운영자가 승인
-5. `Site Settings`와 `Pages` 컬렉션 접근 여부 확인
-6. 로그인 실패 시 OAuth 앱 설정, 인증 프록시, 저장소 권한 순서로 확인
+3. 로그인 버튼 클릭 시 인증 URL의 `site_id`가 `hayeon-cms-auth.netlify.app`인지 확인
+4. 허용 계정으로 로그인
+5. 저장소 권한 요청 화면이 표시되면 운영자가 승인
+6. `Site Settings`와 `Pages` 컬렉션 접근 여부 확인
+7. 로그인 실패 시 OAuth 앱 설정, 인증 프록시, 저장소 권한 순서로 확인
+
+## CMS OAuth 설정
+
+- 인증 방식: Decap CMS GitHub backend와 Netlify OAuth provider
+- 인증용 site domain: `hayeon-cms-auth.netlify.app`
+- `admin/config.yml` backend 필수값:
+  - `name: github`
+  - `repo: Hayeoncom/test`
+  - `branch: refactor/ver1`
+  - `site_domain: hayeon-cms-auth.netlify.app`
+- OAuth secret, token, client secret은 저장소 파일, 문서, 보고서에 기록하지 않는다.
+- GitHub OAuth callback URL과 Netlify OAuth provider 설정은 Netlify/GitHub 관리 화면에서 확인한다.
 
 ## 콘텐츠 수정 절차
 
@@ -87,6 +102,22 @@
 4. JSON의 이미지 경로가 실제 파일과 일치하는지 확인
 5. `node scripts/validate-content.js` 실행
 6. 운영 화면에서 이미지 표시 확인
+
+## Original URL 입력 정책
+
+- 홈 카드 이미지는 기존 페이지 이동 링크를 유지하므로 `originalUrl`을 입력하지 않는다.
+- `originalUrl`은 상세/갤러리 이미지에만 필요한 경우 입력한다.
+- 현재 테스트 브랜치의 표준 형식:
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<이미지경로>
+```
+
+- 대표 테스트 값:
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/assets/images/tokyo/img0.jpeg
+```
 
 ## 신규 페이지 생성 절차
 
@@ -147,6 +178,23 @@ node scripts/validate-content.js
 4. CMS 저장 commit이 `refactor/ver1`에 생성되면 workflow가 실행되는지 확인
 5. 두 브랜치가 다르면 CMS 저장 후 운영 반영이 지연되거나 누락될 수 있음
 6. 운영 정책상 분리된 브랜치를 사용할 경우 병합 절차를 별도 문서로 관리
+
+## 정식 main 운영 전환 시 변경 항목
+
+- `admin/config.yml`의 `backend.branch`: `refactor/ver1`에서 `main`으로 변경
+- `.github/workflows/pages-deploy.yml`의 push trigger branch: `refactor/ver1`에서 `main`으로 변경
+- CMS 저장 대상 브랜치: `refactor/ver1`에서 `main`으로 변경
+- `originalUrl` 표준:
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<이미지경로>
+```
+
+에서 아래 형식으로 변경
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<이미지경로>
+```
 
 ## GitHub Actions Pages 확인 절차
 

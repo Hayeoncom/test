@@ -2,6 +2,7 @@ backend:
   name: github
   repo: Hayeoncom/test
   branch: refactor/ver1
+  site_domain: hayeon-cms-auth.netlify.app
 
 local_backend: true
 

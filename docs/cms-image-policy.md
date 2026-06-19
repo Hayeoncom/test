@@ -82,6 +82,24 @@ Cons:
 - Raw/blob URLs depend on GitHub URL and branch policy.
 - Not ideal as a long-term image CDN.
 
+Current test branch standard:
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<image-path>
+```
+
+Representative test URL:
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/assets/images/tokyo/img0.jpeg
+```
+
+When the production branch changes to `main`, update the standard to:
+
+```text
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<image-path>
+```
+
 ### B. Separate Original Image Repository or GitHub Releases
 
 Structure:
