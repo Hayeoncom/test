@@ -332,13 +332,14 @@ function validateArtifactExclusions() {
     'reports',
     'prompt',
     'Photography',
+    '.netlify-admin',
     'assets/images/unused',
   ].forEach((relativePath) => {
     if (exists(relativePath)) addError(`${relativePath}: excluded path is present in artifact`);
   });
 
-  ['Epilogue.zip', 'Rota - FREE.zip'].forEach((relativePath) => {
-    if (exists(relativePath)) addError(`${relativePath}: zip file must not be present in artifact`);
+  ['Epilogue.zip', 'Rota - FREE.zip', 'netlify.toml'].forEach((relativePath) => {
+    if (exists(relativePath)) addError(`${relativePath}: excluded file is present in artifact`);
   });
 }
 
