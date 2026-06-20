@@ -286,15 +286,25 @@ a img {
 @media (max-width: 600px) {
   #number,
   #number2 {
-    min-height: 84px;
+    min-height: 64px;
+  }
+
+  #number > div,
+  #number2 > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px !important;
+    min-height: 64px;
   }
 
   #number h1,
   #number h2,
   #number2 h1,
   #number2 h2 {
-    font-size: 38px !important;
-    line-height: 1.15;
+    padding-top: 0 !important;
+    font-size: 30px !important;
+    line-height: 1.1;
   }
 
   .audio {
