@@ -38,6 +38,8 @@ a img {
   }
 
   .slidelist {
+    height: auto !important;
+    overflow: hidden;
     width: max-content !important;
   }
 
@@ -331,6 +333,12 @@ a img {
   #contents1 > div[class^="imgli"] {
     height: 280px !important;
     margin-bottom: 20px;
+  }
+
+  #contents1 > div.banner {
+    height: 96px !important;
+    margin-top: 28px !important;
+    padding-top: 28px !important;
   }
 
   #contents1 > div[class^="imgli"] li {
