@@ -1,0 +1,23 @@
+{
+  "id": "london",
+  "sourceHtml": "london.html",
+  "pageType": "placeholder",
+  "title": "Christmas in London",
+  "subtitle": "",
+  "description": "",
+  "displayOrder": 12,
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "",
+    "group": ":"
+  },
+  "audio": null,
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "Christmas in London",
+      "items": []
+    }
+  ]
+}

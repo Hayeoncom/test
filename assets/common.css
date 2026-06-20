@@ -1,0 +1,386 @@
+/* Shared site defaults */
+:root {
+  --site-bg: #fff;
+  --page-bg: #fafafa;
+  --site-link: #333;
+  --font-sans: 'Noto Sans KR', sans-serif;
+  --font-display: 'Jost', sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+a img {
+  border: 0;
+}
+
+.slidelist {
+  left: 0;
+}
+
+#number2::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 1000px) {
+  #wrap,
+  #contents,
+  #banner {
+    width: 100% !important;
+  }
+
+  #banner,
+  .slidelist .slideimg {
+    height: auto !important;
+  }
+
+  .slidelist {
+    height: auto !important;
+    overflow: hidden;
+    width: max-content !important;
+  }
+
+  .slidelist .slideimg {
+    width: 100vw !important;
+  }
+
+  .slidelist .slideimg img {
+    width: 100%;
+    height: auto;
+  }
+
+  #number,
+  #number2 {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  #number > div,
+  #number2 > div {
+    float: none !important;
+    flex: 1 1 0;
+    width: auto !important;
+  }
+
+  #number > div.header,
+  #number2 > div.header {
+    flex-basis: 46.5%;
+  }
+
+  #number > div.header2,
+  #number2 > div.header2 {
+    flex-basis: 46.5%;
+  }
+
+  #number > div.header3,
+  #number2 > div.header3 {
+    flex: 0 0 7%;
+  }
+
+  #number h1,
+  #number h2,
+  #number2 h1,
+  #number2 h2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+
+  .audio {
+    box-sizing: border-box;
+    float: none !important;
+    position: relative !important;
+    width: 100%;
+    padding: 12px 16px 0;
+  }
+
+  .audio audio {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .animated-title {
+    box-sizing: border-box;
+    float: none !important;
+    clear: both;
+    width: 100% !important;
+    padding: 16px 16px 0 !important;
+    overflow: hidden !important;
+  }
+
+  .animated-title .track {
+    animation: none !important;
+    white-space: normal !important;
+  }
+
+  .animated-title .content {
+    display: block;
+    max-height: 3.4em;
+    line-height: 1.7;
+    overflow: hidden;
+    transform: none !important;
+    -webkit-transform: none !important;
+  }
+
+  #contents > div[class^="img"] li img {
+    display: block;
+    max-width: calc(100vw - 32px);
+    height: auto;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  #contents > div[class^="img"] li p,
+  #contents > div[class^="img"] li span {
+    display: block;
+    max-width: calc(100vw - 32px);
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 900px) {
+  #wrap {
+    height: auto !important;
+  }
+
+  #contents1,
+  #contents2 {
+    width: 100%;
+  }
+
+  #contents1 > div[class^="imgli"],
+  #contents2 > div[class^="thum"] {
+    height: auto !important;
+  }
+
+  #contents1 {
+    display: flow-root;
+  }
+
+  #contents1 > div[class^="imgli"] {
+    float: left !important;
+    width: 50% !important;
+    height: clamp(280px, 52vw, 430px) !important;
+    margin-top: 0 !important;
+    margin-bottom: clamp(20px, 5vw, 60px);
+  }
+
+  #contents2 > div[class^="thum"] {
+    float: none !important;
+    width: 100% !important;
+  }
+
+  #contents1 > div[class^="imgli"] ul,
+  #contents2 > div[class^="thum"] ul {
+    float: none !important;
+  }
+
+  #contents1 > div[class^="imgli"] li,
+  #contents2 > div[class^="thum"] li {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #contents1 > div[class^="imgli"] li {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #contents1 > div[class^="imgli"] li a,
+  #contents2 > div[class^="thum"] li a {
+    display: block;
+  }
+
+  #contents1 > div[class^="imgli"] li img {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #contents1 > div[class^="imgli"] li span,
+  #contents1 > div[class^="imgli"] li p {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  #contents2 > div[class^="thum"] li {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  #contents2 > div[class^="thum"] li img {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #contents2 > div.banner {
+    margin-top: 80px !important;
+  }
+
+  #contents2 > div[class^="thum"] {
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  #contents2 > div[class^="thum"] ul {
+    display: block;
+  }
+
+  #contents2 > div[class^="thum"] li + li {
+    margin-top: 0;
+  }
+
+  #contents2 > div[class^="thum"] li h2,
+  #contents2 > div[class^="thum"] li h3,
+  #contents2 > div[class^="thum"] li span p {
+    position: absolute !important;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: calc(100% - 48px);
+    max-width: calc(100vw - 48px);
+    margin: 0 !important;
+    font-size: 42px !important;
+    line-height: 1.05;
+    text-align: center;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+
+  #contents2 > div[class^="thum"] li h3 {
+    top: 34%;
+    color: #fff !important;
+  }
+
+  #contents2 > div[class^="thum"] li h3.h3l {
+    top: 34%;
+    color: #000 !important;
+  }
+
+  #contents2 > div[class^="thum"] li h2 {
+    top: 50%;
+    color: #fff !important;
+  }
+
+  #contents2 > div[class^="thum"] li span p {
+    top: 66%;
+    color: #fff !important;
+    font-size: 34px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #number,
+  #number2 {
+    min-height: 64px;
+  }
+
+  #number > div,
+  #number2 > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px !important;
+    min-height: 64px;
+  }
+
+  #number h1,
+  #number h2,
+  #number2 h1,
+  #number2 h2 {
+    padding-top: 0 !important;
+    font-size: 30px !important;
+    line-height: 1.1;
+  }
+
+  .audio {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .audio audio {
+    max-width: 100%;
+  }
+
+  .animated-title {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+
+  #contents1 > div[class^="imgli"] {
+    height: 280px !important;
+    margin-bottom: 20px;
+  }
+
+  #contents1 > div.banner {
+    height: 96px !important;
+    margin-top: 28px !important;
+    padding-top: 28px !important;
+  }
+
+  #contents1 > div[class^="imgli"] li {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  #contents1 > div[class^="imgli"] li span {
+    font-size: 20px !important;
+    line-height: 1.15;
+  }
+
+  #contents1 > div[class^="imgli"] li p {
+    font-size: 13px !important;
+    line-height: 1.25;
+  }
+
+  #header {
+    height: auto !important;
+    min-height: 150px;
+  }
+
+  #header h1 {
+    font-size: 44px !important;
+  }
+
+  #contents1 > div.banner h2,
+  #contents2 > div.banner h2 {
+    font-size: 38px !important;
+    line-height: 1.2;
+  }
+
+  #contents2 > div[class^="thum"] li h2,
+  #contents2 > div[class^="thum"] li h3 {
+    max-width: calc(100vw - 40px);
+    font-size: 28px !important;
+    line-height: 1.08;
+  }
+
+  #contents2 > div[class^="thum"] li span p {
+    max-width: calc(100vw - 40px);
+    font-size: 20px !important;
+    line-height: 1.1;
+  }
+}

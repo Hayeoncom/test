@@ -1,0 +1,23 @@
+{
+  "id": "2019-tokyo",
+  "sourceHtml": "2019 tokyo.html",
+  "pageType": "placeholder",
+  "title": "久しぶりの、東京",
+  "subtitle": "",
+  "description": "",
+  "displayOrder": 1,
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "",
+    "group": ":"
+  },
+  "audio": null,
+  "sections": [
+    {
+      "type": "gallery",
+      "title": "久しぶりの、東京",
+      "items": []
+    }
+  ]
+}

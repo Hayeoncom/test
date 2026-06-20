@@ -1,0 +1,79 @@
+backend:
+  name: github
+  repo: Hayeoncom/test
+  branch: main
+  site_domain: hayeon-cms-auth.netlify.app
+
+local_backend: true
+
+media_folder: "assets/images/uploads"
+public_folder: "assets/images/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - label: "Site"
+        name: "site"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Image Upload Path", name: "imageUploadPath", widget: "string" }
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    format: "json"
+    create: true
+    slug: "{{id}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Source HTML", name: "sourceHtml", widget: "string", required: false }
+      - { label: "Page Type", name: "pageType", widget: "select", options: ["home", "gallery", "document-gallery", "placeholder"] }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Display Order", name: "displayOrder", widget: "number", value_type: "int", required: false }
+      - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published" }
+      - label: "Navigation"
+        name: "navigation"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Previous", name: "prev", widget: "string", required: false }
+          - { label: "Next", name: "next", widget: "string", required: false }
+          - { label: "Group", name: "group", widget: "string", required: false }
+      - label: "Audio"
+        name: "audio"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Source", name: "src", widget: "string", required: false }
+          - { label: "Type", name: "type", widget: "string", required: false, default: "audio/mp3" }
+      - { label: "Footer", name: "footer", widget: "string", required: false }
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        fields:
+          - { label: "Type", name: "type", widget: "select", options: ["gallery", "slider", "travelCards", "documentCards"] }
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.caption}}{{fields.title}}{{fields.image}}"
+            fields:
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Original Image URL", name: "originalUrl", widget: "string", required: false, hint: "Optional full-size original image URL. Display image remains the optimized site image; original opens only when the image is clicked." }
+              - { label: "Alt Text", name: "alt", widget: "string", required: false }
+              - { label: "Caption", name: "caption", widget: "text", required: false }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Meta", name: "meta", widget: "string", required: false }
+              - { label: "Camera", name: "camera", widget: "string", required: false }
+              - { label: "Date", name: "date", widget: "string", required: false }
+              - { label: "Link", name: "href", widget: "string", required: false }
+              - { label: "Visible", name: "visible", widget: "boolean", default: true }
