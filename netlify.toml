@@ -1,3 +1,4 @@
 [build]
   command = "node scripts/prepare-netlify-admin.js"
+  ignore = "node scripts/netlify-ignore-build.js"
   publish = ".netlify-admin"
