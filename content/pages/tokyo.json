@@ -1,21 +1,7 @@
 {
-  "id": "tokyo",
   "sourceHtml": "tokyo.html",
   "pageType": "gallery",
-  "title": "TOKYO",
-  "subtitle": "",
-  "description": "▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭",
   "displayOrder": 16,
-  "status": "published",
-  "navigation": {
-    "prev": "",
-    "next": "tokyo2.html",
-    "group": "2:tokyo2.html, 3:tokyo3.html"
-  },
-  "audio": {
-    "src": "https://docs.google.com/uc?export=open&id=12f4rtN1RSKGAgcqLRS_8EuGst-ODFdvy",
-    "type": "audio/mp3"
-  },
   "sections": [
     {
       "type": "gallery",
@@ -26,7 +12,8 @@
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/assets/images/tokyo/img0.jpeg"
         },
         {
           "image": "assets/images/tokyo/img00.jpeg",
@@ -401,5 +388,19 @@
         }
       ]
     }
-  ]
+  ],
+  "status": "published",
+  "navigation": {
+    "prev": "",
+    "next": "tokyo2.html",
+    "group": "2:tokyo2.html, 3:tokyo3.html"
+  },
+  "audio": {
+    "src": "https://docs.google.com/uc?export=open&id=12f4rtN1RSKGAgcqLRS_8EuGst-ODFdvy",
+    "type": "audio/mp3"
+  },
+  "subtitle": "",
+  "title": "TOKYO",
+  "id": "tokyo",
+  "description": "▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭ ▶︎ CLICK! Theme song : Yogee New Waves - Climax Night *Please open in browser(੭ˊ꒳ˋ)੭"
 }
