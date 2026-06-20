@@ -46,13 +46,40 @@
     });
   }
 
+  function normalizeAnimatedTitle() {
+    var content = document.querySelector('.animated-title .content');
+    if (!content) {
+      return;
+    }
+
+    if (!content.getAttribute('data-full-text')) {
+      content.setAttribute('data-full-text', content.textContent);
+    }
+
+    var fullText = content.getAttribute('data-full-text') || '';
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      var marker = '▶︎ CLICK!';
+      var first = fullText.indexOf(marker);
+      var second = first >= 0 ? fullText.indexOf(marker, first + marker.length) : -1;
+      var mobileText = second > first ? fullText.slice(first, second) : fullText;
+      content.textContent = mobileText.trim();
+      return;
+    }
+
+    content.textContent = fullText;
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initHomeSlider();
     labelPageNavigation();
+    normalizeAnimatedTitle();
   });
 
   document.addEventListener('cms:rendered', function () {
     initHomeSlider();
     labelPageNavigation();
+    normalizeAnimatedTitle();
   });
+
+  window.addEventListener('resize', normalizeAnimatedTitle);
 })();
