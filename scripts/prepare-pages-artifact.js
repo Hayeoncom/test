@@ -158,6 +158,12 @@ function copyFile(relativePath) {
   fs.copyFileSync(source, target);
 }
 
+function writeFile(relativePath, content) {
+  const target = distPath(relativePath);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, content);
+}
+
 function ensureDirectory(relativePath) {
   fs.mkdirSync(distPath(relativePath), { recursive: true });
 }
@@ -369,7 +375,6 @@ function collectIncludes() {
     .forEach(addFile);
 
   ['assets/common.css', 'assets/site.js', 'assets/cms-renderer.js'].forEach(addFile);
-  ['admin/index.html', 'admin/config.yml'].forEach(addFile);
   ['content/site.json', ...listFiles('content/pages').filter((name) => name.endsWith('.json'))].forEach(addFile);
 
   site.pages
@@ -392,6 +397,50 @@ function collectIncludes() {
     .forEach((jsonFile) => collectJsonReferences(parseJson(jsonFile), 'page'));
 }
 
+function writePagesAdminRedirect() {
+  writeFile('admin/index.html', `<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="refresh" content="0; url=https://hayeon-cms-auth.netlify.app/admin/">
+  <title>Hayeon CMS Admin</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #222;
+      background: #fafafa;
+    }
+    main {
+      width: min(520px, calc(100% - 48px));
+      line-height: 1.7;
+    }
+    a {
+      color: #222;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>CMS Admin</h1>
+    <p>CMS 관리자 화면은 아래 주소에서 사용합니다.</p>
+    <p><a href="https://hayeon-cms-auth.netlify.app/admin/">https://hayeon-cms-auth.netlify.app/admin/</a></p>
+  </main>
+  <script>
+    window.location.replace('https://hayeon-cms-auth.netlify.app/admin/');
+  </script>
+</body>
+</html>
+`);
+}
+
 function main() {
   fs.rmSync(distDir, { recursive: true, force: true });
   fs.mkdirSync(distDir, { recursive: true });
@@ -405,6 +454,7 @@ function main() {
   }
 
   Array.from(includeFiles).sort().forEach(copyFile);
+  writePagesAdminRedirect();
   ensureDirectory('assets/images/uploads');
   const optimization = optimizeDistImages();
 

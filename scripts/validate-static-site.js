@@ -10,6 +10,9 @@ const rootDir = path.resolve(
   repoRoot,
   rootArgIndex >= 0 && args[rootArgIndex + 1] ? args[rootArgIndex + 1] : '.',
 );
+const rootName = path.basename(rootDir);
+const isPagesArtifact = rootName === '.pages-dist';
+const isNetlifyAdminArtifact = rootName === '.netlify-admin';
 
 const expectedHtml = [
   'index.html',
@@ -286,8 +289,25 @@ function validateJavaScriptReferences() {
 }
 
 function validateAdminConfig() {
+  if (isPagesArtifact) {
+    if (!assertFile('admin/index.html')) return;
+    if (exists('admin/config.yml')) addError('admin/config.yml: must not be present in GitHub Pages artifact');
+
+    const index = readFile('admin/index.html');
+    if (!index.includes('hayeon-cms-auth.netlify.app/admin/')) {
+      addError('admin/index.html: GitHub Pages admin page must point to Netlify admin URL');
+    }
+    if (/decap-cms/i.test(index)) {
+      addError('admin/index.html: GitHub Pages admin page must not load Decap CMS');
+    }
+    return;
+  }
+
   if (!assertFile('admin/index.html')) return;
   if (!assertFile('admin/config.yml')) return;
+
+  const index = readFile('admin/index.html');
+  if (!/decap-cms/i.test(index)) addError('admin/index.html: Decap CMS script reference missing');
 
   const config = readFile('admin/config.yml');
   if (/\t/.test(config)) addError('admin/config.yml: tab indentation is not allowed');
@@ -302,9 +322,17 @@ function validateAdminConfig() {
   if (!/public_folder:\s*["']assets\/images\/uploads["']/.test(config)) {
     addError('admin/config.yml: public_folder must be assets/images/uploads');
   }
+  if (!/name:\s*["']site["']/.test(config)) addError('admin/config.yml: site collection missing');
+  if (!/name:\s*["']pages["']/.test(config)) addError('admin/config.yml: pages collection missing');
+  if (!/name:\s*["']originalUrl["']/.test(config)) addError('admin/config.yml: originalUrl field missing');
 }
 
 function validateRequiredFiles() {
+  if (isNetlifyAdminArtifact) {
+    assertFile('favicon.ico');
+    return;
+  }
+
   [
     '.nojekyll',
     'CNAME',
@@ -346,6 +374,9 @@ function validateArtifactExclusions() {
 function main() {
   if (!fs.existsSync(rootDir)) {
     addError(`${rootDir}: root does not exist`);
+  } else if (isNetlifyAdminArtifact) {
+    validateRequiredFiles();
+    validateAdminConfig();
   } else {
     validateRequiredFiles();
     validateContentJson();

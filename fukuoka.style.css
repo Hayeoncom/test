@@ -5,7 +5,7 @@ a {color: #333; text-decoration:none;}
 .clearfix::before, .clearfix::after {display: block; content: '';clear: both;}
 
 /* layout */
-#wrap {width: 1000px; height: background: #fff; margin: 0 auto;}
+#wrap {width: 1000px; background: #fff; margin: 0 auto;}
 #contents {width: 1000px; background: #fafafa; margin: 0 auto;}
 
 
@@ -34,8 +34,8 @@ div.audio {position: absolute; float: left;}
 #number > div.header2 h1 {padding-left: 5px; padding-top: 60px; font-size: 50px; font-weight: 400; font-family: "Jost";}
 #number > div.header3 h1 {text-align: center; padding-right: 0px; padding-top: 60px; font-size: 50px; font-weight: 400; font-family: "Jost";}
 
-#number2 > div.header h2 {padding-left: 435px; padding-top: px;font-size: 50px; font-weight: 150; font-family: "Jost"; font-style: italic;}
-#number2 > div.header2 h1 {padding-left: 5px;  padding-top: px; font-size: 50px; font-weight: 400; font-family: "Jost";}
+#number2 > div.header h2 {padding-left: 435px; font-size: 50px; font-weight: 150; font-family: "Jost"; font-style: italic;}
+#number2 > div.header2 h1 {padding-left: 5px; font-size: 50px; font-weight: 400; font-family: "Jost";}
 #number2 > div.header3 h1 {text-align: center; padding-right: 0px; font-size: 50px; font-weight: 400; font-family: "Jost";}
 
 /* contents */

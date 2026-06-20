@@ -19,6 +19,12 @@ a img {
   left: 0;
 }
 
+#number2::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
 @media (max-width: 1000px) {
   #wrap,
   #contents,
