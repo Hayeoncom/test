@@ -67,7 +67,7 @@ The admin config must keep:
 backend:
   name: github
   repo: Hayeoncom/test
-  branch: refactor/ver1
+  branch: main
   site_domain: hayeon-cms-auth.netlify.app
 ```
 
@@ -98,9 +98,9 @@ If this still fails, evaluate a self-hosted OAuth proxy or another CMS auth prov
 
 ## CMS Save To Public Site Flow
 
-1. CMS admin saves content to `Hayeoncom/test` on `refactor/ver1`.
+1. CMS admin saves content to `Hayeoncom/test` on `main`.
 2. The repository receives a commit or editorial workflow PR.
-3. GitHub Actions `Deploy Pages` runs for `refactor/ver1`.
+3. GitHub Actions `Deploy Pages` runs for `main`.
 4. The Pages artifact is built from the public site files.
 5. GitHub Pages deploys `https://hayeon.kr/`.
 
@@ -110,21 +110,21 @@ The public site should continue to validate that its artifact stays below 1 GB a
 
 Home card images keep their existing page navigation links and do not receive `originalUrl` wrappers.
 
-For detail/gallery images during the `refactor/ver1` test phase, use:
+For detail/gallery images in production, use:
 
 ```text
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<image-path>
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<image-path>
 ```
 
-Representative test value:
+Representative production value:
 
 ```text
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/assets/images/tokyo/img0.jpeg
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img0.jpeg
 ```
 
-## Main Branch Transition
+## Main Branch Operation
 
-When production moves from `refactor/ver1` to `main`, update these together:
+Production uses these branch settings together:
 
 - `admin/config.yml` `backend.branch`: `main`
 - `.github/workflows/pages-deploy.yml` trigger branch: `main`

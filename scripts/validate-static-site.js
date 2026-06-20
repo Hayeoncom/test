@@ -312,7 +312,7 @@ function validateAdminConfig() {
   const config = readFile('admin/config.yml');
   if (/\t/.test(config)) addError('admin/config.yml: tab indentation is not allowed');
   if (!/repo:\s*Hayeoncom\/test/.test(config)) addError('admin/config.yml: backend.repo must be Hayeoncom/test');
-  if (!/branch:\s*refactor\/ver1/.test(config)) addError('admin/config.yml: backend.branch must be refactor/ver1');
+  if (!/branch:\s*main/.test(config)) addError('admin/config.yml: backend.branch must be main');
   if (!/site_domain:\s*hayeon-cms-auth\.netlify\.app/.test(config)) {
     addError('admin/config.yml: backend.site_domain must be hayeon-cms-auth.netlify.app');
   }

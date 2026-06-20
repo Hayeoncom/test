@@ -81,11 +81,11 @@
 
 ## GitHub Pages Actions 배포
 
-GitHub Pages는 `refactor/ver1` branch source 루트 배포 대신 GitHub Actions Pages 배포를 사용한다.
+GitHub Pages는 branch source 루트 배포 대신 GitHub Actions Pages 배포를 사용한다.
 
 배포 workflow는 `.github/workflows/pages-deploy.yml`이다.
 
-- trigger: `refactor/ver1` push, `workflow_dispatch`
+- trigger: `main` push, `workflow_dispatch`
 - source 검증: `node scripts/validate-content.js`, `node scripts/validate-static-site.js`
 - artifact 구성: `node scripts/prepare-pages-artifact.js`
 - artifact 검증: `node scripts/validate-static-site.js --root .pages-dist`

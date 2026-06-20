@@ -7,9 +7,9 @@
 - `admin/config.yml`의 `backend.site_domain`이 `hayeon-cms-auth.netlify.app`인지 확인 필요
 - CMS 접근 허용 계정 목록 확정 필요
 - 접근 계정에 GitHub 저장소 `Hayeoncom/test` 쓰기 권한 부여 필요
-- 운영 브랜치가 `refactor/ver1`인지 확인 필요
+- 운영 브랜치가 `main`인지 확인 필요
 - GitHub Pages source가 GitHub Actions인지 확인 필요
-- GitHub Actions Pages workflow가 `refactor/ver1` 변경사항을 반영하는지 확인 필요
+- GitHub Actions Pages workflow가 `main` 변경사항을 반영하는지 확인 필요
 - 배포 루트에 루트 HTML 19개, `assets/`, `content/`, `admin/`, `favicon.ico`가 포함되는지 확인 필요
 - 배포 전 `node scripts/validate-content.js` 실행 필요
 - 배포 workflow에서 `node scripts/validate-content.js`가 자동 실행되는지 확인 필요
@@ -61,7 +61,7 @@
 - `admin/config.yml` backend 필수값:
   - `name: github`
   - `repo: Hayeoncom/test`
-  - `branch: refactor/ver1`
+  - `branch: main`
   - `site_domain: hayeon-cms-auth.netlify.app`
 - OAuth secret, token, client secret은 저장소 파일, 문서, 보고서에 기록하지 않는다.
 - GitHub OAuth callback URL과 Netlify OAuth provider 설정은 Netlify/GitHub 관리 화면에서 확인한다.
@@ -107,16 +107,16 @@
 
 - 홈 카드 이미지는 기존 페이지 이동 링크를 유지하므로 `originalUrl`을 입력하지 않는다.
 - `originalUrl`은 상세/갤러리 이미지에만 필요한 경우 입력한다.
-- 현재 테스트 브랜치의 표준 형식:
+- 현재 운영 브랜치의 표준 형식:
 
 ```text
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<이미지경로>
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<이미지경로>
 ```
 
-- 대표 테스트 값:
+- 대표 운영 값:
 
 ```text
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/assets/images/tokyo/img0.jpeg
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img0.jpeg
 ```
 
 ## 신규 페이지 생성 절차
@@ -174,23 +174,23 @@ node scripts/validate-content.js
 
 1. `admin/config.yml`의 `backend.branch` 확인
 2. GitHub Pages source가 GitHub Actions인지 확인
-3. `.github/workflows/pages-deploy.yml` trigger branch가 `refactor/ver1`인지 확인
-4. CMS 저장 commit이 `refactor/ver1`에 생성되면 workflow가 실행되는지 확인
+3. `.github/workflows/pages-deploy.yml` trigger branch가 `main`인지 확인
+4. CMS 저장 commit이 `main`에 생성되면 workflow가 실행되는지 확인
 5. 두 브랜치가 다르면 CMS 저장 후 운영 반영이 지연되거나 누락될 수 있음
 6. 운영 정책상 분리된 브랜치를 사용할 경우 병합 절차를 별도 문서로 관리
 
-## 정식 main 운영 전환 시 변경 항목
+## main 운영 기준 설정
 
-- `admin/config.yml`의 `backend.branch`: `refactor/ver1`에서 `main`으로 변경
-- `.github/workflows/pages-deploy.yml`의 push trigger branch: `refactor/ver1`에서 `main`으로 변경
-- CMS 저장 대상 브랜치: `refactor/ver1`에서 `main`으로 변경
+- `admin/config.yml`의 `backend.branch`: `main`
+- `.github/workflows/pages-deploy.yml`의 push trigger branch: `main`
+- CMS 저장 대상 브랜치: `main`
 - `originalUrl` 표준:
 
 ```text
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<이미지경로>
+https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<이미지경로>
 ```
 
-에서 아래 형식으로 변경
+형식은 아래 기준을 사용
 
 ```text
 https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<이미지경로>
@@ -200,7 +200,7 @@ https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<이미지경�
 
 1. GitHub 저장소의 Actions 탭 접속
 2. `Deploy Pages` workflow 선택
-3. 최신 run의 branch가 `refactor/ver1`인지 확인
+3. 최신 run의 branch가 `main`인지 확인
 4. `Validate CMS content` step 성공 여부 확인
 5. `Prepare Pages artifact` step에서 `.pages-dist` 크기 확인
 6. `Deploy to GitHub Pages` step 성공 여부 확인

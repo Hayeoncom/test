@@ -1,40 +1,37 @@
-# Main Production Cutover Checklist
+# Main Production Operation Checklist
 
 ## Purpose
 
-This document lists the checks and controlled steps required before moving the current `refactor/ver1` operating setup to the production `main` branch.
+This document lists the checks required to operate the production `main` branch deployment after the 027 cutover.
 
-The 026 scope is preparation only. Do not merge to `main`, push to `main`, change GitHub Pages source, or change the Netlify deploy branch during this step.
+Do not force push to `main`. Use normal commits, pull requests, or revert commits for production changes and rollback.
 
 ## Current Operating State
 
 - Public site: `https://hayeon.kr/`
 - CMS admin URL: `https://hayeon-cms-auth.netlify.app/admin/`
 - GitHub Pages deploy type: GitHub Actions Pages
-- Current temporary operating branch: `refactor/ver1`
-- Planned production branch: `main`
-- Current Pages workflow trigger branch: `refactor/ver1`
-- Current CMS backend branch: `refactor/ver1`
-- Current Netlify admin deploy branch: `refactor/ver1`
+- Production operating branch: `main`
+- Pages workflow trigger branch: `main`
+- CMS backend branch: `main`
+- Netlify admin deploy branch: `main`
 - Public site `admin/`: guide/redirect page to the Netlify admin URL
 - Public site `admin/config.yml`: excluded from Pages artifact
 - Netlify admin artifact: `.netlify-admin` with `admin/index.html` and `admin/config.yml`
 
 ## Branch Roles
 
-`refactor/ver1` is the current validated operating branch for the temporary production deployment.
+`main` is the production branch for public site deployment and CMS saves.
 
-`main` is the planned production branch. It must not become the active CMS save branch or Pages deployment branch until the user approves a separate cutover task.
+`refactor/ver1` is retained only as historical context for the temporary test deployment and as a rollback reference when needed.
 
-## Required Checks Before Cutover
+## Required Checks Before Production Changes
 
-Run these checks before changing any production branch setting:
+Run these checks before pushing production changes:
 
 ```sh
 git status --short
-git rev-parse refactor/ver1
 git rev-parse main
-git rev-parse origin/refactor/ver1
 git rev-parse origin/main
 node scripts/validate-content.js
 node --check assets/site.js
@@ -84,9 +81,9 @@ https://hayeon-cms-auth.netlify.app/admin/
 https://hayeon-cms-auth.netlify.app/admin/config.yml
 ```
 
-## Files And Settings To Change During Cutover
+## Production Files And Settings
 
-Change these together in the main cutover task:
+Keep these aligned on `main`:
 
 ```text
 admin/config.yml
@@ -98,11 +95,11 @@ docs/cms-image-policy.md
 docs/github-actions-pages-deployment.md
 ```
 
-External settings to change during cutover:
+External settings:
 
 ```text
-Netlify admin site deploy branch
-GitHub Pages deployment branch policy if repository settings require branch-specific approval
+Netlify admin site deploy branch: main
+GitHub Pages source: GitHub Actions
 CMS operator checklist used outside the repository
 ```
 
@@ -110,27 +107,25 @@ Settings that should remain unchanged:
 
 ```text
 CNAME: hayeon.kr
-GitHub Pages source: GitHub Actions
 Netlify build command: node scripts/prepare-netlify-admin.js
 Netlify publish directory: .netlify-admin
 Netlify custom domain: do not connect hayeon.kr or www.hayeon.kr
 ```
 
-## Cutover Steps
+## Production Change Steps
 
-These steps require explicit user approval in a separate task:
+Use these steps for production changes after cutover:
 
-1. Confirm that `refactor/ver1` is pushed and the latest Pages workflow is successful.
-2. Confirm that `main` is ready to receive the `refactor/ver1` site state.
-3. Merge or otherwise apply the approved `refactor/ver1` changes into `main`.
-4. Update `admin/config.yml`:
+1. Confirm that `main` is clean and up to date.
+2. Apply approved changes in a normal branch or direct `main` commit according to repository policy.
+3. Confirm `admin/config.yml`:
 
 ```yml
 backend:
   branch: main
 ```
 
-5. Update `.github/workflows/pages-deploy.yml`:
+4. Confirm `.github/workflows/pages-deploy.yml`:
 
 ```yml
 on:
@@ -140,48 +135,34 @@ on:
   workflow_dispatch:
 ```
 
-6. Update `originalUrl` values that reference `refs/heads/refactor/ver1`.
-7. Update repository documentation that still names `refactor/ver1` as the active operating branch.
-8. Push `main` only after local validation passes.
-9. Change the Netlify admin site deploy branch to `main` in the Netlify UI.
-10. Run the GitHub Actions Pages workflow for `main`.
-11. Validate the public site, public exclusions, and Netlify admin URLs.
-12. Test one CMS save flow on the Netlify admin URL after confirming branch settings.
+5. Confirm `originalUrl` values use `refs/heads/main`.
+6. Push `main` only after local validation passes.
+7. Confirm GitHub Actions Pages workflow for `main`.
+8. Validate the public site, public exclusions, and Netlify admin URLs.
+9. Test one CMS save flow on the Netlify admin URL when user login is available.
 
-## originalUrl Transition Policy
+## originalUrl Policy
 
-Current temporary branch standard:
-
-```text
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/<image-path>
-```
-
-Production `main` standard:
+Production branch standard:
 
 ```text
 https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<image-path>
 ```
 
-Known current conversion target:
+Known production original URL example:
 
 ```text
 content/pages/tokyo.json
-https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/refactor/ver1/assets/images/tokyo/img0.jpeg
-```
-
-Expected converted value:
-
-```text
 https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img0.jpeg
 ```
 
-Before cutover, re-run:
+During audits, run:
 
 ```sh
-rg -n "refs/heads/refactor/ver1|raw.githubusercontent.com/Hayeoncom/test" content docs admin .github scripts
+rg -n "refs/heads/main|refs/heads/refactor/ver1|raw.githubusercontent.com/Hayeoncom/test" content docs admin .github scripts
 ```
 
-Convert only content values that must open original images from the production branch. Do not add `originalUrl` to home cards.
+Content values that open original images must use the production branch. Do not add `originalUrl` to home cards.
 
 ## GitHub Actions Pages Verification
 
@@ -189,7 +170,7 @@ After the `main` workflow runs, verify:
 
 - Workflow name: `Deploy Pages`
 - Run branch: `main`
-- Commit SHA matches the intended `main` cutover commit
+- Commit SHA matches the intended `main` production commit
 - `Validate CMS content` step passes
 - `Validate source references` step passes
 - `Prepare Pages artifact` step reports artifact size below 1 GB
@@ -200,7 +181,7 @@ After the `main` workflow runs, verify:
 
 ## Netlify Admin Verification
 
-After changing the Netlify deploy branch to `main`, verify:
+After Netlify deploys `main`, verify:
 
 - Netlify deploy branch is `main`
 - Build command is `node scripts/prepare-netlify-admin.js`
@@ -227,28 +208,28 @@ Use a real iPhone Safari session to check:
 
 ## Rollback Procedure
 
-If the `main` cutover fails after branch settings are changed:
+If production fails after `main` changes:
 
 1. Stop additional CMS edits until branch policy is corrected.
-2. Revert the cutover commit on `main` or restore the last known valid `main` commit.
-3. If Netlify was changed to `main`, temporarily set the Netlify admin deploy branch back to `refactor/ver1`.
-4. If the Pages workflow on `main` is failing, use the latest successful `refactor/ver1` deployment as the reference state.
+2. Prefer a revert commit on `main`; do not use force push.
+3. Use `backup/main-before-027-*` as the reference for pre-cutover state.
+4. If Netlify was changed to `main`, temporarily set the Netlify admin deploy branch back to `refactor/ver1` only when the public site is also rolled back to that branch policy.
 5. Confirm `hayeon.kr/admin/` remains only a guide/redirect page.
 6. Confirm `hayeon.kr/admin/config.yml` remains 404.
 7. Confirm CMS saves are not writing to a branch that no longer deploys.
 8. Document the failed step, commit SHA, and URL checks before retrying.
 
-## Cutover Stop Conditions
+## Stop Conditions
 
-Do not run the main cutover when any of these conditions are true:
+Do not push production changes when any of these conditions are true:
 
-- `refactor/ver1` GitHub Actions Pages run is failing.
+- `main` GitHub Actions Pages run is failing.
 - Netlify admin `/admin/` returns a non-200 status.
 - Netlify admin `/admin/config.yml` returns a non-200 status.
 - Required `hayeon.kr` public URLs fail.
 - Public exclusion URLs return 200.
-- `originalUrl` conversion targets are not listed.
-- CMS save branch and Pages deploy branch would differ after cutover.
-- User iPhone Safari check has not been performed.
-- `git status --short` is not clean before cutover.
-- User has not approved the separate main cutover task.
+- `originalUrl` values point to the wrong branch.
+- CMS save branch and Pages deploy branch differ.
+- User iPhone Safari check has not been performed for layout-sensitive changes.
+- `git status --short` is not clean before deployment.
+- `main` was not backed up before a risky production change.

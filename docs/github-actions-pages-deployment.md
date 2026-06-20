@@ -4,13 +4,13 @@
 
 이 문서는 GitHub Pages legacy branch source 배포를 GitHub Actions Pages 배포로 전환할 때의 운영 절차를 정리한다.
 
-기존 branch source 방식은 `refactor/ver1` 루트 전체를 Pages 대상으로 사용한다. 이 방식은 운영에 필요 없는 `docs/`, `scripts/`, zip 파일, 미사용 이미지까지 공개 산출물 후보가 되며, 저장소와 이미지 디렉터리 크기가 커질수록 배포 시간이 길어진다.
+기존 branch source 방식은 브랜치 루트 전체를 Pages 대상으로 사용한다. 이 방식은 운영에 필요 없는 `docs/`, `scripts/`, zip 파일, 미사용 이미지까지 공개 산출물 후보가 되며, 저장소와 이미지 디렉터리 크기가 커질수록 배포 시간이 길어진다.
 
 GitHub Actions Pages 방식은 workflow에서 검증을 먼저 실행한 뒤 `.pages-dist`에 운영 파일만 복사하고, 이 디렉터리만 Pages artifact로 업로드한다.
 
 ## 배포 흐름
 
-1. `refactor/ver1`에 push되거나 사용자가 workflow를 수동 실행한다.
+1. `main`에 push되거나 사용자가 workflow를 수동 실행한다.
 2. GitHub Actions가 저장소를 checkout한다.
 3. `node scripts/validate-content.js`로 CMS JSON 구조를 검증한다.
 4. JavaScript 문법 검사를 실행한다.
@@ -23,11 +23,11 @@ GitHub Actions Pages 방식은 workflow에서 검증을 먼저 실행한 뒤 `.p
 
 ## Workflow 실행 조건
 
-- push branch: `refactor/ver1`
+- push branch: `main`
 - manual trigger: `workflow_dispatch`
-- CMS 저장 branch: `admin/config.yml`의 `backend.branch: refactor/ver1`
+- CMS 저장 branch: `admin/config.yml`의 `backend.branch: main`
 
-CMS가 `refactor/ver1`에 commit을 만들면 같은 branch push 조건으로 Pages workflow가 실행되는 구조다.
+CMS가 `main`에 commit을 만들면 같은 branch push 조건으로 Pages workflow가 실행되는 구조다.
 
 ## Artifact 포함 대상
 

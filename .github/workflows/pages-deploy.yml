@@ -3,7 +3,7 @@ name: Deploy Pages
 on:
   push:
     branches:
-      - refactor/ver1
+      - main
   workflow_dispatch:
 
 permissions:
