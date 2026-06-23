@@ -155,5 +155,9 @@
         return h(PagesPreview, { entry: this.props.entry });
       },
     }));
+
+    if (window.CMS_MANUAL_INIT && typeof CMS.init === 'function') {
+      CMS.init();
+    }
   });
 }());
