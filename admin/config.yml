@@ -10,70 +10,232 @@ media_folder: "assets/images/uploads"
 public_folder: "assets/images/uploads"
 
 publish_mode: editorial_workflow
+display_url: "https://hayeon.kr/"
+logo_url: "https://hayeon.kr/favicon.ico"
 
 collections:
   - name: "site"
-    label: "Site Settings"
+    label: "사이트 기본 설정"
+    label_singular: "사이트 설정"
+    description: "사이트 공통 제목, 설명, CMS 업로드 경로를 관리합니다."
     files:
-      - label: "Site"
+      - label: "사이트 기본 정보"
         name: "site"
         file: "content/site.json"
         format: "json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text", required: false }
-          - { label: "Image Upload Path", name: "imageUploadPath", widget: "string" }
+          - label: "사이트 제목"
+            name: "title"
+            widget: "string"
+            hint: "브라우저와 사이트 공통 영역에서 사용하는 제목입니다."
+          - label: "사이트 설명"
+            name: "description"
+            widget: "text"
+            required: false
+            hint: "사이트 설명 문구입니다. 비워둘 수 있습니다."
+          - label: "이미지 업로드 경로"
+            name: "imageUploadPath"
+            widget: "string"
+            hint: "CMS 업로드 기준 경로입니다. 운영 구조에 영향을 주므로 일반적으로 수정하지 않습니다."
   - name: "pages"
-    label: "Pages"
+    label: "페이지 관리"
+    label_singular: "페이지"
+    description: "기존 여행 페이지의 사진, 캡션, 장소, 원본 이미지 URL을 관리합니다."
     folder: "content/pages"
     format: "json"
-    create: true
+    create: false
+    delete: false
     slug: "{{id}}"
-    summary: "{{title}}"
+    identifier_field: "title"
+    summary: "{{title}} · {{sourceHtml}} · {{pageType}}"
+    sortable_fields: ["title", "sourceHtml", "displayOrder", "commit_date"]
+    view_filters:
+      - label: "공개 페이지"
+        field: "status"
+        pattern: "published"
+      - label: "갤러리"
+        field: "pageType"
+        pattern: "gallery"
+      - label: "홈"
+        field: "pageType"
+        pattern: "home"
+    view_groups:
+      - label: "페이지 유형"
+        field: "pageType"
+      - label: "공개 상태"
+        field: "status"
     fields:
-      - { label: "ID", name: "id", widget: "string" }
-      - { label: "Source HTML", name: "sourceHtml", widget: "string", required: false }
-      - { label: "Page Type", name: "pageType", widget: "select", options: ["home", "gallery", "document-gallery", "placeholder"] }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Display Order", name: "displayOrder", widget: "number", value_type: "int", required: false }
-      - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published" }
-      - label: "Navigation"
+      - label: "페이지 ID"
+        name: "id"
+        widget: "string"
+        hint: "콘텐츠 식별자입니다. 기존 URL과 연결될 수 있으므로 일반적으로 수정하지 않습니다."
+      - label: "연결된 HTML 파일명"
+        name: "sourceHtml"
+        widget: "string"
+        required: false
+        hint: "기존 HTML 파일과 연결되는 값입니다. URL 구조가 바뀔 수 있으므로 일반적으로 수정하지 않습니다."
+      - label: "페이지 유형"
+        name: "pageType"
+        widget: "select"
+        options:
+          - { label: "홈", value: "home" }
+          - { label: "사진 갤러리", value: "gallery" }
+          - { label: "문서형 갤러리", value: "document-gallery" }
+          - { label: "준비중 페이지", value: "placeholder" }
+        hint: "렌더링 방식에 영향을 줍니다. 임의 변경하지 않습니다."
+      - label: "페이지 제목"
+        name: "title"
+        widget: "string"
+        hint: "관리 목록과 페이지 미리보기에서 보이는 제목입니다."
+      - label: "부제목"
+        name: "subtitle"
+        widget: "string"
+        required: false
+        hint: "페이지에 부제목이 필요한 경우에만 입력합니다."
+      - label: "페이지 설명"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "페이지 설명 문구입니다. 비워둘 수 있습니다."
+      - label: "홈 표시 순서"
+        name: "displayOrder"
+        widget: "number"
+        value_type: "int"
+        required: false
+        hint: "홈 카드 정렬 순서입니다. 숫자가 작을수록 먼저 표시됩니다."
+      - label: "공개 상태"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "공개", value: "published" }
+          - { label: "초안", value: "draft" }
+        default: "published"
+        hint: "현재 렌더러는 published 값을 기준으로 운영 노출을 관리합니다."
+      - label: "이전/다음 페이지 연결"
         name: "navigation"
         widget: "object"
         required: false
+        collapsed: true
+        hint: "페이지 번호와 이전/다음 이동에 영향을 줄 수 있으므로 일반적으로 수정하지 않습니다."
         fields:
-          - { label: "Previous", name: "prev", widget: "string", required: false }
-          - { label: "Next", name: "next", widget: "string", required: false }
-          - { label: "Group", name: "group", widget: "string", required: false }
-      - label: "Audio"
+          - label: "이전 페이지"
+            name: "prev"
+            widget: "string"
+            required: false
+            hint: "이전 페이지 HTML 파일명입니다."
+          - label: "다음 페이지"
+            name: "next"
+            widget: "string"
+            required: false
+            hint: "다음 페이지 HTML 파일명입니다."
+          - label: "페이지 그룹"
+            name: "group"
+            widget: "string"
+            required: false
+            hint: "연관 페이지 그룹 값입니다. 페이지 번호 순서에 영향을 줄 수 있습니다."
+      - label: "오디오"
         name: "audio"
         widget: "object"
         required: false
+        collapsed: true
+        hint: "외부 오디오 URL은 브라우저에서 차단되거나 404가 날 수 있습니다. 권한과 URL 상태 확인 후 수정합니다."
         fields:
-          - { label: "Source", name: "src", widget: "string", required: false }
-          - { label: "Type", name: "type", widget: "string", required: false, default: "audio/mp3" }
-      - { label: "Footer", name: "footer", widget: "string", required: false }
-      - label: "Sections"
+          - label: "오디오 URL"
+            name: "src"
+            widget: "string"
+            required: false
+            hint: "외부 오디오 파일 URL입니다. 현재 외부 오디오 이슈가 있으므로 신중히 수정합니다."
+          - label: "오디오 타입"
+            name: "type"
+            widget: "string"
+            required: false
+            default: "audio/mp3"
+            hint: "예: audio/mp3. URL의 실제 Content-Type과 다를 수 있습니다."
+      - label: "푸터 문구"
+        name: "footer"
+        widget: "string"
+        required: false
+        hint: "페이지 하단 문구입니다. 비워둘 수 있습니다."
+      - label: "화면 섹션"
         name: "sections"
         widget: "list"
+        label_singular: "섹션"
+        summary: "{{fields.title}} · {{fields.type}}"
+        hint: "페이지를 구성하는 화면 묶음입니다. 사진 수정은 각 섹션의 사진 목록에서 진행합니다."
         fields:
-          - { label: "Type", name: "type", widget: "select", options: ["gallery", "slider", "travelCards", "documentCards"] }
-          - { label: "Title", name: "title", widget: "string", required: false }
-          - label: "Items"
+          - label: "섹션 유형"
+            name: "type"
+            widget: "select"
+            options:
+              - { label: "사진 갤러리", value: "gallery" }
+              - { label: "홈 슬라이더", value: "slider" }
+              - { label: "홈 여행 카드", value: "travelCards" }
+              - { label: "문서 카드", value: "documentCards" }
+            hint: "렌더링 방식에 영향을 주므로 기존 값을 유지하는 것을 권장합니다."
+          - label: "섹션 제목"
+            name: "title"
+            widget: "string"
+            required: false
+            hint: "섹션을 구분하는 제목입니다."
+          - label: "사진 목록"
             name: "items"
             widget: "list"
+            label_singular: "사진"
             summary: "{{fields.caption}}{{fields.title}}{{fields.image}}"
+            hint: "표시용 이미지, 사진 설명, 장소, 원본 이미지 URL을 관리합니다."
             fields:
-              - { label: "Image", name: "image", widget: "image", required: false }
-              - { label: "Original Image URL", name: "originalUrl", widget: "string", required: false, hint: "Optional full-size original image URL. Display image remains the optimized site image; original opens only when the image is clicked." }
-              - { label: "Alt Text", name: "alt", widget: "string", required: false }
-              - { label: "Caption", name: "caption", widget: "text", required: false }
-              - { label: "Location", name: "location", widget: "string", required: false }
-              - { label: "Title", name: "title", widget: "string", required: false }
-              - { label: "Meta", name: "meta", widget: "string", required: false }
-              - { label: "Camera", name: "camera", widget: "string", required: false }
-              - { label: "Date", name: "date", widget: "string", required: false }
-              - { label: "Link", name: "href", widget: "string", required: false }
-              - { label: "Visible", name: "visible", widget: "boolean", default: true }
+              - label: "표시용 이미지 경로"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "웹페이지에 표시되는 최적화 이미지 경로입니다. 예: assets/images/tokyo/img0.jpeg"
+              - label: "사진 설명"
+                name: "caption"
+                widget: "text"
+                required: false
+                hint: "사진 아래 또는 이미지 위에 표시되는 설명입니다."
+              - label: "장소"
+                name: "location"
+                widget: "string"
+                required: false
+                hint: "사진 장소입니다. 예: 📍 Narita International Airport"
+              - label: "원본 이미지 URL"
+                name: "originalUrl"
+                widget: "string"
+                required: false
+                hint: "원본 이미지 새 창 보기용 URL입니다. GitHub raw URL을 입력합니다. 예: https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img0.jpeg 홈 카드에는 적용하지 않습니다. 상세 사진에만 사용합니다."
+              - label: "이미지 대체 텍스트"
+                name: "alt"
+                widget: "string"
+                required: false
+                hint: "이미지를 설명하는 짧은 텍스트입니다."
+              - label: "카드 제목"
+                name: "title"
+                widget: "string"
+                required: false
+                hint: "홈 카드 또는 문서 카드 제목입니다."
+              - label: "카드 메타 정보"
+                name: "meta"
+                widget: "string"
+                required: false
+                hint: "홈 카드의 날짜나 번호 표시입니다. 예: #11, 2018"
+              - label: "카메라 정보"
+                name: "camera"
+                widget: "string"
+                required: false
+                hint: "카메라 정보가 필요한 상세 사진에만 입력합니다."
+              - label: "촬영 날짜"
+                name: "date"
+                widget: "string"
+                required: false
+                hint: "촬영 날짜 또는 표시 날짜입니다."
+              - label: "이동 링크"
+                name: "href"
+                widget: "string"
+                required: false
+                hint: "홈 카드 클릭 시 이동할 HTML 파일입니다. 상세 사진 원본보기에는 사용하지 않습니다."
+              - label: "표시 여부"
+                name: "visible"
+                widget: "boolean"
+                default: true
+                hint: "끄면 해당 항목이 사용자 사이트에 표시되지 않을 수 있습니다."

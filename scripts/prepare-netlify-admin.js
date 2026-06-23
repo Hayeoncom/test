@@ -75,6 +75,8 @@ function main() {
 
   copyFile('admin/index.html');
   copyFile('admin/config.yml');
+  copyFile('admin/preview.js');
+  copyFile('admin/preview.css');
   copyFile('favicon.ico');
   writeFile('_redirects', '/ /admin/ 302\n');
 
