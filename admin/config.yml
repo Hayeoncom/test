@@ -186,9 +186,9 @@ collections:
             fields:
               - label: "표시용 이미지 경로"
                 name: "image"
-                widget: "image"
+                widget: "string"
                 required: false
-                hint: "웹페이지에 표시되는 최적화 이미지 경로입니다. 예: assets/images/tokyo/img0.jpeg"
+                hint: "웹페이지에 표시되는 최적화 이미지 경로입니다. 예: assets/images/tokyo/img0.jpeg 오른쪽 미리보기에서 실제 썸네일을 확인합니다."
               - label: "사진 설명"
                 name: "caption"
                 widget: "text"

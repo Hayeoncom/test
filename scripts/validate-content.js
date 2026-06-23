@@ -10,6 +10,7 @@ const siteFile = path.join(contentDir, 'site.json');
 
 const allowedPageTypes = new Set(['document-gallery', 'gallery', 'home', 'placeholder']);
 const allowedSectionTypes = new Set(['documentCards', 'gallery', 'slider', 'travelCards']);
+const rawBaseUrl = 'https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/';
 const errors = [];
 let checkedFiles = 0;
 
@@ -92,6 +93,54 @@ function validateOptionalUrl(filePath, value, field) {
   }
 }
 
+function rawUrlFor(imagePath) {
+  return rawBaseUrl + imagePath.trim().replace(/^\/+/, '');
+}
+
+function shouldRequireOriginalUrl(page, section, item) {
+  return page.pageType !== 'home' &&
+    section.type === 'gallery' &&
+    typeof item.image === 'string' &&
+    item.image.trim() !== '';
+}
+
+function validateOriginalUrlPolicy(filePath, page, section, item, pathLabel) {
+  if (!isObject(item) || typeof item.image !== 'string' || item.image.trim() === '') {
+    return;
+  }
+
+  const originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+
+  if (page.pageType === 'home') {
+    if (originalUrl) {
+      addError(filePath, `${pathLabel}.originalUrl must be empty on home items`);
+    }
+    return;
+  }
+
+  if (!shouldRequireOriginalUrl(page, section, item)) {
+    return;
+  }
+
+  if (!originalUrl) {
+    addError(filePath, `${pathLabel}.originalUrl is required for gallery images`);
+    return;
+  }
+
+  const expected = rawUrlFor(item.image);
+  if (originalUrl !== expected) {
+    addError(filePath, `${pathLabel}.originalUrl must match GitHub raw main image path: ${expected}`);
+  }
+
+  if (originalUrl.includes('refs/heads/refactor/ver1')) {
+    addError(filePath, `${pathLabel}.originalUrl must not use refactor/ver1`);
+  }
+
+  if (/^https:\/\/hayeon\.kr\//i.test(originalUrl) || /netlify\.app/i.test(originalUrl)) {
+    addError(filePath, `${pathLabel}.originalUrl must not use deployed site or Netlify URL`);
+  }
+}
+
 function validateLocalPath(filePath, value, field) {
   if (typeof value !== 'string' || value.trim() === '') {
     addError(filePath, `${field} must be a non-empty path`);
@@ -150,7 +199,7 @@ function validateAudio(filePath, page) {
   }
 }
 
-function validateItem(filePath, item, pathLabel) {
+function validateItem(filePath, page, section, item, pathLabel) {
   if (!isObject(item)) {
     addError(filePath, `${pathLabel} must be an object`);
     return;
@@ -163,6 +212,8 @@ function validateItem(filePath, item, pathLabel) {
   if (Object.prototype.hasOwnProperty.call(item, 'originalUrl')) {
     validateOptionalUrl(filePath, item.originalUrl, `${pathLabel}.originalUrl`);
   }
+
+  validateOriginalUrlPolicy(filePath, page, section, item, pathLabel);
 
   if (Object.prototype.hasOwnProperty.call(item, 'href')) {
     if (typeof item.href !== 'string' || item.href.trim() === '') {
@@ -224,7 +275,7 @@ function validatePage(filePath) {
       }
 
       for (const [itemIndex, item] of section.items.entries()) {
-        validateItem(filePath, item, `${sectionPath}.items[${itemIndex}]`);
+        validateItem(filePath, page, section, item, `${sectionPath}.items[${itemIndex}]`);
       }
     }
   }

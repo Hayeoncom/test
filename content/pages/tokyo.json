@@ -20,21 +20,24 @@
           "alt": "TOKYO",
           "location": "",
           "caption": "서울 출신 짱구와 함께하는 여행",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img00.jpeg"
         },
         {
           "image": "assets/images/tokyo/img000.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img000.jpeg"
         },
         {
           "image": "assets/images/tokyo/img0000.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "저녁 비행기를 타니 창밖이 예쁘다.",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img0000.jpeg"
         },
         {
           "image": "assets/images/tokyo/img1.jpeg",
@@ -57,341 +60,390 @@
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img3.jpeg"
         },
         {
           "image": "assets/images/tokyo/img4.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "스카이라이너타고 우에노역으로 가는 길",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img4.jpeg"
         },
         {
           "image": "assets/images/tokyo/img5.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img5.jpeg"
         },
         {
           "image": "assets/images/tokyo/img6.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img6.jpeg"
         },
         {
           "image": "assets/images/tokyo/img7.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img7.jpeg"
         },
         {
           "image": "assets/images/tokyo/img8.jpeg",
           "alt": "TOKYO",
           "location": "📍 Ueno Station",
           "caption": "우에노역에서는 다시 지하철로 갈아탔다",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img8.jpeg"
         },
         {
           "image": "assets/images/tokyo/img10.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "넘쳐나는 광고배너 구경하는 재미가 있는 일본 지하철",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img10.jpeg"
         },
         {
           "image": "assets/images/tokyo/img9.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img9.jpeg"
         },
         {
           "image": "assets/images/tokyo/img00000.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img00000.jpeg"
         },
         {
           "image": "assets/images/tokyo/img11.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img11.jpeg"
         },
         {
           "image": "assets/images/tokyo/img13.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "텐동먹으러 '한노스케' 본점에 도착했다",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img13.jpeg"
         },
         {
           "image": "assets/images/tokyo/img12.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "웨이팅하는 동안 오사카에서 먹은 포도물을 찾았지만 못찾았다. .",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img12.jpeg"
         },
         {
           "image": "assets/images/tokyo/img14.jpeg",
           "alt": "TOKYO",
           "location": "📍 Kaneko-Hannosuke",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img14.jpeg"
         },
         {
           "image": "assets/images/tokyo/img15.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "비슷한거라도. . 역시 찾던 맛은 아니야. .",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img15.jpeg"
         },
         {
           "image": "assets/images/tokyo/img16.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img16.jpeg"
         },
         {
           "image": "assets/images/tokyo/img17.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img17.jpeg"
         },
         {
           "image": "assets/images/tokyo/img18.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "바스락거리게 잘 튀겨진 튀김에 허니콤보간장(?) 조합, 잊지 못하는 맛이다.",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img18.jpeg"
         },
         {
           "image": "assets/images/tokyo/img19.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img19.jpeg"
         },
         {
           "image": "assets/images/tokyo/img20.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "다먹고 나오니 벌써 밤 10시반",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img20.jpeg"
         },
         {
           "image": "assets/images/tokyo/img21.jpeg",
           "alt": "TOKYO",
           "location": "📍 CITAN",
           "caption": "이 날 머무른 호스텔, 카페와 바가 함께 있고 직원분한테서 나는 우드향이 가장 좋았다^ ^",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img21.jpeg"
         },
         {
           "image": "assets/images/tokyo/img22.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "편의점 간식 사냥꾼.",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img22.jpeg"
         },
         {
           "image": "assets/images/tokyo/img23.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img23.jpeg"
         },
         {
           "image": "assets/images/tokyo/img24.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "짧게 머물어서 공유 주방은 못써봤지만",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img24.jpeg"
         },
         {
           "image": "assets/images/tokyo/img25.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "냉장고에 이로하스는 잠깐 맡겼다 갑니다~",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img25.jpeg"
         },
         {
           "image": "assets/images/tokyo/img26.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img26.jpeg"
         },
         {
           "image": "assets/images/tokyo/img27.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img27.jpeg"
         },
         {
           "image": "assets/images/tokyo/img28.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img28.jpeg"
         },
         {
           "image": "assets/images/tokyo/img29.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "오늘의 행선지는 요요기!",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img29.jpeg"
         },
         {
           "image": "assets/images/tokyo/img30.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img30.jpeg"
         },
         {
           "image": "assets/images/tokyo/img31.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img31.jpeg"
         },
         {
           "image": "assets/images/tokyo/img32.jpeg",
           "alt": "TOKYO",
           "location": "📍 Yoyogi Station",
           "caption": "요요기는 유명한 베이커리가 모여있어서 아주 조타",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img32.jpeg"
         },
         {
           "image": "assets/images/tokyo/img33.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img33.jpeg"
         },
         {
           "image": "assets/images/tokyo/img34.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "로손의 프리미엄 버전 '네추럴 로손'도 역 앞에 바로 있으니 두배로 조타",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img34.jpeg"
         },
         {
           "image": "assets/images/tokyo/img35.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img35.jpeg"
         },
         {
           "image": "assets/images/tokyo/img36.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "신주쿠 가는 어느 길목에서 찰쿠닥",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img36.jpeg"
         },
         {
           "image": "assets/images/tokyo/img37.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img37.jpeg"
         },
         {
           "image": "assets/images/tokyo/img38.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "약간의 포포몬쓰도 즐겼다",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img38.jpeg"
         },
         {
           "image": "assets/images/tokyo/img40.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img40.jpeg"
         },
         {
           "image": "assets/images/tokyo/img41.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img41.jpeg"
         },
         {
           "image": "assets/images/tokyo/img42.jpeg",
           "alt": "TOKYO",
           "location": "📍 Tatsunoya",
           "caption": "츠케멘으로 아주 유명한 신주쿠 타츠노야",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img42.jpeg"
         },
         {
           "image": "assets/images/tokyo/img43.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "우리가 시킨건 호르몬 츠케멘! 육수 감칠맛이 엄청나다 담엔 밥까지 말아먹을테다.",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img43.jpeg"
         },
         {
           "image": "assets/images/tokyo/img44.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "도쿄 디즈니 스토어 첫 방문.",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img44.jpeg"
         },
         {
           "image": "assets/images/tokyo/img45.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "사진은 버즈랑 찍고 나는 우디를 데려왔다!",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img45.jpeg"
         },
         {
           "image": "assets/images/tokyo/img46.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "이 때산 마이크 인형은 우리 솜이 최애 장난감이 되었고",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img46.jpeg"
         },
         {
           "image": "assets/images/tokyo/img47.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img47.jpeg"
         },
         {
           "image": "assets/images/tokyo/img48.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img48.jpeg"
         },
         {
           "image": "assets/images/tokyo/img49.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img49.jpeg"
         },
         {
           "image": "assets/images/tokyo/img50.jpeg",
           "alt": "TOKYO",
           "location": "",
           "caption": "그리고 스크램블 교차로에서도 찰쿠닥",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img50.jpeg"
         },
         {
           "visible": true,
           "image": "assets/images/uploads/img_0930.jpeg",
-          "caption": "고바순 냠냠"
+          "caption": "고바순 냠냠",
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/uploads/img_0930.jpeg"
         }
       ]
     }

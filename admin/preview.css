@@ -108,6 +108,12 @@
   object-fit: cover;
 }
 
+.cms-preview__thumb-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .cms-preview__thumb.is-broken {
   display: none;
 }

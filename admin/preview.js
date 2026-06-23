@@ -66,19 +66,28 @@
       const originalUrl = text(item.originalUrl);
       const caption = text(item.caption || item.title || item.alt, '설명 없음');
       const location = text(item.location);
+      const thumb = previewUrl
+        ? h('img', {
+          className: 'cms-preview__thumb',
+          src: previewUrl,
+          alt: text(item.alt || caption, 'preview image'),
+          loading: 'lazy',
+          onError(event) {
+            event.currentTarget.classList.add('is-broken');
+          },
+        })
+        : h('div', { className: 'cms-preview__no-image' }, '이미지 경로 없음');
 
       return h('article', { className: 'cms-preview__card' }, [
-        h('div', { className: 'cms-preview__thumb-wrap', key: 'image' }, previewUrl
-          ? h('img', {
-            className: 'cms-preview__thumb',
-            src: previewUrl,
-            alt: text(item.alt || caption, 'preview image'),
-            loading: 'lazy',
-            onError(event) {
-              event.currentTarget.classList.add('is-broken');
-            },
-          })
-          : h('div', { className: 'cms-preview__no-image' }, '이미지 경로 없음')),
+        h('div', { className: 'cms-preview__thumb-wrap', key: 'image' }, originalUrl
+          ? h('a', {
+            className: 'cms-preview__thumb-link',
+            href: originalUrl,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            title: '원본 이미지 새 창으로 열기',
+          }, thumb)
+          : thumb),
         h('div', { className: 'cms-preview__card-body', key: 'body' }, [
           h('p', { className: 'cms-preview__caption', key: 'caption' }, caption),
           h(InfoLine, { label: '장소', value: location, key: 'location' }),
