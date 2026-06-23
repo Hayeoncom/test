@@ -49,7 +49,8 @@
           "alt": "TOKYO",
           "location": "📍 Narita International Airport",
           "caption": "",
-          "visible": true
+          "visible": true,
+          "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/tokyo/img2.jpeg"
         },
         {
           "image": "assets/images/tokyo/img3.jpeg",
