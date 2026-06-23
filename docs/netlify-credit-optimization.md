@@ -95,9 +95,24 @@ CMS saves update public content. The admin application files do not change, so t
 
 `admin/config.yml` controls CMS backend settings, collections, fields, and branch targeting. If it changes, Netlify must rebuild so the admin site serves the new config.
 
-## Stopped Builds Option
+## Stopped Builds Operating Policy
 
-Netlify UI may also allow stopping builds.
+Because `https://hayeon.kr/` is deployed by GitHub Actions Pages, Netlify does
+not need to rebuild for public-site changes. The normal operating policy for
+`hayeon-cms-auth` is:
+
+- Keep Netlify Build status set to `Stopped builds`.
+- Keep the repository connected.
+- Keep the OAuth provider settings.
+- Keep the existing published admin deployment.
+- Do not connect `hayeon.kr` or `www.hayeon.kr` as Netlify custom domains.
+
+Stopped builds is the preferred credit-control setting for this project because
+the Netlify site only serves the CMS admin static files. The latest successful
+admin deployment can continue serving:
+
+- `https://hayeon-cms-auth.netlify.app/admin/`
+- `https://hayeon-cms-auth.netlify.app/admin/config.yml`
 
 Pros:
 
@@ -109,7 +124,52 @@ Cons:
 - Admin changes will not deploy until builds are manually re-enabled or triggered another way.
 - Operators may forget to redeploy after changing `admin/config.yml`.
 
-Build ignore is safer for this repository because it still permits admin-related deploys.
+Build ignore remains in `netlify.toml` as a fallback, but Stopped builds is the
+default operating policy after repeated production deploy `error` states were
+observed for commits that do not change the Netlify admin artifact.
+
+## Admin Change Procedure With Stopped Builds
+
+When any of these files change, Netlify admin must be intentionally redeployed:
+
+- `admin/index.html`
+- `admin/config.yml`
+- `netlify.toml`
+- `scripts/prepare-netlify-admin.js`
+- `scripts/netlify-ignore-build.js`
+- `favicon.ico`
+
+Use this procedure:
+
+1. In Netlify, open `hayeon-cms-auth`.
+2. Go to `Project configuration` -> `Build & deploy` -> `Continuous deployment`.
+3. Change Build status from `Stopped builds` to `Active builds`.
+4. Push the admin-related change to `main` or trigger a deploy for `main`.
+5. Confirm `https://hayeon-cms-auth.netlify.app/admin/` returns HTTP 200.
+6. Confirm `https://hayeon-cms-auth.netlify.app/admin/config.yml` returns HTTP 200.
+7. Confirm `admin/config.yml` still has `backend.branch: main`.
+8. Confirm CMS login still enters the GitHub OAuth flow.
+9. Change Build status back to `Stopped builds`.
+
+Do not disconnect the repository and do not remove OAuth provider settings when
+using this procedure.
+
+## Content-Only CMS Save Procedure With Stopped Builds
+
+When CMS saves only change `content/pages/*.json` or `content/site.json`:
+
+1. Save or publish the CMS content change.
+2. Confirm the CMS commit or PR targets `main`.
+3. Confirm GitHub Actions Pages runs from `main`.
+4. Confirm the GitHub Pages run succeeds.
+5. Confirm the public page on `https://hayeon.kr/` reflects the content change.
+6. Confirm Netlify does not create a new production deploy for that commit, or
+   that any created deploy does not run a build.
+7. Confirm Netlify production deploy credit does not increase for that save.
+
+If Netlify creates a production deploy while Build status is `Stopped builds`,
+separate deploy record creation from build execution and check Netlify's usage
+screen before changing repository files.
 
 ## Credit Usage Check
 
