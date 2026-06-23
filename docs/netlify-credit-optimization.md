@@ -67,7 +67,21 @@ The script reads `CACHED_COMMIT_REF` and `COMMIT_REF`, then runs:
 git diff --name-only <cached commit> <current commit>
 ```
 
-If any admin artifact input changed, the script exits `1`. If only unrelated files changed, it exits `0`. If the required refs are missing or diff cannot be checked, the script exits `1` so the admin build runs.
+If any admin artifact input changed, the script exits `1`. If only unrelated files changed, it exits `0`.
+
+When `CACHED_COMMIT_REF` is missing, the script falls back to checking files changed by the current commit ref. This keeps content-only CMS merge commits eligible for skip even when Netlify does not provide a cached baseline ref. If no commit ref can be found or Git cannot calculate changed files, the script exits `1` so the admin build runs.
+
+## Dashboard Checks After A Failed Skip
+
+If Netlify creates an `error` production deploy for a content-only commit instead of a skipped deploy, check these items in the Netlify dashboard:
+
+- The site deploy branch is `main`.
+- The build command is either empty in UI or matches `node scripts/prepare-netlify-admin.js`.
+- The publish directory is either empty in UI or matches `.netlify-admin`.
+- The base directory is empty unless intentionally configured.
+- The repository `netlify.toml` is not overridden by UI settings.
+- The deploy log includes the ignore command output.
+- The ignore command sees either `CACHED_COMMIT_REF` and `COMMIT_REF`, or the fallback current commit ref.
 
 ## Expected Credit Impact
 

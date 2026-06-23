@@ -331,8 +331,8 @@ a img {
   }
 
   #contents1 > div[class^="imgli"] {
-    height: 280px !important;
-    margin-bottom: 20px;
+    height: 260px !important;
+    margin-bottom: 18px;
   }
 
   #contents1 > div.banner {
@@ -342,8 +342,8 @@ a img {
   }
 
   #contents1 > div[class^="imgli"] li {
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
   #contents1 > div[class^="imgli"] li span {
@@ -373,14 +373,18 @@ a img {
 
   #contents2 > div[class^="thum"] li h2,
   #contents2 > div[class^="thum"] li h3 {
-    max-width: calc(100vw - 40px);
-    font-size: 28px !important;
+    max-width: calc(100vw - 48px);
+    font-size: 24px !important;
     line-height: 1.08;
   }
 
   #contents2 > div[class^="thum"] li span p {
-    max-width: calc(100vw - 40px);
-    font-size: 20px !important;
+    max-width: calc(100vw - 48px);
+    font-size: 16px !important;
     line-height: 1.1;
+  }
+
+  #contents2 > div[class^="thum"] {
+    margin-bottom: 16px;
   }
 }

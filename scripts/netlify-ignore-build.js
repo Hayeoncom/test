@@ -48,6 +48,30 @@ function listChangedFiles(baseRef, headRef) {
     .filter(Boolean);
 }
 
+function listCommitFiles(headRef) {
+  const result = spawnSync('git', ['diff-tree', '--no-commit-id', '--name-only', '-r', '-m', headRef], {
+    encoding: 'utf8',
+  });
+
+  if (result.status !== 0) {
+    throw new Error((result.stderr || 'git diff-tree failed').trim());
+  }
+
+  return result.stdout
+    .split(/\r?\n/)
+    .map((filePath) => filePath.trim())
+    .filter(Boolean);
+}
+
+function getCurrentHeadRef() {
+  const result = spawnSync('git', ['rev-parse', 'HEAD'], {
+    encoding: 'utf8',
+  });
+
+  if (result.status !== 0) return '';
+  return result.stdout.trim();
+}
+
 function getTestFiles(argv) {
   const index = argv.indexOf('--test-files');
   if (index === -1) return null;
@@ -91,15 +115,20 @@ function main() {
     console.log('Netlify ignore mode: test');
   } else {
     const baseRef = process.env.CACHED_COMMIT_REF;
-    const headRef = process.env.COMMIT_REF;
+    const headRef = process.env.COMMIT_REF || process.env.HEAD || getCurrentHeadRef();
 
-    if (!baseRef || !headRef) {
-      console.log('Netlify build required: missing CACHED_COMMIT_REF or COMMIT_REF.');
+    if (!headRef) {
+      console.log('Netlify build required: missing commit ref.');
       process.exit(1);
     }
 
     try {
-      changedFiles = listChangedFiles(baseRef, headRef);
+      if (baseRef) {
+        changedFiles = listChangedFiles(baseRef, headRef);
+      } else {
+        console.log('Netlify ignore fallback: CACHED_COMMIT_REF missing; checking current commit files.');
+        changedFiles = listCommitFiles(headRef);
+      }
     } catch (error) {
       console.log(`Netlify build required: ${error.message}`);
       process.exit(1);
