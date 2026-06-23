@@ -2,14 +2,14 @@
   const publicSiteUrl = 'https://hayeon.kr/';
 
   function ready(callback) {
-    if (window.CMS && window.React) {
-      callback(window.CMS, window.React);
+    if (window.CMS && window.h && window.createClass) {
+      callback(window.CMS, window.h, window.createClass);
       return;
     }
 
     window.addEventListener('load', function () {
-      if (window.CMS && window.React) {
-        callback(window.CMS, window.React);
+      if (window.CMS && window.h && window.createClass) {
+        callback(window.CMS, window.h, window.createClass);
       }
     });
   }
@@ -43,9 +43,7 @@
     return toPlain(raw) || {};
   }
 
-  ready(function (CMS, React) {
-    const h = React.createElement;
-
+  ready(function (CMS, h, createClass) {
     CMS.registerPreviewStyle('/admin/preview.css');
 
     function MetaPill(props) {
@@ -152,6 +150,10 @@
       ]);
     }
 
-    CMS.registerPreviewTemplate('pages', PagesPreview);
+    CMS.registerPreviewTemplate('pages', createClass({
+      render() {
+        return h(PagesPreview, { entry: this.props.entry });
+      },
+    }));
   });
 }());
