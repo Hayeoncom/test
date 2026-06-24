@@ -403,13 +403,25 @@ a img {
   }
 
   #contents1 > div[class^="imgli"] li span {
-    font-size: 20px !important;
-    line-height: 1.15;
+    display: block;
+    font-size: clamp(12px, 3.2vw, 14px) !important;
+    line-height: 1.1;
+    overflow: hidden;
+    overflow-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: keep-all;
   }
 
   #contents1 > div[class^="imgli"] li p {
-    font-size: 13px !important;
-    line-height: 1.25;
+    display: block;
+    font-size: clamp(10px, 2.8vw, 12px) !important;
+    line-height: 1.15;
+    overflow: hidden;
+    overflow-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: keep-all;
   }
 
   #header {

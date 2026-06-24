@@ -107,6 +107,53 @@
     return node;
   }
 
+  function getGallerySlots(contents) {
+    return Array.prototype.slice.call(contents.children).filter(function (child) {
+      return child.tagName === 'DIV' && /^img/.test(child.className || '');
+    });
+  }
+
+  function getGalleryInsertBefore(contents) {
+    return contents.querySelector('#number2');
+  }
+
+  function createGallerySlot(contents, template, index) {
+    var slot = template.cloneNode(true);
+    var image = slot.querySelector('img');
+    var link = slot.querySelector('a[data-original-image-link="true"]');
+
+    slot.className = 'img' + index;
+    slot.style.display = '';
+
+    if (link) {
+      image = unwrapOriginalImageLink(link) || image;
+    }
+
+    if (image) {
+      image.removeAttribute('data-original-url');
+    }
+
+    var insertBefore = getGalleryInsertBefore(contents);
+    contents.insertBefore(slot, insertBefore);
+    return slot;
+  }
+
+  function ensureGallerySlots(contents, count) {
+    var slots = getGallerySlots(contents);
+    var template = slots[slots.length - 1];
+
+    if (!template) {
+      return slots;
+    }
+
+    while (slots.length < count) {
+      var slot = createGallerySlot(contents, template, slots.length);
+      slots.push(slot);
+    }
+
+    return slots;
+  }
+
   function renderGallery(data) {
     var contents = document.querySelector('#contents');
     var section = findSection(data, 'gallery');
@@ -117,18 +164,20 @@
     var items = (section.items || []).filter(function (item) {
       return item.visible !== false;
     });
-    var images = Array.prototype.slice.call(contents.querySelectorAll('img'));
+    var slots = ensureGallerySlots(contents, items.length);
 
-    if (!images.length || !items.length) {
+    if (!slots.length || !items.length) {
       return;
     }
 
     items.forEach(function (item, index) {
-      var image = images[index];
+      var slot = slots[index];
+      var image = slot && slot.querySelector('img');
       if (!image) {
         return;
       }
       var li = image.closest('li') || image.parentElement;
+      slot.style.display = '';
       li.style.display = '';
       updateImage(image, item);
 
@@ -138,9 +187,8 @@
       caption.textContent = item.caption || '';
     });
 
-    images.slice(items.length).forEach(function (image) {
-      var li = image.closest('li') || image.parentElement;
-      li.style.display = 'none';
+    slots.slice(items.length).forEach(function (slot) {
+      slot.style.display = 'none';
     });
   }
 
