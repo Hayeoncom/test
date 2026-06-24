@@ -242,7 +242,7 @@ collections:
   - name: "generated_pages"
     label: "신규 여행 페이지"
     label_singular: "신규 여행 페이지"
-    description: "새 여행 페이지를 만들면 GitHub Actions 배포 후 https://hayeon.kr/<slug>.html 주소로 접근할 수 있습니다. 기존 19개 HTML 파일은 이 메뉴에서 수정하지 않습니다."
+    description: "새 여행 페이지를 만들면 GitHub Actions 배포 후 https://hayeon.kr/<slug>.html 주소로 접근할 수 있습니다. 홈 노출은 별도 승인 필드를 켠 경우에만 적용됩니다. 기존 19개 HTML 파일은 이 메뉴에서 수정하지 않습니다."
     folder: "content/generated-pages"
     format: "json"
     extension: "json"
@@ -250,8 +250,8 @@ collections:
     delete: false
     slug: "{{slug}}"
     identifier_field: "title"
-    summary: "{{title}} · {{slug}}.html · {{pageType}}"
-    sortable_fields: ["title", "displayOrder", "commit_date"]
+    summary: "{{title}} · {{slug}}.html · 홈 {{showOnHome}} · {{pageType}}"
+    sortable_fields: ["title", "displayOrder", "homeOrder", "commit_date"]
     fields:
       - label: "페이지 ID"
         name: "id"
@@ -283,7 +283,7 @@ collections:
         name: "visible"
         widget: "boolean"
         default: true
-        hint: "현재 1차 구현에서는 HTML 생성 여부를 막지 않습니다. 홈 노출은 별도 수동 추가 정책입니다."
+        hint: "끄면 JSON은 남지만 GitHub Pages artifact에서 <slug>.html을 생성하지 않고 홈에도 노출하지 않습니다. 삭제보다 비노출/보류를 우선합니다."
       - label: "표시 순서"
         name: "displayOrder"
         widget: "number"
@@ -291,6 +291,33 @@ collections:
         default: 100
         required: false
         hint: "후속 작업에서 목록 자동화를 도입할 때 사용할 수 있는 정렬 값입니다."
+      - label: "홈 노출"
+        name: "showOnHome"
+        widget: "boolean"
+        default: false
+        hint: "켜진 경우에만 홈 중간 2열 카드 영역에 표시됩니다. 홈 카드는 페이지 이동 링크이며 원본 이미지 새 창 링크를 사용하지 않습니다."
+      - label: "홈 카드 제목"
+        name: "homeTitle"
+        widget: "string"
+        required: false
+        hint: "홈 노출을 켠 경우 필수입니다. iPhone에서 한 줄 표시를 권장합니다."
+      - label: "홈 카드 보조문구"
+        name: "homeSubtitle"
+        widget: "string"
+        required: false
+        hint: "홈 카드 아래 회색 메타 문구입니다. 예: #12, 2026"
+      - label: "홈 카드 이미지"
+        name: "homeImage"
+        widget: "string"
+        required: false
+        hint: "홈 노출을 켠 경우 필수입니다. 표시용 최적화 이미지 경로만 입력합니다. 예: assets/images/uploads/nagoya-001.jpeg"
+      - label: "홈 카드 순서"
+        name: "homeOrder"
+        widget: "number"
+        value_type: "int"
+        default: 100
+        required: false
+        hint: "홈에 여러 신규 페이지가 표시될 때 낮은 숫자가 먼저 표시됩니다."
       - label: "오디오"
         name: "audio"
         widget: "object"

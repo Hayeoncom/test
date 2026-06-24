@@ -149,9 +149,81 @@ function collectGeneratedJsonReferences(value, keyName) {
 
   if (typeof value !== 'string') return;
 
-  if (['image', 'href', 'prev', 'next', 'src'].includes(keyName)) {
+  if (['image', 'homeImage', 'href', 'prev', 'next', 'src'].includes(keyName)) {
     addReference(value);
   }
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function getGeneratedHomeCards() {
+  return listFiles(generatedPagesDir)
+    .filter((name) => name.endsWith('.json'))
+    .sort()
+    .map((jsonFile) => {
+      const page = parseJson(jsonFile);
+      if (!page || page.visible === false || page.showOnHome !== true) return null;
+      return {
+        title: page.homeTitle || page.title || '',
+        meta: page.homeSubtitle || page.homeMeta || page.description || '',
+        image: page.homeImage || '',
+        href: page.sourceHtml || `${page.slug}.html`,
+        order: typeof page.homeOrder === 'number' ? page.homeOrder : (
+          typeof page.displayOrder === 'number' ? page.displayOrder : 999
+        ),
+      };
+    })
+    .filter((card) => card && card.title && card.image && card.href)
+    .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+}
+
+function renderGeneratedHomeCard(card, index) {
+  return `                <div class="imgli${index} generated-home-card">
+                    <ul class="clearfix">
+                         <li>
+                         <a href="${escapeHtml(card.href)}" onfocus="this.blur()">
+                         <img src="${escapeHtml(card.image)}" alt="${escapeHtml(card.title)}">
+                         <span>${escapeHtml(card.title)}</span>
+                         </a>
+                         <P>${escapeHtml(card.meta)}</P>
+                         </li>
+                     </ul>
+                 </div>
+                 <!-- generated:${escapeHtml(card.href)} -->
+`;
+}
+
+function injectGeneratedHomeCards() {
+  const cards = getGeneratedHomeCards();
+  if (!cards.length) {
+    return { count: 0, cards: [] };
+  }
+
+  const indexPath = distPath('index.html');
+  let html = fs.readFileSync(indexPath, 'utf8');
+  const existingCardCount = (html.match(/<div class="imgli\d+/g) || []).length;
+  const cardHtml = cards
+    .map((card, offset) => renderGeneratedHomeCard(card, existingCardCount + offset))
+    .join('\n');
+  const marker = /(\s*<\/section>\s*<!--\s*\/\/contents1\s*-->)/;
+
+  if (!marker.test(html)) {
+    errors.push('index.html: contents1 insertion marker not found');
+    return { count: 0, cards: [] };
+  }
+
+  html = html.replace(marker, `\n${cardHtml}$1`);
+  fs.writeFileSync(indexPath, html);
+  return {
+    count: cards.length,
+    cards: cards.map((card) => ({ href: card.href, image: card.image, title: card.title })),
+  };
 }
 
 function collectHtmlReferences(relativePath) {
@@ -490,6 +562,7 @@ function main() {
   const generatedPages = require('./generate-static-pages').generateStaticPages({
     outputDir: distDir,
   });
+  const generatedHomeCards = injectGeneratedHomeCards();
   const optimization = optimizeDistImages();
 
   if (errors.length > 0) {
@@ -508,6 +581,7 @@ function main() {
     totalSize: formatBytes(totalBytes),
     htmlFiles: Array.from(includeFiles).filter((name) => name.endsWith('.html')).length,
     generatedPages,
+    generatedHomeCards,
     imageFiles: referencedImages.size,
     referencedUploads: Array.from(referencedImages).filter((name) => name.startsWith('assets/images/uploads/')).length,
     optimization,

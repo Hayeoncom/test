@@ -175,6 +175,9 @@ function getGeneratedPages() {
       if (!page || typeof page.sourceHtml !== 'string') {
         return null;
       }
+      if (page.visible === false) {
+        return null;
+      }
       return {
         json: relativePath,
         sourceHtml: page.sourceHtml.trim(),

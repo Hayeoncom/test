@@ -65,6 +65,18 @@ function getGalleryItems(page) {
   return gallery && Array.isArray(gallery.items) ? gallery.items : [];
 }
 
+function isVisible(page) {
+  return page.visible !== false;
+}
+
+function getNavigationItems(page) {
+  if (!page.navigation || page.navigation.enabled === false || !Array.isArray(page.navigation.items)) {
+    return [];
+  }
+
+  return page.navigation.items.filter((item) => item && item.visible !== false);
+}
+
 function validatePage(page, jsonFile, existingRootHtml) {
   const errors = [];
   const relativeJson = toPosix(path.relative(rootDir, jsonFile));
@@ -102,6 +114,31 @@ function validatePage(page, jsonFile, existingRootHtml) {
     errors.push(`${relativeJson}: pageType must be generated-gallery`);
   }
 
+  if (Object.prototype.hasOwnProperty.call(page, 'visible') && typeof page.visible !== 'boolean') {
+    errors.push(`${relativeJson}: visible must be boolean`);
+  }
+
+  if (Object.prototype.hasOwnProperty.call(page, 'showOnHome') && typeof page.showOnHome !== 'boolean') {
+    errors.push(`${relativeJson}: showOnHome must be boolean`);
+  }
+
+  if (page.showOnHome === true) {
+    ['homeTitle', 'homeImage'].forEach((field) => {
+      if (typeof page[field] !== 'string' || page[field].trim() === '') {
+        errors.push(`${relativeJson}: ${field} is required when showOnHome is true`);
+      }
+    });
+
+    if (typeof page.homeImage === 'string' && page.homeImage.trim()) {
+      const homeImage = page.homeImage.trim();
+      if (!homeImage.startsWith('assets/images/')) {
+        errors.push(`${relativeJson}: homeImage must start with assets/images/: ${homeImage}`);
+      } else if (!fs.existsSync(path.join(rootDir, homeImage))) {
+        errors.push(`${relativeJson}: homeImage path does not exist: ${homeImage}`);
+      }
+    }
+  }
+
   if (!Array.isArray(gallery)) {
     errors.push(`${relativeJson}: gallery must be an array`);
   }
@@ -134,6 +171,33 @@ function validatePage(page, jsonFile, existingRootHtml) {
   return errors;
 }
 
+function renderNavigation(page) {
+  const items = getNavigationItems(page);
+  if (!items.length) return '';
+
+  const parts = items.map((item, index) => {
+    const label = escapeHtml(item.label || String(index + 1));
+    const current = item.current === true || item.href === page.sourceHtml;
+    const className = index === 0 ? 'header' : (index === 1 ? 'header3' : 'header2');
+    if (current || !item.href) {
+      return `        <div class="${className}">
+            <h2>${label}</h2>
+        </div>`;
+    }
+
+    return `        <div class="${className}">
+            <a href="${escapeHtml(item.href)}" onfocus="this.blur()">
+            <h1>${label}</h1>
+            </a>
+        </div>`;
+  });
+
+  return `    <section id="number">
+${parts.join('\n\n')}
+    </section>
+`;
+}
+
 function renderGeneratedPage(page, jsonRelativePath) {
   const title = escapeHtml(page.title);
   const description = escapeHtml(page.description || '');
@@ -154,11 +218,6 @@ function renderGeneratedPage(page, jsonRelativePath) {
 </head>
 <body class="generated-gallery-page" data-content="${escapeHtml(jsonRelativePath)}" data-generated-page="true">
   <div id="wrap">
-    <header class="generated-page-header">
-      <p class="generated-page-kicker">Hayeon.jpg</p>
-      <h1 id="generated-title">${title}</h1>
-      ${description ? `<p class="generated-page-description">${description}</p>` : ''}
-    </header>
     <div class="animated-title" aria-hidden="true">
       <div class="track">
         <div class="content">${description || title}</div>
@@ -170,9 +229,10 @@ function renderGeneratedPage(page, jsonRelativePath) {
         <source src="${audio ? escapeHtml(audio.src) : ''}" type="${audio ? escapeHtml(audio.type || 'audio/mp3') : 'audio/mp3'}">
       </audio>
     </div>
+${renderNavigation(page)}
     <section id="contents" aria-label="${title} gallery"></section>
     <footer id="footer">
-      <p>© Hayeon.jpg</p>
+      <p>© Hayeon 2018-2026</p>
     </footer>
   </div>
   <script src="assets/site.js"></script>
@@ -202,6 +262,7 @@ function generateStaticPages(options = {}) {
     const pageErrors = validatePage(page, jsonFile, existingRootHtml);
     errors.push(...pageErrors);
     if (pageErrors.length > 0) return;
+    if (!isVisible(page)) return;
 
     const sourceHtml = normalizeSourceHtml(page);
     const outputFile = path.join(outputDir, sourceHtml);

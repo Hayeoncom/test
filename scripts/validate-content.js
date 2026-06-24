@@ -356,6 +356,29 @@ function validateGeneratedPage(filePath, rootHtmlFiles) {
     addError(filePath, 'visible must be boolean');
   }
 
+  if (Object.prototype.hasOwnProperty.call(page, 'showOnHome') && typeof page.showOnHome !== 'boolean') {
+    addError(filePath, 'showOnHome must be boolean');
+  }
+
+  if (page.showOnHome === true) {
+    ['homeTitle', 'homeImage'].forEach((field) => {
+      if (typeof page[field] !== 'string' || page[field].trim() === '') {
+        addError(filePath, `${field} is required when showOnHome is true`);
+      }
+    });
+
+    if (typeof page.homeImage === 'string' && page.homeImage.trim() !== '') {
+      if (!page.homeImage.startsWith('assets/images/')) {
+        addError(filePath, `homeImage must start with assets/images/: ${page.homeImage}`);
+      }
+      validateLocalPath(filePath, page.homeImage, 'homeImage');
+    }
+
+    if (typeof page.homeHref === 'string' && page.homeHref.trim() !== '') {
+      addError(filePath, 'homeHref is managed by slug/sourceHtml and must not be set manually');
+    }
+  }
+
   if (Object.prototype.hasOwnProperty.call(page, 'displayOrder') && typeof page.displayOrder !== 'number') {
     addError(filePath, 'displayOrder must be number');
   }

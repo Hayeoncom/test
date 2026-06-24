@@ -373,7 +373,7 @@
     if (data.pageType === 'home') {
       renderHome(data);
     } else {
-      setText('.animated-title .content', data.description || '');
+      setText('.animated-title .content', data.description || data.title || '');
       renderGallery(data);
     }
     document.dispatchEvent(new CustomEvent('cms:rendered', { detail: data }));
