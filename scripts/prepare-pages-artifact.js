@@ -5,8 +5,8 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, '.pages-dist');
-const imageMaxDimension = 2200;
-const jpegQuality = 82;
+const imageMaxDimension = 1400;
+const jpegQuality = 78;
 const artifactWarningBytes = 900 * 1024 * 1024;
 const artifactFailBytes = 1024 * 1024 * 1024;
 const includeFiles = new Set();
