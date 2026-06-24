@@ -1,0 +1,27 @@
+{
+  "sourceHtml": "test-nagoya.html",
+  "pageType": "generated-gallery",
+  "slug": "test-nagoya",
+  "displayOrder": 100,
+  "visible": true,
+  "gallery": [
+    {
+      "visible": true,
+      "image": "assets/images/uploads/img_0930.jpeg",
+      "caption": "Test generated page image",
+      "location": "Test Nagoya",
+      "alt": "Generated page test image",
+      "originalUrl": "https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/uploads/img_0930.jpeg"
+    }
+  ],
+  "navigation": {
+    "enabled": false
+  },
+  "audio": {
+    "enabled": false,
+    "type": "audio/mp3"
+  },
+  "title": "Test Nagoya",
+  "id": "test-nagoya",
+  "description": "Generated page end-to-end verification"
+}
