@@ -342,8 +342,64 @@ a img {
   }
 
   #contents1 > div[class^="imgli"] li {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #contents1 > div.imgli0 li img,
+  #contents1 > div.imgli2 li img,
+  #contents1 > div.imgli4 li img,
+  #contents1 > div.imgli6 li img,
+  #contents1 > div.imgli8 li img,
+  #contents1 > div.imgli10 li img {
+    width: 78% !important;
+    margin-left: auto !important;
+    margin-right: 4px !important;
+  }
+
+  #contents1 > div.imgli1 li img,
+  #contents1 > div.imgli3 li img,
+  #contents1 > div.imgli5 li img,
+  #contents1 > div.imgli7 li img,
+  #contents1 > div.imgli9 li img,
+  #contents1 > div.imgli11 li img {
+    width: 78% !important;
+    margin-left: 4px !important;
+    margin-right: auto !important;
+  }
+
+  #contents1 > div.imgli0 li span,
+  #contents1 > div.imgli0 li p,
+  #contents1 > div.imgli2 li span,
+  #contents1 > div.imgli2 li p,
+  #contents1 > div.imgli4 li span,
+  #contents1 > div.imgli4 li p,
+  #contents1 > div.imgli6 li span,
+  #contents1 > div.imgli6 li p,
+  #contents1 > div.imgli8 li span,
+  #contents1 > div.imgli8 li p,
+  #contents1 > div.imgli10 li span,
+  #contents1 > div.imgli10 li p {
+    width: 78%;
+    margin-left: auto !important;
+    margin-right: 4px !important;
+  }
+
+  #contents1 > div.imgli1 li span,
+  #contents1 > div.imgli1 li p,
+  #contents1 > div.imgli3 li span,
+  #contents1 > div.imgli3 li p,
+  #contents1 > div.imgli5 li span,
+  #contents1 > div.imgli5 li p,
+  #contents1 > div.imgli7 li span,
+  #contents1 > div.imgli7 li p,
+  #contents1 > div.imgli9 li span,
+  #contents1 > div.imgli9 li p,
+  #contents1 > div.imgli11 li span,
+  #contents1 > div.imgli11 li p {
+    width: 78%;
+    margin-left: 4px !important;
+    margin-right: auto !important;
   }
 
   #contents1 > div[class^="imgli"] li span {
@@ -374,13 +430,13 @@ a img {
   #contents2 > div[class^="thum"] li h2,
   #contents2 > div[class^="thum"] li h3 {
     max-width: calc(100vw - 56px);
-    font-size: 20px !important;
+    font-size: clamp(21px, 5.5vw, 23px) !important;
     line-height: 1.05;
   }
 
   #contents2 > div[class^="thum"] li span p {
     max-width: calc(100vw - 56px);
-    font-size: 13px !important;
+    font-size: clamp(15px, 4.2vw, 17px) !important;
     line-height: 1.08;
   }
 
@@ -398,6 +454,16 @@ a img {
   }
 
   #contents2 > div[class^="thum"] {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+  }
+
+  #footer {
+    padding-top: 28px !important;
+  }
+
+  #footer p {
+    font-size: 12px !important;
+    line-height: 1.4;
+    padding-top: 0 !important;
   }
 }
