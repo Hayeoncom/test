@@ -18,6 +18,7 @@ Do not force push to `main`. Use normal commits, pull requests, or revert commit
 - Public site `admin/`: guide/redirect page to the Netlify admin URL
 - Public site `admin/config.yml`: excluded from Pages artifact
 - Netlify admin artifact: `.netlify-admin` with `admin/index.html` and `admin/config.yml`
+- Generated CMS travel pages: `content/generated-pages/*.json` creates `.pages-dist/<slug>.html` during GitHub Actions Pages build
 
 ## Branch Roles
 
@@ -37,6 +38,7 @@ node scripts/validate-content.js
 node --check assets/site.js
 node --check assets/cms-renderer.js
 node --check scripts/prepare-pages-artifact.js
+node --check scripts/generate-static-pages.js
 node --check scripts/prepare-netlify-admin.js
 node --check scripts/validate-static-site.js
 node scripts/validate-static-site.js
@@ -89,6 +91,7 @@ Keep these aligned on `main`:
 admin/config.yml
 .github/workflows/pages-deploy.yml
 content/pages/*.json
+content/generated-pages/*.json
 docs/cms-operation-checklist.md
 docs/netlify-cms-auth-admin.md
 docs/cms-image-policy.md
@@ -136,10 +139,11 @@ on:
 ```
 
 5. Confirm `originalUrl` values use `refs/heads/main`.
-6. Push `main` only after local validation passes.
-7. Confirm GitHub Actions Pages workflow for `main`.
-8. Validate the public site, public exclusions, and Netlify admin URLs.
-9. Test one CMS save flow on the Netlify admin URL when user login is available.
+6. For new CMS travel pages, confirm `slug` uses `^[a-z0-9-]+$`, `sourceHtml` is `<slug>.html`, and the name does not collide with the protected 19 root HTML files.
+7. Push `main` only after local validation passes.
+8. Confirm GitHub Actions Pages workflow for `main`.
+9. Validate the public site, public exclusions, generated page URLs, and Netlify admin URLs.
+10. Test one CMS save flow on the Netlify admin URL when user login is available.
 
 ## originalUrl Policy
 
@@ -175,6 +179,7 @@ After the `main` workflow runs, verify:
 - `Validate source references` step passes
 - `Prepare Pages artifact` step reports artifact size below 1 GB
 - `Validate Pages artifact` step passes
+- Generated CMS pages exist only in `.pages-dist`, not as committed root HTML files
 - `Upload Pages artifact` does not include `admin/config.yml`
 - `Deploy to GitHub Pages` reports success
 - Deployed Pages version matches the intended `main` commit
@@ -192,6 +197,8 @@ After Netlify deploys `main`, verify:
 - `admin/config.yml` keeps `site_domain: hayeon-cms-auth.netlify.app`
 - CMS login starts from the Netlify admin URL, not from `hayeon.kr/admin/`
 
+When `admin/config.yml` changes to adjust the generated pages collection, temporarily switch Netlify builds to Active builds, deploy the admin artifact, verify `/admin/` and `/admin/config.yml`, then switch back to Stopped builds.
+
 ## iPhone Safari Manual Checks
 
 Use a real iPhone Safari session to check:
@@ -205,6 +212,7 @@ Use a real iPhone Safari session to check:
 - Detail audio area does not overflow horizontally
 - Detail original image click opens the raw URL in a new tab/window
 - Page number links navigate in the current tab
+- If a generated page exists, it opens at `https://hayeon.kr/<slug>.html`, images render, raw original links open in a new tab/window, and horizontal overflow is absent
 
 ## Rollback Procedure
 
@@ -217,7 +225,8 @@ If production fails after `main` changes:
 5. Confirm `hayeon.kr/admin/` remains only a guide/redirect page.
 6. Confirm `hayeon.kr/admin/config.yml` remains 404.
 7. Confirm CMS saves are not writing to a branch that no longer deploys.
-8. Document the failed step, commit SHA, and URL checks before retrying.
+8. If the failure is generated-page specific, revert the `content/generated-pages/<slug>.json` change with a normal revert commit and confirm the generated URL state after Pages deploy.
+9. Document the failed step, commit SHA, and URL checks before retrying.
 
 ## Stop Conditions
 

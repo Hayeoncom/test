@@ -1,5 +1,13 @@
 (function () {
   function findSection(data, type) {
+    if (type === 'gallery' && Array.isArray(data.gallery)) {
+      return {
+        type: 'gallery',
+        title: data.title || '',
+        items: data.gallery,
+      };
+    }
+
     return (data.sections || []).find(function (section) {
       return section.type === type;
     });
@@ -118,7 +126,7 @@
   }
 
   function createGallerySlot(contents, template, index) {
-    var slot = template.cloneNode(true);
+    var slot = template ? template.cloneNode(true) : createEmptyGallerySlot(index);
     var image = slot.querySelector('img');
     var link = slot.querySelector('a[data-original-image-link="true"]');
 
@@ -138,14 +146,28 @@
     return slot;
   }
 
+  function createEmptyGallerySlot(index) {
+    var slot = document.createElement('div');
+    var list = document.createElement('ul');
+    var item = document.createElement('li');
+    var image = document.createElement('img');
+    var location = document.createElement('p');
+    var caption = document.createElement('span');
+
+    slot.className = 'img img' + index;
+    list.className = 'clearfix';
+    item.appendChild(image);
+    item.appendChild(location);
+    item.appendChild(caption);
+    list.appendChild(item);
+    slot.appendChild(list);
+    return slot;
+  }
+
   function ensureGallerySlots(contents, count) {
     var slots = getGallerySlots(contents);
     var originalCount = slots.length;
     var template = slots[slots.length - 1];
-
-    if (!template) {
-      return slots;
-    }
 
     while (slots.length < count) {
       var slot = createGallerySlot(contents, template, slots.length);
@@ -323,6 +345,16 @@
     if (!data.audio) {
       return;
     }
+    var audioContainer = document.querySelector('.audio');
+    if (data.audio.enabled === false || !data.audio.src) {
+      if (audioContainer) {
+        audioContainer.hidden = true;
+      }
+      return;
+    }
+    if (audioContainer) {
+      audioContainer.hidden = false;
+    }
     var source = document.querySelector('audio source');
     if (source && data.audio.src) {
       source.setAttribute('src', data.audio.src);
@@ -336,6 +368,8 @@
   function renderPage(data) {
     updateTitle(data);
     renderAudio(data);
+    setText('#generated-title', data.title || '');
+    setText('.generated-page-description', data.description || '');
     if (data.pageType === 'home') {
       renderHome(data);
     } else {

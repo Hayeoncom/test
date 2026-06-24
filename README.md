@@ -45,6 +45,27 @@
 - 로그인 계정은 `Hayeoncom/test` 저장소에 필요한 권한이 있어야 한다.
 - OAuth secret, token, client secret, password, 2FA 값은 저장소 파일에 기록하지 않는다.
 
+## CMS 신규 여행 페이지 추가 절차
+
+신규 여행 페이지는 기존 `Pages` collection이 아니라 `신규 여행 페이지` collection에서 만든다.
+
+1. `https://hayeon-cms-auth.netlify.app/admin/`에 접속한다.
+2. GitHub 로그인 후 `신규 여행 페이지` collection을 선택한다.
+3. 새 항목을 만들고 `slug`, `sourceHtml`, `title`, `gallery`를 입력한다.
+4. `slug`는 영문 소문자, 숫자, 하이픈만 사용한다. 예: `nagoya`, `seoul-2026`
+5. `sourceHtml`은 반드시 `<slug>.html` 형식으로 입력한다. 예: `nagoya.html`
+6. 갤러리의 `image`는 `assets/images/...` 경로를 사용한다.
+7. 갤러리의 `originalUrl`은 `refs/heads/main` 기준 GitHub raw URL을 사용한다.
+8. Save 후 editorial workflow에서 publish 또는 merge 절차를 진행한다.
+9. GitHub Actions `Deploy Pages` workflow가 실행되면 `.pages-dist/<slug>.html`이 자동 생성된다.
+10. 배포 후 `https://hayeon.kr/<slug>.html`로 접근한다.
+
+신규 페이지 JSON은 `content/generated-pages/<slug>.json`에 저장한다. 생성된 `<slug>.html`은 GitHub Actions build 중 `.pages-dist`에만 만들어지며 저장소 루트에 커밋하지 않는다.
+
+기존 페이지에 사진만 추가하는 경우에는 기존 `Pages` collection에서 해당 페이지 JSON을 수정한다. 신규 URL을 만들 때만 `신규 여행 페이지` collection을 사용한다.
+
+홈 노출 정책은 수동 추가 방식이다. 신규 페이지 HTML이 만들어져도 홈 카드에는 자동으로 나타나지 않는다. 홈에 노출하려면 기존 홈 카드 데이터를 별도 작업으로 추가해야 한다.
+
 ## 이미지 운영 정책
 
 웹페이지 표시 이미지는 `assets/images/**` 경로의 최적화 이미지를 사용한다.
@@ -84,6 +105,8 @@ GitHub Actions Deploy Pages workflow 실행
 ↓
 .pages-dist 생성
 ↓
+content/generated-pages/*.json 기준 신규 정적 HTML 생성
+↓
 배포 산출물 이미지 최적화
 ↓
 GitHub Pages artifact 업로드
@@ -96,6 +119,7 @@ https://hayeon.kr/ 반영
 운영 기준:
 
 - `.pages-dist`는 배포 산출물이며 커밋 대상이 아니다.
+- `content/generated-pages/*.json`의 신규 페이지 HTML도 `.pages-dist`에만 생성한다.
 - 이미지 최적화는 `.pages-dist` 안의 배포 산출물에서만 수행한다.
 - 원본 `assets/images/**` 파일은 유지한다.
 - Pages artifact는 1GB 미만이어야 한다.
@@ -127,6 +151,7 @@ Netlify admin artifact는 `.netlify-admin`이며 아래 파일만 필요하다.
 - CMS content-only 저장 시 Netlify production deploy가 새로 생성되면 안 된다.
 - 기존 Netlify 배포본은 `/admin/`과 `/admin/config.yml`을 계속 제공한다.
 - `admin/index.html`, `admin/config.yml`, `netlify.toml`, `scripts/prepare-netlify-admin.js`, `scripts/netlify-ignore-build.js`를 바꿀 때만 Netlify build를 일시적으로 다시 켠다.
+- `신규 여행 페이지` collection처럼 `admin/config.yml`을 바꾸는 작업 후에는 Netlify admin 재배포가 필요하다.
 - admin 변경 배포 확인 후 다시 Stopped builds로 되돌린다.
 - Netlify credit 사용량은 사용자 계정의 Dashboard에서 수동 확인한다.
 
@@ -215,6 +240,24 @@ CMS 저장이 운영에 보이지 않을 때:
 5. 운영 JSON URL에서 변경 값이 보이는지 확인한다.
 6. 운영 HTML에서 렌더링과 링크 동작을 확인한다.
 7. 브라우저 캐시를 우회하기 위해 query string을 붙여 다시 확인한다.
+
+신규 페이지가 운영에 보이지 않을 때:
+
+1. JSON 파일이 `content/generated-pages/<slug>.json`에 있는지 확인한다.
+2. `slug`가 `^[a-z0-9-]+$` 규칙을 지키는지 확인한다.
+3. `sourceHtml`이 `<slug>.html`이고 기존 19개 HTML 파일명과 충돌하지 않는지 확인한다.
+4. `image` 경로 파일이 저장소에 있는지 확인한다.
+5. `originalUrl`이 `https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/<이미지경로>` 형식인지 확인한다.
+6. GitHub Actions `Prepare Pages artifact` 단계에서 `.pages-dist/<slug>.html`이 생성됐는지 확인한다.
+7. `node scripts/validate-static-site.js --root .pages-dist`가 통과했는지 확인한다.
+8. 운영 URL `https://hayeon.kr/<slug>.html`을 query string과 함께 다시 확인한다.
+
+신규 페이지 rollback:
+
+1. 문제가 있는 `content/generated-pages/<slug>.json` 변경을 revert commit으로 되돌린다.
+2. force push는 사용하지 않는다.
+3. GitHub Actions Pages 배포 후 `https://hayeon.kr/<slug>.html` 상태를 다시 확인한다.
+4. 홈 카드에 수동 링크를 추가했다면 홈 JSON 변경도 함께 되돌린다.
 
 CMS 로그인이 안 될 때:
 

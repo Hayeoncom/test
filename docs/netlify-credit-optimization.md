@@ -25,11 +25,14 @@ Netlify build should run when any of these files change:
 
 These files affect `.netlify-admin`, so Netlify must rebuild and redeploy the admin site.
 
+Generated public pages are built by GitHub Actions Pages, not Netlify. However, changing the Decap CMS UI for generated pages changes `admin/config.yml`, so Netlify admin must be redeployed once for operators to see the new `신규 여행 페이지` collection.
+
 ## Build Skipped Changes
 
 Netlify build should be skipped when changes are limited to files outside the admin artifact inputs, including:
 
 - `content/pages/*.json`
+- `content/generated-pages/*.json`
 - `content/site.json`
 - `assets/images/**`
 - `assets/common.css`
@@ -151,12 +154,14 @@ Use this procedure:
 8. Confirm CMS login still enters the GitHub OAuth flow.
 9. Change Build status back to `Stopped builds`.
 
+For generated page feature changes, apply the same procedure because the CMS collection definition lives in `admin/config.yml`.
+
 Do not disconnect the repository and do not remove OAuth provider settings when
 using this procedure.
 
 ## Content-Only CMS Save Procedure With Stopped Builds
 
-When CMS saves only change `content/pages/*.json` or `content/site.json`:
+When CMS saves only change `content/pages/*.json`, `content/generated-pages/*.json`, or `content/site.json`:
 
 1. Save or publish the CMS content change.
 2. Confirm the CMS commit or PR targets `main`.
@@ -170,6 +175,8 @@ When CMS saves only change `content/pages/*.json` or `content/site.json`:
 If Netlify creates a production deploy while Build status is `Stopped builds`,
 separate deploy record creation from build execution and check Netlify's usage
 screen before changing repository files.
+
+For `content/generated-pages/*.json`, GitHub Actions Pages should create the public `<slug>.html` in `.pages-dist`. Netlify admin should not spend build minutes because the admin static files did not change.
 
 ## Credit Usage Check
 

@@ -239,3 +239,142 @@ collections:
                 widget: "boolean"
                 default: true
                 hint: "끄면 해당 항목이 사용자 사이트에 표시되지 않을 수 있습니다."
+  - name: "generated_pages"
+    label: "신규 여행 페이지"
+    label_singular: "신규 여행 페이지"
+    description: "새 여행 페이지를 만들면 GitHub Actions 배포 후 https://hayeon.kr/<slug>.html 주소로 접근할 수 있습니다. 기존 19개 HTML 파일은 이 메뉴에서 수정하지 않습니다."
+    folder: "content/generated-pages"
+    format: "json"
+    extension: "json"
+    create: true
+    delete: false
+    slug: "{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}} · {{slug}}.html · {{pageType}}"
+    sortable_fields: ["title", "displayOrder", "commit_date"]
+    fields:
+      - label: "페이지 ID"
+        name: "id"
+        widget: "string"
+        hint: "slug와 같은 값을 권장합니다. 예: nagoya"
+      - label: "URL slug"
+        name: "slug"
+        widget: "string"
+        pattern: ["^[a-z0-9-]+$", "영문 소문자, 숫자, 하이픈만 사용할 수 있습니다."]
+        hint: "최종 URL은 https://hayeon.kr/<slug>.html 입니다. 예: nagoya, seoul-2026"
+      - label: "생성될 HTML 파일명"
+        name: "sourceHtml"
+        widget: "string"
+        hint: "slug.html 형식으로 입력합니다. 예: nagoya.html 기존 HTML 파일명과 같으면 배포 검증에서 실패합니다."
+      - label: "페이지 유형"
+        name: "pageType"
+        widget: "hidden"
+        default: "generated-gallery"
+      - label: "페이지 제목"
+        name: "title"
+        widget: "string"
+        hint: "브라우저 제목과 신규 페이지 상단 제목으로 표시됩니다."
+      - label: "페이지 설명"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "페이지 상단 설명입니다. 비워둘 수 있습니다."
+      - label: "공개 여부"
+        name: "visible"
+        widget: "boolean"
+        default: true
+        hint: "현재 1차 구현에서는 HTML 생성 여부를 막지 않습니다. 홈 노출은 별도 수동 추가 정책입니다."
+      - label: "표시 순서"
+        name: "displayOrder"
+        widget: "number"
+        value_type: "int"
+        default: 100
+        required: false
+        hint: "후속 작업에서 목록 자동화를 도입할 때 사용할 수 있는 정렬 값입니다."
+      - label: "오디오"
+        name: "audio"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "권한과 URL 상태가 확인된 오디오만 입력합니다. 필요 없으면 사용 여부를 끕니다."
+        fields:
+          - label: "사용 여부"
+            name: "enabled"
+            widget: "boolean"
+            default: false
+          - label: "오디오 제목"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "오디오 URL"
+            name: "src"
+            widget: "string"
+            required: false
+          - label: "오디오 타입"
+            name: "type"
+            widget: "string"
+            default: "audio/mp3"
+            required: false
+      - label: "페이지 번호/내비게이션"
+        name: "navigation"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "1차 구현에서는 신규 페이지 간 자동 번호 영역을 만들지 않습니다. 후속 확장용 데이터입니다."
+        fields:
+          - label: "사용 여부"
+            name: "enabled"
+            widget: "boolean"
+            default: false
+          - label: "항목"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - label: "라벨"
+                name: "label"
+                widget: "string"
+              - label: "링크"
+                name: "href"
+                widget: "string"
+                hint: "현재 창 이동용 HTML 파일명입니다."
+      - label: "갤러리 사진"
+        name: "gallery"
+        widget: "list"
+        label_singular: "사진"
+        summary: "{{fields.caption}} · {{fields.image}}"
+        hint: "표시용 이미지는 assets/images/... 경로를 사용하고, 원본 이미지는 GitHub raw main URL을 입력합니다. 홈 카드가 아니므로 originalUrl 새 창 원본보기를 사용합니다."
+        fields:
+          - label: "표시용 이미지 경로"
+            name: "image"
+            widget: "string"
+            hint: "예: assets/images/uploads/nagoya-001.jpeg"
+          - label: "사진 설명"
+            name: "caption"
+            widget: "text"
+            required: false
+          - label: "장소"
+            name: "location"
+            widget: "string"
+            required: false
+            hint: "예: 📍 Nagoya Station"
+          - label: "촬영 날짜"
+            name: "date"
+            widget: "string"
+            required: false
+          - label: "카메라 정보"
+            name: "camera"
+            widget: "string"
+            required: false
+          - label: "원본 이미지 URL"
+            name: "originalUrl"
+            widget: "string"
+            hint: "반드시 refs/heads/main 기준 GitHub raw URL을 사용합니다. 예: https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/assets/images/uploads/nagoya-001.jpeg"
+          - label: "이미지 대체 텍스트"
+            name: "alt"
+            widget: "string"
+            required: false
+          - label: "표시 여부"
+            name: "visible"
+            widget: "boolean"
+            default: true

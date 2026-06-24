@@ -5,6 +5,7 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, '.pages-dist');
+const generatedPagesDir = 'content/generated-pages';
 const imageMaxDimension = 1400;
 const jpegQuality = 78;
 const artifactWarningBytes = 900 * 1024 * 1024;
@@ -129,6 +130,26 @@ function collectJsonReferences(value, keyName) {
   }
 
   if (['sourceHtml', 'json', 'image', 'href', 'prev', 'next', 'src'].includes(keyName)) {
+    addReference(value);
+  }
+}
+
+function collectGeneratedJsonReferences(value, keyName) {
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectGeneratedJsonReferences(item, keyName));
+    return;
+  }
+
+  if (value && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      collectGeneratedJsonReferences(child, key);
+    }
+    return;
+  }
+
+  if (typeof value !== 'string') return;
+
+  if (['image', 'href', 'prev', 'next', 'src'].includes(keyName)) {
     addReference(value);
   }
 }
@@ -375,7 +396,11 @@ function collectIncludes() {
     .forEach(addFile);
 
   ['assets/common.css', 'assets/site.js', 'assets/cms-renderer.js'].forEach(addFile);
-  ['content/site.json', ...listFiles('content/pages').filter((name) => name.endsWith('.json'))].forEach(addFile);
+  [
+    'content/site.json',
+    ...listFiles('content/pages').filter((name) => name.endsWith('.json')),
+    ...listFiles(generatedPagesDir).filter((name) => name.endsWith('.json')),
+  ].forEach(addFile);
 
   site.pages
     .map((page) => page.sourceHtml)
@@ -395,6 +420,11 @@ function collectIncludes() {
     .filter((name) => name.endsWith('.json'))
     .sort()
     .forEach((jsonFile) => collectJsonReferences(parseJson(jsonFile), 'page'));
+
+  listFiles(generatedPagesDir)
+    .filter((name) => name.endsWith('.json'))
+    .sort()
+    .forEach((jsonFile) => collectGeneratedJsonReferences(parseJson(jsonFile), 'generatedPage'));
 }
 
 function writePagesAdminRedirect() {
@@ -456,6 +486,10 @@ function main() {
   Array.from(includeFiles).sort().forEach(copyFile);
   writePagesAdminRedirect();
   ensureDirectory('assets/images/uploads');
+  ensureDirectory(generatedPagesDir);
+  const generatedPages = require('./generate-static-pages').generateStaticPages({
+    outputDir: distDir,
+  });
   const optimization = optimizeDistImages();
 
   if (errors.length > 0) {
@@ -473,6 +507,7 @@ function main() {
     totalBytes,
     totalSize: formatBytes(totalBytes),
     htmlFiles: Array.from(includeFiles).filter((name) => name.endsWith('.html')).length,
+    generatedPages,
     imageFiles: referencedImages.size,
     referencedUploads: Array.from(referencedImages).filter((name) => name.startsWith('assets/images/uploads/')).length,
     optimization,

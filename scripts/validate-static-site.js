@@ -163,6 +163,27 @@ function parseJson(relativePath) {
   }
 }
 
+function getGeneratedPages() {
+  const directory = 'content/generated-pages';
+  if (!exists(directory)) return [];
+
+  return listFilesRecursive(directory)
+    .filter((name) => name.endsWith('.json'))
+    .sort()
+    .map((relativePath) => {
+      const page = parseJson(relativePath);
+      if (!page || typeof page.sourceHtml !== 'string') {
+        return null;
+      }
+      return {
+        json: relativePath,
+        sourceHtml: page.sourceHtml.trim(),
+        slug: typeof page.slug === 'string' ? page.slug.trim() : '',
+      };
+    })
+    .filter(Boolean);
+}
+
 function collectJsonReferences(value, source, keyName) {
   if (Array.isArray(value)) {
     value.forEach((item) => collectJsonReferences(item, source, keyName));
@@ -190,6 +211,26 @@ function collectJsonReferences(value, source, keyName) {
   }
 
   if (['sourceHtml', 'json', 'image', 'href', 'prev', 'next', 'src'].includes(keyName)) {
+    assertLocalReference(`${source}:${keyName}`, value);
+  }
+}
+
+function collectGeneratedJsonReferences(value, source, keyName) {
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectGeneratedJsonReferences(item, source, keyName));
+    return;
+  }
+
+  if (value && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      collectGeneratedJsonReferences(child, source, key);
+    }
+    return;
+  }
+
+  if (typeof value !== 'string') return;
+
+  if (['image', 'href', 'prev', 'next', 'src'].includes(keyName)) {
     assertLocalReference(`${source}:${keyName}`, value);
   }
 }
@@ -222,18 +263,29 @@ function validateContentJson() {
     const page = parseJson(pageFile);
     if (page) collectJsonReferences(page, pageFile, 'page');
   }
+
+  const generatedFiles = listFilesRecursive('content/generated-pages').filter((name) => name.endsWith('.json')).sort();
+  for (const generatedFile of generatedFiles) {
+    const page = parseJson(generatedFile);
+    if (page) collectGeneratedJsonReferences(page, generatedFile, 'generatedPage');
+  }
 }
 
 function validateHtml() {
   const htmlFiles = fs.readdirSync(rootDir)
     .filter((name) => name.endsWith('.html'))
     .sort();
+  const generatedPages = getGeneratedPages();
+  const generatedHtml = generatedPages.map((page) => page.sourceHtml).sort();
+  const expectedHtmlForRoot = isPagesArtifact
+    ? expectedHtml.concat(generatedHtml).sort()
+    : expectedHtml;
 
-  if (htmlFiles.length !== expectedHtml.length) {
-    addError(`root HTML count: expected 19, found ${htmlFiles.length}`);
+  if (htmlFiles.length !== expectedHtmlForRoot.length) {
+    addError(`root HTML count: expected ${expectedHtmlForRoot.length}, found ${htmlFiles.length}`);
   }
 
-  const missing = expectedHtml.filter((name) => !htmlFiles.includes(name));
+  const missing = expectedHtmlForRoot.filter((name) => !htmlFiles.includes(name));
   missing.forEach((name) => addError(`${name}: expected root HTML file is missing`));
 
   for (const htmlFile of expectedHtml) {
@@ -254,6 +306,34 @@ function validateHtml() {
     let match;
     while ((match = attrPattern.exec(html)) !== null) {
       assertLocalReference(htmlFile, match[1]);
+    }
+  }
+
+  if (!isPagesArtifact) {
+    generatedHtml
+      .filter((name) => htmlFiles.includes(name))
+      .forEach((name) => addError(`${name}: generated HTML must not be committed at repository root`));
+    return;
+  }
+
+  for (const page of generatedPages) {
+    if (!assertFile(page.sourceHtml)) continue;
+    checked.html += 1;
+
+    const html = readFile(page.sourceHtml);
+    const viewportCount = (html.match(/<meta\s+name=["']viewport["']/gi) || []).length;
+    if (viewportCount !== 1) addError(`${page.sourceHtml}: viewport meta count must be 1, found ${viewportCount}`);
+    if (!html.includes('href="assets/common.css"')) addError(`${page.sourceHtml}: assets/common.css reference missing`);
+    if (!html.includes('src="assets/site.js"')) addError(`${page.sourceHtml}: assets/site.js reference missing`);
+    if (!html.includes('src="assets/cms-renderer.js"')) addError(`${page.sourceHtml}: assets/cms-renderer.js reference missing`);
+    if (!html.includes(`data-content="${page.json}"`)) {
+      addError(`${page.sourceHtml}: generated page data-content must point to ${page.json}`);
+    }
+
+    const attrPattern = /\b(?:src|href|data-content)=["']([^"']+)["']/gi;
+    let match;
+    while ((match = attrPattern.exec(html)) !== null) {
+      assertLocalReference(page.sourceHtml, match[1]);
     }
   }
 }
@@ -324,6 +404,7 @@ function validateAdminConfig() {
   }
   if (!/name:\s*["']site["']/.test(config)) addError('admin/config.yml: site collection missing');
   if (!/name:\s*["']pages["']/.test(config)) addError('admin/config.yml: pages collection missing');
+  if (!/name:\s*["']generated_pages["']/.test(config)) addError('admin/config.yml: generated_pages collection missing');
   if (!/name:\s*["']originalUrl["']/.test(config)) addError('admin/config.yml: originalUrl field missing');
 }
 

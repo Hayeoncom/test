@@ -6,11 +6,24 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
 const contentDir = path.join(rootDir, 'content');
 const pagesDir = path.join(contentDir, 'pages');
+const generatedPagesDir = path.join(contentDir, 'generated-pages');
 const siteFile = path.join(contentDir, 'site.json');
 
-const allowedPageTypes = new Set(['document-gallery', 'gallery', 'home', 'placeholder']);
+const allowedPageTypes = new Set(['document-gallery', 'gallery', 'generated-gallery', 'home', 'placeholder']);
 const allowedSectionTypes = new Set(['documentCards', 'gallery', 'slider', 'travelCards']);
 const rawBaseUrl = 'https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/';
+const generatedSlugPattern = /^[a-z0-9-]+$/;
+const reservedGeneratedSlugs = new Set([
+  'admin',
+  'assets',
+  'content',
+  'docs',
+  'favicon',
+  'index',
+  'prompt',
+  'reports',
+  'scripts',
+]);
 const errors = [];
 let checkedFiles = 0;
 
@@ -152,6 +165,20 @@ function validateLocalPath(filePath, value, field) {
   }
 }
 
+function listRootHtmlFiles() {
+  return fs.readdirSync(rootDir)
+    .filter((name) => name.endsWith('.html'))
+    .sort();
+}
+
+function getGeneratedGalleryItems(page) {
+  if (Array.isArray(page.gallery)) return page.gallery;
+  const gallery = Array.isArray(page.sections)
+    ? page.sections.find((section) => section && section.type === 'gallery')
+    : null;
+  return gallery && Array.isArray(gallery.items) ? gallery.items : null;
+}
+
 function validateSite() {
   const data = readJson(siteFile);
   if (!data) return;
@@ -283,8 +310,96 @@ function validatePage(filePath) {
   validateAudio(filePath, page);
 }
 
+function validateGeneratedPage(filePath, rootHtmlFiles) {
+  const page = readJson(filePath);
+  if (!page) return;
+
+  if (!isObject(page)) {
+    addError(filePath, 'generated page JSON must be an object');
+    return;
+  }
+
+  requireString(filePath, page, 'id');
+  requireString(filePath, page, 'slug');
+  requireString(filePath, page, 'sourceHtml');
+  requireString(filePath, page, 'pageType');
+  requireString(filePath, page, 'title');
+
+  const slug = typeof page.slug === 'string' ? page.slug.trim() : '';
+  const sourceHtml = typeof page.sourceHtml === 'string' ? page.sourceHtml.trim() : '';
+
+  if (slug && !generatedSlugPattern.test(slug)) {
+    addError(filePath, `slug must match ${generatedSlugPattern}`);
+  }
+
+  if (reservedGeneratedSlugs.has(slug)) {
+    addError(filePath, `slug is reserved: ${slug}`);
+  }
+
+  if (sourceHtml && !sourceHtml.endsWith('.html')) {
+    addError(filePath, 'sourceHtml must end with .html');
+  }
+
+  if (slug && sourceHtml && sourceHtml !== `${slug}.html`) {
+    addError(filePath, `sourceHtml must be ${slug}.html`);
+  }
+
+  if (sourceHtml && rootHtmlFiles.includes(sourceHtml)) {
+    addError(filePath, `sourceHtml conflicts with existing root HTML: ${sourceHtml}`);
+  }
+
+  if (page.pageType !== 'generated-gallery') {
+    addError(filePath, 'pageType must be generated-gallery');
+  }
+
+  if (Object.prototype.hasOwnProperty.call(page, 'visible') && typeof page.visible !== 'boolean') {
+    addError(filePath, 'visible must be boolean');
+  }
+
+  if (Object.prototype.hasOwnProperty.call(page, 'displayOrder') && typeof page.displayOrder !== 'number') {
+    addError(filePath, 'displayOrder must be number');
+  }
+
+  validateAudio(filePath, page);
+
+  const galleryItems = getGeneratedGalleryItems(page);
+  if (!Array.isArray(galleryItems)) {
+    addError(filePath, 'gallery must be an array');
+    return;
+  }
+
+  galleryItems.forEach((item, index) => {
+    const pathLabel = `gallery[${index}]`;
+    if (!isObject(item)) {
+      addError(filePath, `${pathLabel} must be an object`);
+      return;
+    }
+
+    if (typeof item.image !== 'string' || item.image.trim() === '') {
+      addError(filePath, `${pathLabel}.image must be a non-empty path`);
+      return;
+    }
+
+    if (!item.image.startsWith('assets/images/')) {
+      addError(filePath, `${pathLabel}.image must start with assets/images/: ${item.image}`);
+    }
+
+    validateLocalPath(filePath, item.image, `${pathLabel}.image`);
+    validateOptionalUrl(filePath, item.originalUrl, `${pathLabel}.originalUrl`);
+
+    const originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+    const expected = rawUrlFor(item.image);
+    if (!originalUrl) {
+      addError(filePath, `${pathLabel}.originalUrl is required for generated gallery images`);
+    } else if (originalUrl !== expected) {
+      addError(filePath, `${pathLabel}.originalUrl must match GitHub raw main image path: ${expected}`);
+    }
+  });
+}
+
 function main() {
   validateSite();
+  const rootHtmlFiles = listRootHtmlFiles();
 
   if (!fs.existsSync(pagesDir)) {
     errors.push('content/pages: directory does not exist');
@@ -295,6 +410,16 @@ function main() {
 
     for (const fileName of pageFiles) {
       validatePage(path.join(pagesDir, fileName));
+    }
+  }
+
+  if (fs.existsSync(generatedPagesDir)) {
+    const generatedFiles = fs.readdirSync(generatedPagesDir)
+      .filter((name) => name.endsWith('.json'))
+      .sort();
+
+    for (const fileName of generatedFiles) {
+      validateGeneratedPage(path.join(generatedPagesDir, fileName), rootHtmlFiles);
     }
   }
 

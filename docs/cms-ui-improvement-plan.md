@@ -18,7 +18,9 @@ Decap CMS 관리자 화면의 편집 불편 요소를 현재 `admin/config.yml` 
 - collections:
   - `site`: `content/site.json`
   - `pages`: `content/pages/*.json`
-- `pages` collection은 `create: true` 상태다.
+- `generated_pages`: `content/generated-pages/*.json`
+- `pages` collection은 기존 19개 페이지 보호를 위해 `create: false` 상태다.
+- `generated_pages` collection은 신규 여행 페이지 생성을 위해 `create: true` 상태다.
 - `pages` collection summary는 `{{title}}`이다.
 - item summary는 `{{fields.caption}}{{fields.title}}{{fields.image}}`이다.
 - `originalUrl` field는 존재하며 영어 hint가 있다.
@@ -34,7 +36,27 @@ Decap CMS 관리자 화면의 편집 불편 요소를 현재 `admin/config.yml` 
 | 이미지와 originalUrl | `Image`와 `Original Image URL`이 같은 item 안에 있으나 홈 카드와 상세 이미지의 동작 차이는 CMS 안에서 충분히 설명되지 않는다. | 홈 카드에 originalUrl을 넣어도 기대한 원본 보기 동작이 아닐 수 있다. |
 | 저장 절차 안내 | editorial workflow publish/merge 흐름은 CMS UI 안에서 별도 안내가 부족하다. | Save 후 운영 반영까지 필요한 단계와 대기 시간을 놓칠 수 있다. |
 | 위험 필드 | `ID`, `Source HTML`, `Page Type`, `Navigation`, `Audio`, `Visible` 등이 노출된다. | 기존 URL, 렌더링 방식, 링크 구조를 실수로 바꿀 위험이 있다. |
-| 삭제/신규 생성 | `pages` collection이 `create: true`다. | 새 JSON만 생성되고 기존 HTML URL 구조와 맞지 않는 페이지가 생길 수 있다. |
+| 삭제/신규 생성 | 기존 `pages` collection은 `create: false`이며, 신규 URL은 `generated_pages` collection에서 생성한다. | 기존 페이지 보호와 신규 페이지 생성 흐름이 분리된다. |
+
+## 053 신규 페이지 자동 생성 구조
+
+053 작업 이후 신규 여행 페이지 UI는 별도 collection으로 분리한다.
+
+- collection: `generated_pages`
+- 저장 위치: `content/generated-pages/<slug>.json`
+- 생성 URL: `https://hayeon.kr/<slug>.html`
+- slug 규칙: `^[a-z0-9-]+$`
+- 생성 HTML 위치: GitHub Actions Pages build 중 `.pages-dist/<slug>.html`
+- 저장소 루트에는 generated HTML을 커밋하지 않는다.
+- 홈 노출은 자동이 아니라 기존 홈 카드 데이터 수동 추가 방식이다.
+
+관리 화면 안내 기준:
+
+- 기존 페이지에 사진을 추가할 때는 `페이지 관리` collection을 사용한다.
+- 새 URL을 만들 때만 `신규 여행 페이지` collection을 사용한다.
+- 표시용 이미지는 `assets/images/...` 경로를 사용한다.
+- 원본 이미지는 `https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/...` 형식을 사용한다.
+- `admin/config.yml` 변경이므로 Netlify admin 재배포가 필요하다.
 
 ## 단기 개선안: Decap config 정리
 

@@ -38,6 +38,7 @@ jobs:
           node --check scripts/validate-content.js
           node --check scripts/validate-static-site.js
           node --check scripts/prepare-pages-artifact.js
+          node --check scripts/generate-static-pages.js
           node --check assets/cms-renderer.js
           node --check assets/site.js
 
