@@ -331,14 +331,15 @@ a img {
   }
 
   #contents1 > div[class^="imgli"] {
-    height: 245px !important;
-    margin-bottom: 16px;
+    height: clamp(197px, 52.6vw, 218px) !important;
+    margin-bottom: 8px;
   }
 
   #contents1 > div.banner {
-    height: 96px !important;
-    margin-top: 28px !important;
-    padding-top: 28px !important;
+    box-sizing: border-box;
+    height: 86px !important;
+    margin-top: 22px !important;
+    padding-top: 22px !important;
   }
 
   #contents1 > div[class^="imgli"] li {
@@ -405,9 +406,11 @@ a img {
   #contents1 > div[class^="imgli"] li span {
     display: block;
     font-size: clamp(12px, 3.2vw, 14px) !important;
-    line-height: 1.1;
+    line-height: 1.28;
+    margin-top: 8px !important;
     overflow: hidden;
     overflow-wrap: normal;
+    padding-bottom: 2px;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: keep-all;
@@ -416,9 +419,11 @@ a img {
   #contents1 > div[class^="imgli"] li p {
     display: block;
     font-size: clamp(10px, 2.8vw, 12px) !important;
-    line-height: 1.15;
+    line-height: 1.25;
+    margin-top: 4px !important;
     overflow: hidden;
     overflow-wrap: normal;
+    padding-bottom: 1px;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: keep-all;
@@ -435,8 +440,16 @@ a img {
 
   #contents1 > div.banner h2,
   #contents2 > div.banner h2 {
-    font-size: 38px !important;
-    line-height: 1.2;
+    font-size: clamp(24px, 6.4vw, 27px) !important;
+    line-height: 1.1;
+  }
+
+  #contents2 > div.banner {
+    box-sizing: border-box;
+    height: 96px !important;
+    margin-top: 48px !important;
+    padding-top: 24px !important;
+    padding-bottom: 0 !important;
   }
 
   #contents2 > div[class^="thum"] li h2,
