@@ -604,7 +604,8 @@ a img {
     box-sizing: border-box;
     height: 86px !important;
     margin-top: 22px !important;
-    padding-top: 22px !important;
+    padding-top: 31px !important;
+    border-top-width: 0.5px !important;
   }
 
   #contents1 > div[class^="imgli"] li {
@@ -670,12 +671,12 @@ a img {
 
   #contents1 > div[class^="imgli"] li span {
     display: block;
-    font-size: clamp(12px, 3.2vw, 14px) !important;
-    line-height: 1.28;
+    font-size: clamp(11.8px, 3.05vw, 13px) !important;
+    line-height: 1.45;
     margin-top: 8px !important;
     overflow: hidden;
     overflow-wrap: normal;
-    padding-bottom: 2px;
+    padding-bottom: 3px;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: keep-all;
@@ -683,12 +684,12 @@ a img {
 
   #contents1 > div[class^="imgli"] li p {
     display: block;
-    font-size: clamp(10px, 2.8vw, 12px) !important;
-    line-height: 1.25;
+    font-size: clamp(10px, 2.7vw, 11.5px) !important;
+    line-height: 1.35;
     margin-top: 4px !important;
     overflow: hidden;
     overflow-wrap: normal;
-    padding-bottom: 1px;
+    padding-bottom: 2px;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: keep-all;
@@ -713,8 +714,9 @@ a img {
     box-sizing: border-box;
     height: 96px !important;
     margin-top: 48px !important;
-    padding-top: 24px !important;
+    padding-top: 34px !important;
     padding-bottom: 0 !important;
+    border-top-width: 0.5px !important;
   }
 
   #contents2 > div[class^="thum"] li h2,
@@ -747,8 +749,13 @@ a img {
     margin-bottom: 2px;
   }
 
+  #contents2 > div[class^="thum"]:last-of-type {
+    margin-bottom: clamp(20px, 6vw, 25px);
+  }
+
   #footer {
     padding-top: 28px !important;
+    border-top-width: 0.5px !important;
   }
 
   #footer p {
