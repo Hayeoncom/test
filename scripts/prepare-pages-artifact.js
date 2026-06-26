@@ -2,6 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const { performance } = require('perf_hooks');
 
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, '.pages-dist');
@@ -10,6 +12,11 @@ const imageMaxDimension = 1400;
 const jpegQuality = 78;
 const artifactWarningBytes = 900 * 1024 * 1024;
 const artifactFailBytes = 1024 * 1024 * 1024;
+const imageCacheDir = process.env.PAGES_IMAGE_CACHE_DIR
+  ? path.resolve(rootDir, process.env.PAGES_IMAGE_CACHE_DIR)
+  : path.join(rootDir, '.cache/pages-images');
+const imageCacheManifestPath = path.join(imageCacheDir, 'manifest.json');
+const imageOptimizationPolicyVersion = '2026-06-26-v1';
 const includeFiles = new Set();
 const referencedImages = new Set();
 const errors = [];
@@ -282,6 +289,16 @@ function formatBytes(bytes) {
   return `${value.toFixed(unitIndex === 0 ? 0 : 1)} ${units[unitIndex]}`;
 }
 
+function formatSeconds(milliseconds) {
+  return Number((milliseconds / 1000).toFixed(3));
+}
+
+function getFileSha256(absolutePath) {
+  const hash = crypto.createHash('sha256');
+  hash.update(fs.readFileSync(absolutePath));
+  return hash.digest('hex');
+}
+
 function commandExists(command) {
   const pathDirs = (process.env.PATH || '').split(path.delimiter);
   return pathDirs.some((dir) => {
@@ -315,6 +332,78 @@ function runOptimizer(command, args) {
   }
 
   return { ok: true };
+}
+
+function getOptimizerVersion(optimizer) {
+  const args = optimizer.command === 'sips' ? ['--version'] : ['-version'];
+  const result = require('child_process').spawnSync(optimizer.command, args, {
+    encoding: 'utf8',
+    maxBuffer: 1024 * 1024,
+  });
+  if (result.error || result.status !== 0) {
+    return 'unknown';
+  }
+  return (result.stdout || result.stderr || '').split('\n')[0].trim() || 'unknown';
+}
+
+function getPolicy(optimizer) {
+  return {
+    version: imageOptimizationPolicyVersion,
+    maxDimension: imageMaxDimension,
+    jpegQuality,
+    optimizerType: optimizer.type,
+    optimizerCommand: optimizer.command,
+    optimizerVersion: getOptimizerVersion(optimizer),
+  };
+}
+
+function loadImageCacheManifest() {
+  if (!fs.existsSync(imageCacheManifestPath)) {
+    return { version: 1, entries: {} };
+  }
+
+  try {
+    const manifest = JSON.parse(fs.readFileSync(imageCacheManifestPath, 'utf8'));
+    if (manifest && manifest.version === 1 && manifest.entries && typeof manifest.entries === 'object') {
+      return manifest;
+    }
+  } catch (error) {
+    console.warn(`Ignoring image cache manifest: ${error.message}`);
+  }
+
+  return { version: 1, entries: {} };
+}
+
+function saveImageCacheManifest(manifest, stats) {
+  fs.mkdirSync(imageCacheDir, { recursive: true });
+  manifest.updatedAt = new Date().toISOString();
+  manifest.policy = stats.policy;
+  manifest.imageCount = Object.keys(manifest.entries).length;
+  fs.writeFileSync(imageCacheManifestPath, JSON.stringify(manifest, null, 2));
+}
+
+function getCacheKey(relativePath, sourceHash, sourceBytes, policy) {
+  const value = JSON.stringify({
+    relativePath,
+    sourceHash,
+    sourceBytes,
+    policy,
+  });
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function getCacheFilePath(cacheKey, extension) {
+  return path.join(imageCacheDir, 'files', `${cacheKey}${extension.toLowerCase()}`);
+}
+
+function getSourceImageMetadata(relativePath) {
+  const sourcePath = rootPath(relativePath);
+  const stat = fs.statSync(sourcePath);
+  return {
+    sourcePath,
+    sourceBytes: stat.size,
+    sourceHash: getFileSha256(sourcePath),
+  };
 }
 
 function optimizeWithImageMagick(optimizer, source, target, extension) {
@@ -353,11 +442,40 @@ function optimizeWithSips(optimizer, target, extension) {
   return runOptimizer(optimizer.command, args);
 }
 
-function optimizeImage(relativePath, optimizer) {
+function optimizeImage(relativePath, optimizer, cacheContext) {
   const absolutePath = distPath(relativePath);
   const extension = path.extname(relativePath);
   if (!/\.(jpe?g|png)$/i.test(extension)) return { skipped: true, reason: 'unsupported' };
   if (!fs.existsSync(absolutePath)) return { skipped: true, reason: 'missing' };
+
+  let metadata;
+  try {
+    metadata = getSourceImageMetadata(relativePath);
+  } catch (error) {
+    return { skipped: true, reason: `source metadata failed: ${error.message}` };
+  }
+
+  const cacheKey = getCacheKey(relativePath, metadata.sourceHash, metadata.sourceBytes, cacheContext.policy);
+  const cacheEntry = cacheContext.manifest.entries[relativePath];
+  const cachePath = getCacheFilePath(cacheKey, extension);
+
+  if (
+    cacheEntry &&
+    cacheEntry.cacheKey === cacheKey &&
+    cacheEntry.sourceHash === metadata.sourceHash &&
+    cacheEntry.sourceBytes === metadata.sourceBytes &&
+    fs.existsSync(cachePath)
+  ) {
+    fs.copyFileSync(cachePath, absolutePath);
+    const cachedBytes = fs.statSync(absolutePath).size;
+    return {
+      cached: true,
+      originalBytes: metadata.sourceBytes,
+      optimizedBytes: cachedBytes,
+      savedBytes: Math.max(metadata.sourceBytes - cachedBytes, 0),
+      cacheKey,
+    };
+  }
 
   const originalBytes = fs.statSync(absolutePath).size;
   const tempPath = `${absolutePath}.optimizing-${process.pid}${extension}`;
@@ -377,18 +495,44 @@ function optimizeImage(relativePath, optimizer) {
     }
 
     const optimizedBytes = fs.existsSync(tempPath) ? fs.statSync(tempPath).size : 0;
+    let optimized = false;
+    let skippedReason = null;
+
     if (optimizedBytes > 0 && optimizedBytes < originalBytes) {
       fs.renameSync(tempPath, absolutePath);
+      optimized = true;
+    } else {
+      fs.rmSync(tempPath, { force: true });
+      skippedReason = 'not smaller';
+    }
+
+    fs.mkdirSync(path.dirname(cachePath), { recursive: true });
+    fs.copyFileSync(absolutePath, cachePath);
+    const finalBytes = fs.statSync(absolutePath).size;
+    cacheContext.manifest.entries[relativePath] = {
+      cacheKey,
+      relativePath,
+      cachePath: toPosix(path.relative(rootDir, cachePath)),
+      sourceHash: metadata.sourceHash,
+      sourceBytes: metadata.sourceBytes,
+      optimizedBytes: finalBytes,
+      policy: cacheContext.policy,
+      optimized,
+      skippedReason,
+      updatedAt: new Date().toISOString(),
+    };
+
+    if (optimized) {
       return {
         optimized: true,
         originalBytes,
-        optimizedBytes,
-        savedBytes: originalBytes - optimizedBytes,
+        optimizedBytes: finalBytes,
+        savedBytes: originalBytes - finalBytes,
+        cacheKey,
       };
     }
 
-    fs.rmSync(tempPath, { force: true });
-    return { skipped: true, reason: 'not smaller', originalBytes, optimizedBytes };
+    return { skipped: true, reason: skippedReason, originalBytes, optimizedBytes, cacheKey };
   } catch (error) {
     fs.rmSync(tempPath, { force: true });
     return { skipped: true, reason: error.message };
@@ -402,17 +546,31 @@ function optimizeDistImages() {
     return null;
   }
 
+  const startedAt = performance.now();
+  const policy = getPolicy(optimizer);
+  const cacheContext = {
+    manifest: loadImageCacheManifest(),
+    policy,
+  };
   const stats = {
     tool: optimizer.command,
+    optimizerType: optimizer.type,
+    optimizerVersion: policy.optimizerVersion,
+    policyVersion: imageOptimizationPolicyVersion,
     maxDimension: imageMaxDimension,
     jpegQuality,
+    cacheDir: toPosix(path.relative(rootDir, imageCacheDir)),
     checked: 0,
+    cacheHits: 0,
+    cacheMisses: 0,
+    copiedFromCache: 0,
     optimized: 0,
     skipped: 0,
     originalBytes: 0,
     optimizedBytes: 0,
     savedBytes: 0,
     skippedReasons: {},
+    policy,
   };
 
   Array.from(referencedImages)
@@ -420,19 +578,32 @@ function optimizeDistImages() {
     .sort()
     .forEach((imagePath) => {
       stats.checked += 1;
-      const result = optimizeImage(imagePath, optimizer);
+      const result = optimizeImage(imagePath, optimizer, cacheContext);
+      if (result.cached) {
+        stats.cacheHits += 1;
+        stats.copiedFromCache += 1;
+        stats.originalBytes += result.originalBytes;
+        stats.optimizedBytes += result.optimizedBytes;
+        stats.savedBytes += result.savedBytes;
+      } else {
+        stats.cacheMisses += 1;
+      }
+
       if (result.optimized) {
         stats.optimized += 1;
         stats.originalBytes += result.originalBytes;
         stats.optimizedBytes += result.optimizedBytes;
         stats.savedBytes += result.savedBytes;
-      } else {
+      } else if (!result.cached) {
         stats.skipped += 1;
         const reason = result.reason || 'unknown';
         stats.skippedReasons[reason] = (stats.skippedReasons[reason] || 0) + 1;
       }
     });
 
+  saveImageCacheManifest(cacheContext.manifest, stats);
+  stats.durationSeconds = formatSeconds(performance.now() - startedAt);
+  stats.cacheEntries = Object.keys(cacheContext.manifest.entries).length;
   stats.originalSize = formatBytes(stats.originalBytes);
   stats.optimizedSize = formatBytes(stats.optimizedBytes);
   stats.savedSize = formatBytes(stats.savedBytes);

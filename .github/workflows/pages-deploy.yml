@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'docs/**'
+      - 'reports/**'
+      - 'prompt/**'
+      - 'specs/**'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -12,8 +18,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: false
+  group: pages-deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -26,15 +32,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Classify deploy change
+        id: deploy-change
+        run: node scripts/classify-deploy-change.js --github-output
+
+      - name: Skip non-site deploy
+        if: steps.deploy-change.outputs.deploy_required == 'false'
+        run: echo "Skipping GitHub Pages deploy for ${{ steps.deploy-change.outputs.change_type }}."
 
       - name: Configure GitHub Pages
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         uses: actions/configure-pages@v6
 
       - name: Validate CMS content
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: node scripts/validate-content.js
 
       - name: Check JavaScript syntax
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: |
+          node --check scripts/classify-deploy-change.js
           node --check scripts/validate-content.js
           node --check scripts/validate-static-site.js
           node --check scripts/prepare-pages-artifact.js
@@ -43,37 +63,63 @@ jobs:
           node --check assets/site.js
 
       - name: Validate source references
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: node scripts/validate-static-site.js
 
       - name: Check whitespace
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: git diff --check
 
       - name: Install image optimizer
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: |
           if ! command -v magick >/dev/null 2>&1 && ! command -v convert >/dev/null 2>&1; then
             sudo apt-get update
             sudo apt-get install -y imagemagick
           fi
 
+      - name: Restore optimized image cache
+        id: image-cache
+        if: steps.deploy-change.outputs.deploy_required != 'false'
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/pages-images
+          key: pages-images-${{ runner.os }}-${{ hashFiles('scripts/prepare-pages-artifact.js') }}-${{ hashFiles('assets/images/**/*') }}
+          restore-keys: |
+            pages-images-${{ runner.os }}-${{ hashFiles('scripts/prepare-pages-artifact.js') }}-
+            pages-images-${{ runner.os }}-
+
       - name: Prepare Pages artifact
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: node scripts/prepare-pages-artifact.js
 
       - name: Validate Pages artifact
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: node scripts/validate-static-site.js --root .pages-dist
 
       - name: Print artifact summary
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         run: |
           du -sh .pages-dist
           du -sh .pages-dist/assets
           du -sh .pages-dist/assets/images
           find .pages-dist -type f | wc -l
 
+      - name: Save optimized image cache
+        if: steps.deploy-change.outputs.deploy_required != 'false' && steps.image-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/pages-images
+          key: pages-images-${{ runner.os }}-${{ hashFiles('scripts/prepare-pages-artifact.js') }}-${{ hashFiles('assets/images/**/*') }}
+
       - name: Upload Pages artifact
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         uses: actions/upload-pages-artifact@v5
         with:
           path: .pages-dist
           include-hidden-files: true
 
       - name: Deploy to GitHub Pages
+        if: steps.deploy-change.outputs.deploy_required != 'false'
         id: deployment
         uses: actions/deploy-pages@v5
