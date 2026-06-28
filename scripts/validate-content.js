@@ -2,6 +2,12 @@
 
 const fs = require('fs');
 const path = require('path');
+const {
+  isLocalImagePath,
+  normalizeImagePath,
+  rawUrlForImage,
+  resolveOriginalUrl,
+} = require('./image-url-policy');
 
 const rootDir = path.resolve(__dirname, '..');
 const contentDir = path.join(rootDir, 'content');
@@ -11,7 +17,6 @@ const siteFile = path.join(contentDir, 'site.json');
 
 const allowedPageTypes = new Set(['document-gallery', 'gallery', 'generated-gallery', 'home', 'placeholder']);
 const allowedSectionTypes = new Set(['documentCards', 'gallery', 'slider', 'travelCards']);
-const rawBaseUrl = 'https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/';
 const generatedSlugPattern = /^[a-z0-9-]+$/;
 const reservedGeneratedSlugs = new Set([
   'admin',
@@ -106,10 +111,6 @@ function validateOptionalUrl(filePath, value, field) {
   }
 }
 
-function rawUrlFor(imagePath) {
-  return rawBaseUrl + imagePath.trim().replace(/^\/+/, '');
-}
-
 function shouldRequireOriginalUrl(page, section, item) {
   return page.pageType !== 'home' &&
     section.type === 'gallery' &&
@@ -122,10 +123,11 @@ function validateOriginalUrlPolicy(filePath, page, section, item, pathLabel) {
     return;
   }
 
-  const originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+  const explicitOriginalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+  const resolvedOriginalUrl = resolveOriginalUrl(item);
 
   if (page.pageType === 'home') {
-    if (originalUrl) {
+    if (explicitOriginalUrl) {
       addError(filePath, `${pathLabel}.originalUrl must be empty on home items`);
     }
     return;
@@ -135,21 +137,23 @@ function validateOriginalUrlPolicy(filePath, page, section, item, pathLabel) {
     return;
   }
 
-  if (!originalUrl) {
-    addError(filePath, `${pathLabel}.originalUrl is required for gallery images`);
+  if (!isLocalImagePath(item.image)) {
+    if (!explicitOriginalUrl) {
+      addError(filePath, `${pathLabel}.originalUrl is required for non-local gallery images`);
+    }
     return;
   }
 
-  const expected = rawUrlFor(item.image);
-  if (originalUrl !== expected) {
+  const expected = rawUrlForImage(item.image);
+  if (resolvedOriginalUrl !== expected) {
     addError(filePath, `${pathLabel}.originalUrl must match GitHub raw main image path: ${expected}`);
   }
 
-  if (originalUrl.includes('refs/heads/refactor/ver1')) {
+  if (explicitOriginalUrl.includes('refs/heads/refactor/ver1')) {
     addError(filePath, `${pathLabel}.originalUrl must not use refactor/ver1`);
   }
 
-  if (/^https:\/\/hayeon\.kr\//i.test(originalUrl) || /netlify\.app/i.test(originalUrl)) {
+  if (/^https:\/\/hayeon\.kr\//i.test(explicitOriginalUrl) || /netlify\.app/i.test(explicitOriginalUrl)) {
     addError(filePath, `${pathLabel}.originalUrl must not use deployed site or Netlify URL`);
   }
 }
@@ -160,8 +164,9 @@ function validateLocalPath(filePath, value, field) {
     return;
   }
 
-  if (!isExternalUrl(value) && !fileExistsFromRoot(value)) {
-    addError(filePath, `${field} path does not exist: ${value}`);
+  const normalized = normalizeImagePath(value);
+  if (!isExternalUrl(value) && !fileExistsFromRoot(normalized)) {
+    addError(filePath, `${field} path does not exist: ${normalized}`);
   }
 }
 
@@ -403,17 +408,18 @@ function validateGeneratedPage(filePath, rootHtmlFiles) {
       return;
     }
 
-    if (!item.image.startsWith('assets/images/')) {
+    const image = normalizeImagePath(item.image);
+    if (!image.startsWith('assets/images/')) {
       addError(filePath, `${pathLabel}.image must start with assets/images/: ${item.image}`);
     }
 
-    validateLocalPath(filePath, item.image, `${pathLabel}.image`);
+    validateLocalPath(filePath, image, `${pathLabel}.image`);
     validateOptionalUrl(filePath, item.originalUrl, `${pathLabel}.originalUrl`);
 
-    const originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
-    const expected = rawUrlFor(item.image);
-    if (!originalUrl) {
-      addError(filePath, `${pathLabel}.originalUrl is required for generated gallery images`);
+    const originalUrl = resolveOriginalUrl(item);
+    const expected = rawUrlForImage(image);
+    if (!expected) {
+      addError(filePath, `${pathLabel}.originalUrl cannot be derived from image path: ${item.image}`);
     } else if (originalUrl !== expected) {
       addError(filePath, `${pathLabel}.originalUrl must match GitHub raw main image path: ${expected}`);
     }

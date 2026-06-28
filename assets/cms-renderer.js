@@ -35,7 +35,7 @@
     }
   }
 
-  function updateImage(img, item) {
+  function updateImage(img, item, enableOriginalLink) {
     if (!img || !item) {
       return;
     }
@@ -43,11 +43,37 @@
       img.setAttribute('src', item.image);
     }
     img.setAttribute('alt', item.alt || '');
-    updateOriginalImageLink(img, item);
+    if (enableOriginalLink) {
+      updateOriginalImageLink(img, item);
+      return;
+    }
+
+    var currentLink = img.closest('a[data-original-image-link="true"]');
+    if (currentLink) {
+      img = unwrapOriginalImageLink(currentLink) || img;
+    }
+    img.removeAttribute('data-original-url');
   }
 
   function isHttpUrl(value) {
     return /^https?:\/\//i.test(value);
+  }
+
+  function normalizeImagePath(value) {
+    return typeof value === 'string' ? value.trim().replace(/^\/+/, '') : '';
+  }
+
+  function rawUrlForImage(value) {
+    var imagePath = normalizeImagePath(value);
+    if (!imagePath || imagePath.indexOf('assets/images/') !== 0) {
+      return '';
+    }
+    return 'https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/' + imagePath;
+  }
+
+  function resolveOriginalUrl(item) {
+    var originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+    return originalUrl || rawUrlForImage(item.image);
   }
 
   function unwrapOriginalImageLink(link) {
@@ -65,7 +91,7 @@
   }
 
   function updateOriginalImageLink(img, item) {
-    var originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+    var originalUrl = resolveOriginalUrl(item);
     var currentLink = img.closest('a[data-original-image-link="true"]');
 
     if (currentLink && !originalUrl) {
@@ -228,7 +254,7 @@
       var li = image.closest('li') || image.parentElement;
       slot.style.display = '';
       li.style.display = '';
-      updateImage(image, item);
+      updateImage(image, item, true);
 
       var location = ensureTextNode(li, 'p', 'p');
       var caption = ensureTextNode(li, 'span', 'span');
@@ -260,7 +286,7 @@
           slides.push(slide);
         }
         slide.style.display = '';
-        updateImage(slide.querySelector('img'), item);
+        updateImage(slide.querySelector('img'), item, false);
       });
 
       slides.slice(items.length).forEach(function (slide) {
@@ -292,7 +318,7 @@
       if (link && item.href) {
         link.setAttribute('href', item.href);
       }
-      updateImage(card.querySelector('img'), item);
+      updateImage(card.querySelector('img'), item, false);
       setScopedText(card, 'span', item.title || '');
       setScopedText(card, 'p', item.meta || '');
     });
@@ -323,7 +349,7 @@
           link.setAttribute('href', item.href);
         }
       });
-      updateImage(card.querySelector('img'), item);
+      updateImage(card.querySelector('img'), item, false);
       setScopedText(card, 'h3', item.title || '');
       setScopedText(card, 'p', item.camera || '');
       setScopedText(card, 'h2', item.date || '');

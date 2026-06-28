@@ -2,11 +2,16 @@
 
 const fs = require('fs');
 const path = require('path');
+const {
+  normalizeImagePath,
+  rawBaseUrl,
+  rawUrlForImage,
+  resolveOriginalUrl,
+} = require('./image-url-policy');
 
 const rootDir = path.resolve(__dirname, '..');
 const defaultContentDir = path.join(rootDir, 'content', 'generated-pages');
 const defaultOutputDir = path.join(rootDir, '.pages-dist');
-const rawBaseUrl = 'https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/';
 const slugPattern = /^[a-z0-9-]+$/;
 const reservedSlugs = new Set([
   'admin',
@@ -150,8 +155,8 @@ function validatePage(page, jsonFile, existingRootHtml) {
       return;
     }
 
-    const image = typeof item.image === 'string' ? item.image.trim() : '';
-    const originalUrl = typeof item.originalUrl === 'string' ? item.originalUrl.trim() : '';
+    const image = normalizeImagePath(item.image);
+    const originalUrl = resolveOriginalUrl(item);
 
     if (!image) {
       errors.push(`${label}.image must be a non-empty path`);
@@ -161,10 +166,11 @@ function validatePage(page, jsonFile, existingRootHtml) {
       errors.push(`${label}.image path does not exist: ${image}`);
     }
 
-    if (!originalUrl) {
-      errors.push(`${label}.originalUrl is required for generated gallery images`);
-    } else if (originalUrl !== rawBaseUrl + image) {
-      errors.push(`${label}.originalUrl must match GitHub raw main image path: ${rawBaseUrl + image}`);
+    const expectedOriginalUrl = rawUrlForImage(image);
+    if (!expectedOriginalUrl) {
+      errors.push(`${label}.originalUrl cannot be derived from image path: ${image}`);
+    } else if (originalUrl !== expectedOriginalUrl) {
+      errors.push(`${label}.originalUrl must match GitHub raw main image path: ${expectedOriginalUrl}`);
     }
   });
 
