@@ -186,9 +186,13 @@ collections:
             fields:
               - label: "표시용 이미지 경로"
                 name: "image"
-                widget: "string"
+                widget: "image"
                 required: false
-                hint: "웹페이지에 표시되는 최적화 이미지 경로입니다. 예: assets/images/tokyo/img0.jpeg 오른쪽 미리보기에서 실제 썸네일을 확인합니다."
+                choose_url: true
+                allow_multiple: false
+                media_folder: "assets/images/uploads"
+                public_folder: "assets/images/uploads"
+                hint: "웹페이지에 표시되는 최적화 이미지 경로입니다. 업로드 시 assets/images/uploads/... 형식으로 저장됩니다. 기존 이미지 경로도 유지할 수 있습니다. 예: assets/images/tokyo/img0.jpeg 오른쪽 미리보기에서 실제 썸네일을 확인합니다."
               - label: "사진 설명"
                 name: "caption"
                 widget: "text"
@@ -308,9 +312,13 @@ collections:
         hint: "홈 카드 아래 회색 메타 문구입니다. 예: #12, 2026"
       - label: "홈 카드 이미지"
         name: "homeImage"
-        widget: "string"
+        widget: "image"
         required: false
-        hint: "홈 노출을 켠 경우 필수입니다. 표시용 최적화 이미지 경로만 입력합니다. 예: assets/images/uploads/nagoya-001.jpeg"
+        choose_url: true
+        allow_multiple: false
+        media_folder: "assets/images/uploads"
+        public_folder: "assets/images/uploads"
+        hint: "홈 노출을 켠 경우 필수입니다. 업로드 시 assets/images/uploads/... 형식으로 저장됩니다. 홈 카드는 페이지 이동 링크이며 originalUrl 새 창 링크를 사용하지 않습니다. 예: assets/images/uploads/nagoya-001.jpeg"
       - label: "홈 카드 순서"
         name: "homeOrder"
         widget: "number"
@@ -374,8 +382,12 @@ collections:
         fields:
           - label: "표시용 이미지 경로"
             name: "image"
-            widget: "string"
-            hint: "예: assets/images/uploads/nagoya-001.jpeg"
+            widget: "image"
+            choose_url: true
+            allow_multiple: false
+            media_folder: "assets/images/uploads"
+            public_folder: "assets/images/uploads"
+            hint: "업로드 시 assets/images/uploads/... 형식으로 저장됩니다. 예: assets/images/uploads/nagoya-001.jpeg"
           - label: "사진 설명"
             name: "caption"
             widget: "text"

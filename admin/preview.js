@@ -1,5 +1,6 @@
 (function () {
   const publicSiteUrl = 'https://hayeon.kr/';
+  const rawBaseUrl = 'https://raw.githubusercontent.com/Hayeoncom/test/refs/heads/main/';
 
   function ready(callback) {
     if (window.CMS && window.h && window.createClass) {
@@ -36,6 +37,12 @@
     return new URL(normalized, publicSiteUrl).href;
   }
 
+  function originalUrlForImage(value) {
+    const imagePath = text(value);
+    if (!imagePath || /^https?:\/\//i.test(imagePath)) return '';
+    return rawBaseUrl + imagePath.replace(/^\/+/, '');
+  }
+
   function getEntryData(entry) {
     const raw = entry && typeof entry.getIn === 'function'
       ? entry.getIn(['data'])
@@ -64,6 +71,7 @@
       const imagePath = text(item.image);
       const previewUrl = imagePreviewUrl(imagePath);
       const originalUrl = text(item.originalUrl);
+      const suggestedOriginalUrl = props.allowOriginalTools ? originalUrlForImage(imagePath) : '';
       const caption = text(item.caption || item.title || item.alt, '설명 없음');
       const location = text(item.location);
       const thumb = previewUrl
@@ -105,6 +113,17 @@
             rel: 'noopener noreferrer',
             key: 'originalLink',
           }, '원본 이미지 새 창으로 열기') : null,
+          suggestedOriginalUrl ? h('button', {
+            className: 'cms-preview__copy',
+            type: 'button',
+            key: 'copyOriginal',
+            onClick() {
+              if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                navigator.clipboard.writeText(suggestedOriginalUrl);
+              }
+            },
+            title: suggestedOriginalUrl,
+          }, 'raw 원본 URL 복사') : null,
           h(InfoLine, { label: 'link', value: text(item.href), key: 'href' }),
         ]),
       ]);
@@ -125,6 +144,7 @@
           ? h('div', { className: 'cms-preview__grid', key: 'grid' },
             items.map((item, itemIndex) => h(ImageCard, {
               item,
+              allowOriginalTools: type === 'gallery',
               key: `${props.index}-${itemIndex}`,
             })))
           : h('div', { className: 'cms-preview__empty', key: 'empty' }, '표시할 사진 항목이 없습니다.'),
